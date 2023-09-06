@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc && node dist/devServer.js",
+    "dev": "nodemon src/devServer.ts",
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "clean:unix": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "clean:win": "if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "serverless-http": "^3.1.1",
+    "ui": "*"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20",
+    "serverless-plugin-typescript": "^2.1.4",
+    "eslint-config-custom": "*",
+    "tsconfig": "*",
+    "typescript": "^4.5.3",
+    "ts-node": "^10.9.1"
+  }
+}

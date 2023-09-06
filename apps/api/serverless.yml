@@ -1,0 +1,23 @@
+service: serverless-api
+frameworkVersion: "3"
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+  region: ap-south-1
+  timeout: 10
+
+functions:
+  hello:
+    handler: src/server.handler
+    events:
+      - http: ANY /{proxy+}
+      - http: ANY /
+
+    environment:
+      SECRET: ${env:SECRET}
+
+plugins:
+  - serverless-plugin-typescript

@@ -1,0 +1,1 @@
+export { isValidName } from "./isValidName";
