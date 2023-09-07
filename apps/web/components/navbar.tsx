@@ -1,6 +1,7 @@
 import { COLORS } from "../theme/colors";
 import styles from "./navbar.module.scss";
 import { Button } from "../components/button";
+import Link from "next/link";
 
 export function NavBar(): JSX.Element {
   return (
@@ -8,7 +9,9 @@ export function NavBar(): JSX.Element {
       className={styles.container}
       style={{ borderColor: COLORS.borderSwatch }}
     >
-      <img src="/text-logo.svg" className={styles.logo} />
+      <Link href={"/"}>
+        <img src="/text-logo.svg" className={styles.logo} />
+      </Link>
 
       <div className={styles.links_container}>
         <a

@@ -1,7 +1,6 @@
 .container {
   width: 100vw;
-  padding-inline: 1rem;
-  padding-block: 1rem;
+  padding: 1rem;
   border-bottom: 1px solid;
   display: flex;
   justify-content: space-between;
@@ -10,7 +9,7 @@
   .logo {
     max-width: 8.5rem;
     @media only screen and (max-width: 400px) {
-      max-width: 5.5rem;
+      max-width: 6rem;
     }
   }
 
