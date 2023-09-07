@@ -1,0 +1,19 @@
+.container {
+  min-width: 4.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  padding-inline: 0.5rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1.5px solid;
+  font-size: 0.85rem;
+  min-height: 2.5rem;
+
+  @media only screen and (max-width: 400px) {
+  }
+}

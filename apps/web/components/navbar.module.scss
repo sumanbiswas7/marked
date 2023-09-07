@@ -1,0 +1,38 @@
+.container {
+  width: 100vw;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    max-width: 8.5rem;
+    @media only screen and (max-width: 400px) {
+      max-width: 5.5rem;
+    }
+  }
+
+  .links_container {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .github_btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem;
+
+    @media only screen and (max-width: 400px) {
+      display: none;
+    }
+
+    .github_icon {
+      width: 1rem;
+    }
+  }
+}
