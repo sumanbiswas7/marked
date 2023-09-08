@@ -15,6 +15,7 @@
     align-items: center;
     width: 50%;
     height: 100%;
+    flex-direction: column;
 
     @media (orientation: portrait) and (max-width: $breakpoint-md) {
       width: 100%;
@@ -138,5 +139,24 @@
   & > img:nth-child(3) {
     width: 1.8rem;
     margin-bottom: 0.5rem;
+  }
+}
+
+// Copyright box
+.copyright_cont {
+  margin-top: 5rem;
+  align-self: flex-start;
+  display: none;
+
+  & > p {
+    font-size: 0.7rem;
+  }
+
+  & > a {
+    color: inherit;
+  }
+
+  @media (orientation: landscape) and (min-width: $breakpoint-md) {
+    display: block;
   }
 }

@@ -2,13 +2,15 @@ import styles from "./page.module.scss";
 import { NavBar } from "../components/navbar";
 import { COLORS } from "../theme/colors";
 import { Button } from "../components/button";
+import { Contact } from "ui/components";
 
-export default function Page(): JSX.Element {
+export default function HomePage(): JSX.Element {
   return (
     <div>
       <NavBar />
       <div className={styles.main_container}>
         <div className={styles.left_container}>
+          {/* Header and paras */}
           <div className={styles.txt_container}>
             <p style={{ color: COLORS.textLightSwatch }}>INTRODUCING</p>
             <p style={{ color: COLORS.textSwatch }}>
@@ -40,6 +42,7 @@ export default function Page(): JSX.Element {
               <Button title="Get Started" />
               <FreeToUse />
             </div>
+            <Copyright />
           </div>
         </div>
         <div className={styles.right_container}>
@@ -47,11 +50,23 @@ export default function Page(): JSX.Element {
           <img src="/home/demo-image-800px.webp" className={styles.demo_img} />
         </div>
       </div>
+
+      <Contact
+        bgCol={COLORS.textSwatch}
+        color={COLORS.textLightSwatch}
+        icons={{ email: "/home/email.svg", location: "/home/pin.svg" }}
+        me="/home/me.png"
+        socials={{
+          ig: { img: "/home/instagram.svg", link: "" },
+          gh: { img: "/home/github.svg", link: "" },
+          fb: { img: "/home/facebook.svg", link: "" },
+        }}
+      />
     </div>
   );
 }
 
-function FreeToUse() {
+function FreeToUse(): JSX.Element {
   return (
     <div className={styles.freeuse_cont}>
       <img src="/home/left_focus.svg" />
@@ -60,6 +75,30 @@ function FreeToUse() {
         <br /> NO CARDS
       </p>
       <img src="/home/right_focus.svg" />
+    </div>
+  );
+}
+
+function Copyright() {
+  return (
+    <div
+      className={styles.copyright_cont}
+      style={{ color: COLORS.textLightSwatch }}
+    >
+      <p>Copyright</p>
+      <p>
+        ©{" "}
+        <span>
+          <a
+            href="https://www.linkedin.com/in/sumanbiswas7"
+            target="_blank"
+            style={{ color: COLORS.textLightSwatch }}
+          >
+            Suman Biswas
+          </a>
+        </span>
+        , 2023
+      </p>
     </div>
   );
 }
