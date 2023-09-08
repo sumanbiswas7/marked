@@ -1,10 +1,20 @@
+@import "../theme/constants.scss";
+
 .container {
   width: 100vw;
-  padding: 1rem;
   border-bottom: 1px solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-inline: 1rem;
+  height: $navbar-height;
+  @include flex-center;
+  justify-content: space-between;
+
+  @media only screen and (max-width: $breakpoint-sm) {
+    padding: 1rem;
+    height: auto;
+  }
 
   .logo {
     max-width: 8.5rem;

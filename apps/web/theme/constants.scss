@@ -1,0 +1,12 @@
+// vars
+$navbar-height: 13dvh;
+$screen-height: 87dvh;
+
+// Breakpoints
+$breakpoint-sm: 400px;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

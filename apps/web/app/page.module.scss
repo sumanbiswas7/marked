@@ -1,0 +1,116 @@
+@import "../theme/constants.scss";
+
+.main_container {
+  display: flex;
+  height: $screen-height;
+
+  @media only screen and (max-width: $breakpoint-sm) {
+    height: fit-content;
+    flex-direction: column;
+  }
+
+  .left_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+
+    @media only screen and (max-width: $breakpoint-sm) {
+      width: 100%;
+      padding-inline: 1rem;
+      padding-block: 6vh;
+    }
+
+    .txt_container {
+      & > p:nth-child(1) {
+        font-size: 1dvw;
+        font-weight: 500;
+
+        @media only screen and (max-width: $breakpoint-sm) {
+          font-size: 0.75rem;
+        }
+      }
+      & > p:nth-child(2),
+      & > p:nth-child(3) {
+        font-size: 2.5dvw; // Your all in one...
+        font-weight: 500;
+
+        @media only screen and (max-width: $breakpoint-sm) {
+          font-size: 1.5rem;
+        }
+      }
+      & > p:nth-child(4) {
+        font-size: 1.2dvw;
+        max-width: 40ch;
+
+        @media only screen and (max-width: $breakpoint-sm) {
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    .btn_free_cont {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  .right_container {
+    width: 50%;
+    position: relative;
+    @include flex-center;
+
+    .bg_img_cont {
+      position: absolute;
+      right: 0;
+      width: 50%;
+      height: $screen-height;
+      background: url("../public/background-texture.png");
+      background-size: cover;
+      background-position: center;
+
+      @media only screen and (max-width: $breakpoint-sm) {
+        height: 100%;
+        width: 50%;
+      }
+    }
+
+    @media only screen and (max-width: $breakpoint-sm) {
+      height: 50vh;
+      width: 100%;
+      // background-color: red;
+    }
+  }
+
+  .demo_img {
+    width: 90%;
+    z-index: 99;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.25);
+  }
+}
+
+// Free to use no card
+.freeuse_cont {
+  display: flex;
+
+  & > p {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-align: center;
+    margin-inline: 0.5rem;
+  }
+
+  & > img:nth-child(1) {
+    width: 1.5rem;
+  }
+
+  & > img:nth-child(3) {
+    width: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+}
