@@ -20,7 +20,7 @@ export function NavBar(): JSX.Element {
           className={styles.github_btn}
           style={{ backgroundColor: COLORS.textLight2Swatch }}
         >
-          <img src="/github.svg" className={styles.github_icon} />
+          <img src="/navbar/github.svg" className={styles.github_icon} />
         </a>
         <Button title="Login" type="outlined" link="/login" />
         <Button title="Sign up" type="filled" link="/signup" />
