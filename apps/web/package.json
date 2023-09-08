@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "clean:unix": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "clean:win": "if exist .next rmdir /s /q .next && if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist"
   },
