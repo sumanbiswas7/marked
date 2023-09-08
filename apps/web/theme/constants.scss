@@ -3,7 +3,8 @@ $navbar-height: 13dvh;
 $screen-height: 87dvh;
 
 // Breakpoints
-$breakpoint-sm: 400px;
+$breakpoint-sm: 500px;
+$breakpoint-md: 900px;
 
 @mixin flex-center {
   display: flex;
