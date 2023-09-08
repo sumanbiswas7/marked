@@ -57,9 +57,18 @@ export default function HomePage(): JSX.Element {
         icons={{ email: "/home/email.svg", location: "/home/pin.svg" }}
         me="/home/me.png"
         socials={{
-          ig: { img: "/home/instagram.svg", link: "" },
-          gh: { img: "/home/github.svg", link: "" },
-          fb: { img: "/home/facebook.svg", link: "" },
+          ig: {
+            img: "/home/instagram.svg",
+            link: "https://www.instagram.com/sumanbiswas7",
+          },
+          gh: {
+            img: "/home/github.svg",
+            link: "https://github.com/sumanbiswas7",
+          },
+          fb: {
+            img: "/home/facebook.svg",
+            link: "https://www.facebook.com/people/Suman-Biswas/100009266254381",
+          },
         }}
       />
     </div>
