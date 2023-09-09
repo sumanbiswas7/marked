@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "build": "tsc && node dist/devServer.js",
+    "build": "tsc",
     "dev": "nodemon src/devServer.ts",
     "deploy": "serverless deploy",
     "remove": "serverless remove",
@@ -23,9 +23,8 @@
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.20",
     "serverless-plugin-typescript": "^2.1.4",
-    "eslint-config-custom": "*",
-    "tsconfig": "*",
     "typescript": "^4.5.3",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "tsconfig": "*"
   }
 }

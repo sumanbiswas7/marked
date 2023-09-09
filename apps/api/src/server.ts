@@ -12,7 +12,7 @@ app.use("/animals", animalsRoute);
 app.get("/", (req: Request, res: Response) => {
   res.json({
     working: true,
-    message: `Hello World pls`,
+    message: `Hello World`,
     valid: isValidName("Suman") === true ? "True Valid" : "Not Valid",
     secret: `SECRET: ${process.env.SECRET}`,
   });

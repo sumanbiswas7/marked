@@ -1,9 +1,0 @@
-{
-  "display": "Node.js",
-  "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "esModuleInterop": true
-  },
-  "exclude": ["node_modules"]
-}
