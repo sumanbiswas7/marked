@@ -2,7 +2,7 @@ import serverless from "serverless-http";
 import express, { Request, Response } from "express";
 import moviesRoute from "./routes/moviesRoute";
 import animalsRoute from "./routes/animalsRoute";
-import { hello } from "utils";
+import { hello, sayMyName } from "utils";
 
 export const app = express();
 
@@ -14,6 +14,7 @@ app.get("/", (req: Request, res: Response) => {
       working: true,
       message: `Hello World`,
       hello: hello(),
+      name: sayMyName("Walter White"),
       secret: `SECRET: ${process.env.SECRET}`,
    });
 });
