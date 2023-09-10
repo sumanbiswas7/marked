@@ -1,21 +1,22 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "clean": "turbo clean:win",
-    "deploy": "turbo run deploy"
-  },
-  "devDependencies": {
-    "prettier": "^3.0.3",
-    "turbo": "latest",
-    "tsconfig": "*"
-  },
-  "name": "marked",
-  "packageManager": "yarn@1.22.19",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+   "name": "marked",
+   "private": true,
+   "license": "MIT",
+   "scripts": {
+      "build": "turbo run build",
+      "dev": "turbo run dev",
+      "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+      "clean": "turbo clean:win",
+      "deploy": "turbo run deploy"
+   },
+   "devDependencies": {
+      "prettier": "^3.0.3",
+      "turbo": "latest",
+      "tsconfig": "*"
+   },
+   "packageManager": "yarn@1.22.19",
+   "workspaces": [
+      "apps/*",
+      "packages/*"
+   ]
 }

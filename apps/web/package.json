@@ -1,27 +1,29 @@
 {
-  "name": "web",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "clean:unix": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "clean:win": "if exist .next rmdir /s /q .next && if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist"
-  },
-  "dependencies": {
-    "next": "^13.4.19",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "ui": "*",
-    "utils": "*"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.12",
-    "@types/react": "^18.0.22",
-    "@types/react-dom": "^18.0.7",
-    "sass": "^1.66.1",
-    "tsconfig": "*",
-    "typescript": "^4.5.3"
-  }
+   "name": "web",
+   "version": "0.0.1",
+   "private": true,
+   "license": "MIT",
+   "description": "frontend of marked",
+   "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "clean:unix": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+      "clean:win": "if exist .next rmdir /s /q .next && if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist"
+   },
+   "dependencies": {
+      "next": "^13.4.19",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "ui": "*",
+      "utils": "*"
+   },
+   "devDependencies": {
+      "@types/node": "^17.0.12",
+      "@types/react": "^18.0.22",
+      "@types/react-dom": "^18.0.7",
+      "sass": "^1.66.1",
+      "tsconfig": "*",
+      "typescript": "^4.5.3"
+   }
 }
