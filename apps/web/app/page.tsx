@@ -2,7 +2,7 @@ import styles from "./page.module.scss";
 import { NavBar } from "../components/navbar";
 import { COLORS } from "../theme/colors";
 import { Button } from "../components/button";
-import { Contact } from "ui/components";
+import { Contact } from "ui";
 
 export default function HomePage(): JSX.Element {
   return (

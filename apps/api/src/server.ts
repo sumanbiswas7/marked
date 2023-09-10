@@ -2,7 +2,6 @@ import serverless from "serverless-http";
 import express, { Request, Response } from "express";
 import moviesRoute from "./routes/moviesRoute";
 import animalsRoute from "./routes/animalsRoute";
-// import { isValidName } from "ui/utils";
 import { hello } from "utils";
 
 export const app = express();
@@ -14,7 +13,6 @@ app.get("/", (req: Request, res: Response) => {
   res.json({
     working: true,
     message: `Hello World`,
-    // valid: isValidName("Suman") === true ? "True Valid" : "Not Valid",
     hello: hello(),
     secret: `SECRET: ${process.env.SECRET}`,
   });
