@@ -1,3 +1,1 @@
-import { hello } from "./functions/hello";
-
-export { hello };
+export { hello } from "./functions/hello";

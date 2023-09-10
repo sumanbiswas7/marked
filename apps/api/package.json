@@ -8,8 +8,7 @@
     "clean:win": "if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist",
     "build": "tsc",
     "deploy": "serverless deploy",
-    "dev": "tsc && concurrently \"yarn run tsc-watch\" \"nodemon dist/devServer.js\"",
-    "tsc-watch": "tsc --watch"
+    "dev": "tsc && concurrently \"tsc --watch\" \"nodemon dist/devServer.js\""
   },
   "keywords": [],
   "author": "",
