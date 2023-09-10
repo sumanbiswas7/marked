@@ -12,12 +12,13 @@
       "clean:win": "if exist .next rmdir /s /q .next && if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist"
    },
    "dependencies": {
+      "@marked/types": "*",
+      "@marked/ui": "*",
+      "@marked/utils": "*",
+      "framer-motion": "^10.16.4",
       "next": "^13.4.19",
       "react": "^18.2.0",
-      "react-dom": "^18.2.0",
-      "@marked/utils": "*",
-      "@marked/types": "*",
-      "@marked/ui": "*"
+      "react-dom": "^18.2.0"
    },
    "devDependencies": {
       "@types/node": "^17.0.12",
