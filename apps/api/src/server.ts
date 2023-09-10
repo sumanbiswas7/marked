@@ -10,12 +10,12 @@ app.use("/movies", moviesRoute);
 app.use("/animals", animalsRoute);
 
 app.get("/", (req: Request, res: Response) => {
-  res.json({
-    working: true,
-    message: `Hello World`,
-    hello: hello(),
-    secret: `SECRET: ${process.env.SECRET}`,
-  });
+   res.json({
+      working: true,
+      message: `Hello World`,
+      hello: hello(),
+      secret: `SECRET: ${process.env.SECRET}`,
+   });
 });
 
 export const handler = serverless(app);

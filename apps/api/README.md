@@ -14,10 +14,10 @@ The [Serverless](https://www.serverless.com/) Framework is an open-source framew
 
 ## Dependencies
 
-- Node.js
-- Express
-- Serverless
-- AWS Lambda
+-  Node.js
+-  Express
+-  Serverless
+-  AWS Lambda
 
 ## Deployment
 
@@ -29,10 +29,10 @@ npm run deploy
 
 ## Additional Resources
 
-- [AWS Lambda documentation](https://aws.amazon.com/lambda/)
-- [Node.js documentation](https://nodejs.org/en/docs/)
-- [Express.js](https://expressjs.com/)
-- [Serverless Framework](https://www.serverless.com/)
+-  [AWS Lambda documentation](https://aws.amazon.com/lambda/)
+-  [Node.js documentation](https://nodejs.org/en/docs/)
+-  [Express.js](https://expressjs.com/)
+-  [Serverless Framework](https://www.serverless.com/)
 
 ## Contributing
 
