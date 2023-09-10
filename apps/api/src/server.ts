@@ -2,7 +2,10 @@ import serverless from "serverless-http";
 import express, { Request, Response } from "express";
 import moviesRoute from "./routes/moviesRoute";
 import animalsRoute from "./routes/animalsRoute";
-import { hello, sayMyName } from "utils";
+import { sayMyName, hello } from "@marked/utils";
+import type { Hello } from "@marked/types";
+
+const xyz: Hello = "HELLO";
 
 export const app = express();
 

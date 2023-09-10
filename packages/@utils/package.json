@@ -1,6 +1,6 @@
 {
-   "name": "utils",
-   "version": "0.0.0",
+   "name": "@marked/utils",
+   "version": "0.0.1",
    "main": "dist/index.js",
    "typings": "dist/types/index.d.ts",
    "license": "MIT",
@@ -8,10 +8,10 @@
    "scripts": {
       "clean:unix": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
       "clean:win": "if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist",
-      "build": "tsc"
+      "build": "tsc",
+      "build:pkg": "tsc"
    },
    "devDependencies": {
-      "@types/node": "^20.5.2",
       "typescript": "^4.5.2",
       "tsconfig": "*"
    }
