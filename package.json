@@ -4,7 +4,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "clean": "turbo clean:win"
+    "clean": "turbo clean:win",
+    "deploy": "turbo run deploy"
   },
   "devDependencies": {
     "prettier": "^3.0.3",

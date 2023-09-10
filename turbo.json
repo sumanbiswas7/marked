@@ -10,6 +10,9 @@
       "cache": false,
       "persistent": true
     },
+    "deploy": {
+      "cache": false
+    },
     "clean:win": {
       "cache": false
     }
