@@ -6,7 +6,7 @@ export default function DashboardPage({ children }): JSX.Element {
    return (
       <div className={styles.container}>
          <SideNav />
-         <div>
+         <div className={styles.right_cont}>
             <div
                className={styles.header_mock}
                style={{ borderColor: COLORS.borderSwatch }}

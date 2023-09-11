@@ -4,13 +4,16 @@
    display: flex;
 }
 
+.right_cont {
+}
+
 .header_mock {
    height: $dashboard-header-height;
-   width: 100vw;
+   width: $dashboard-children_width;
    border-bottom: 1px solid;
 }
 .child_container {
-   padding: 1rem;
+   padding: 0.85rem 1.5rem;
    width: 100%;
    min-height: $dashboard-child-height;
 }
