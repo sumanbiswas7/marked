@@ -12,6 +12,9 @@
       "clean:win": "if exist .next rmdir /s /q .next && if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist"
    },
    "dependencies": {
+      "@emotion/react": "^11.11.1",
+      "@mantine/core": "^6.0.20",
+      "@mantine/hooks": "^6.0.20",
       "@marked/types": "*",
       "@marked/ui": "*",
       "@marked/utils": "*",
