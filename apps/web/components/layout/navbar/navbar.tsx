@@ -1,6 +1,6 @@
-import { COLORS } from "../theme/colors";
+import { COLORS } from "../../../theme/colors";
 import styles from "./navbar.module.scss";
-import { Button } from "../components/button";
+import { Button } from "../../ui/button/button";
 import Link from "next/link";
 
 export function NavBar(): JSX.Element {

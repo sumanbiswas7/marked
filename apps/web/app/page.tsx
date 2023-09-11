@@ -1,8 +1,9 @@
 import styles from "./page.module.scss";
-import { NavBar } from "../components/navbar";
 import { COLORS } from "../theme/colors";
-import { Button } from "../components/button";
+
 import { Contact } from "@marked/ui";
+import { Button } from "../components/ui/button/button";
+import { NavBar } from "../components/layout/navbar/navbar";
 
 export default function HomePage(): JSX.Element {
    return (
