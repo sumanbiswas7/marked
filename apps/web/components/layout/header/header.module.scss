@@ -1,0 +1,12 @@
+@import "../../../theme/constants.scss";
+
+.container {
+   height: $dashboard-header-height;
+   width: $dashboard-children_width;
+   border-bottom: 1px solid;
+   padding-inline: 1rem;
+
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
