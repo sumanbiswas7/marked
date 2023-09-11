@@ -30,7 +30,7 @@ export function SideNavLink({
    };
 
    return (
-      <motion.div animate={{ scale: [0.8, 1] }} whileHover="animate">
+      <motion.div whileHover="animate">
          <Link
             href={to}
             className={
