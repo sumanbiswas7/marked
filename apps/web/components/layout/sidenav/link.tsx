@@ -11,12 +11,8 @@ export function SideNavLink({ to, title }: Props): JSX.Element {
    const pathname = usePathname();
 
    const style = {
-      backgroundColor: pathname.includes(to)
-         ? COLORS.textSwatch
-         : "transparent",
-      color: pathname.includes(to)
-         ? COLORS.textLight2Swatch
-         : COLORS.textSwatch,
+      backgroundColor: pathname === to ? COLORS.textSwatch : "transparent",
+      color: pathname === to ? COLORS.textLight2Swatch : COLORS.textSwatch,
    };
 
    return (

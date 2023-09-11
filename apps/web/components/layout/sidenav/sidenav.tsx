@@ -33,7 +33,7 @@ export function SideNav(): JSX.Element {
          <SideNavLink title="Saved Links" to="/dashboard/links" />
          <SideNavLink title="Tasks" to="/dashboard/tasks" />
          <SideNavLink title="Notes" to="/dashboard/notes" />
-         <SideNavLink title="Expense Tracker" to="/dashboard/expense" />
+         <SideNavLink title="Expense Tracker" to="/dashboard/expenses" />
       </div>
    );
 }
