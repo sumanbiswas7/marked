@@ -11,6 +11,8 @@
    border-left: none;
    border-bottom: none;
    background-color: #fff;
+
+   position: relative;
 }
 
 // Bg texture Logo header
@@ -39,7 +41,7 @@
 // Logged User
 .logged_user_cont {
    padding-block: 2rem;
-   padding-inline: 0.5rem;
+   padding-inline: 0.85rem;
    border-bottom: 1px solid;
 
    display: flex;
@@ -48,19 +50,29 @@
    gap: 0.5rem;
 
    & > img {
-      width: 3rem;
-      height: 3rem;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.05);
    }
    &__user_cont {
       & > h4 {
-         font-size: 0.9rem;
+         font-size: 0.85rem;
          font-weight: 500;
       }
 
       & > p {
-         font-size: 0.75rem;
+         font-size: 0.65rem;
       }
    }
+}
+
+.links_scroll_cont {
+   max-height: 60%;
+   overflow-y: scroll;
+   width: 100%;
+   padding: 0;
+}
+.links_scroll_cont::-webkit-scrollbar {
+   width: 0;
 }

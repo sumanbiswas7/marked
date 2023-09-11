@@ -29,11 +29,58 @@ export function SideNav(): JSX.Element {
          </div>
 
          {/* Sidenav links */}
-         <SideNavLink title="Dashboard" to="/dashboard" />
-         <SideNavLink title="Saved Links" to="/dashboard/links" />
-         <SideNavLink title="Tasks" to="/dashboard/tasks" />
-         <SideNavLink title="Notes" to="/dashboard/notes" />
-         <SideNavLink title="Expense Tracker" to="/dashboard/expenses" />
+         <div className={styles.links_scroll_cont}>
+            <SideNavLink
+               title="Dashboard"
+               to="/dashboard"
+               icons={{
+                  inactive: "/sidenav/icons/dashboard-dark.svg",
+                  active: "/sidenav/icons/dashboard-light.svg",
+               }}
+            />
+            <SideNavLink
+               title="Saved Links"
+               to="/dashboard/links"
+               icons={{
+                  inactive: "/sidenav/icons/links-dark.svg",
+                  active: "/sidenav/icons/links-light.svg",
+               }}
+            />
+            <SideNavLink
+               title="Tasks"
+               to="/dashboard/tasks"
+               icons={{
+                  inactive: "/sidenav/icons/tasks-dark.svg",
+                  active: "/sidenav/icons/tasks-light.svg",
+               }}
+            />
+            <SideNavLink
+               title="Notes"
+               to="/dashboard/notes"
+               icons={{
+                  inactive: "/sidenav/icons/notes-dark.svg",
+                  active: "/sidenav/icons/notes-light.svg",
+               }}
+            />
+            <SideNavLink
+               title="Expense Tracker"
+               to="/dashboard/expenses"
+               icons={{
+                  inactive: "/sidenav/icons/expenses-dark.svg",
+                  active: "/sidenav/icons/expenses-light.svg",
+               }}
+            />
+         </div>
+
+         <SideNavLink
+            bottom
+            title="Settings"
+            to="/settings"
+            icons={{
+               inactive: "/sidenav/icons/settings-dark.svg",
+               active: "/sidenav/icons/settings-light.svg",
+            }}
+         />
       </div>
    );
 }

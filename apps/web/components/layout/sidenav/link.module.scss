@@ -11,3 +11,19 @@
    text-decoration: none;
    font-weight: 500;
 }
+
+.bottom_link {
+   position: absolute;
+   bottom: 0;
+}
+
+.icon_title_cont {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.icon_cont {
+   padding-top: 0.2rem;
+}
