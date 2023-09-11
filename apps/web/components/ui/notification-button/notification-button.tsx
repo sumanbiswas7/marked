@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { COLORS } from "../../../../theme/colors";
+import { COLORS } from "../../../theme/colors";
 import styles from "./notification-button.module.scss";
 import { motion } from "framer-motion";
 

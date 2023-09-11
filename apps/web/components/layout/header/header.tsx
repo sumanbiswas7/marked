@@ -1,5 +1,5 @@
 import { COLORS } from "../../../theme/colors";
-import { NotificationButton } from "../../ui/button/notification-button/notification-button";
+import { NotificationButton } from "../../ui/notification-button/notification-button";
 import styles from "./header.module.scss";
 
 export function Header(): JSX.Element {
