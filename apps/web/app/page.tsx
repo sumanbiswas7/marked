@@ -55,7 +55,7 @@ export default function HomePage(): JSX.Element {
                      style={{ marginTop: "1rem" }}
                      className={styles.btn_free_cont}
                   >
-                     <Button title="Get Started" />
+                     <Button title="Get Started" link="/dashboard" />
                      <FreeToUse />
                   </div>
                   <Copyright />

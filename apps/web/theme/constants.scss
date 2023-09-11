@@ -1,13 +1,15 @@
 // vars
 $navbar-height: 13dvh;
 $screen-height: 87dvh;
+$dashboard-header-height: 12vh;
+$dashboard-child-height: 88vh;
 
 // Breakpoints
 $breakpoint-sm: 500px;
 $breakpoint-md: 900px;
 
 @mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }

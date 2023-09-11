@@ -1,0 +1,16 @@
+@import "../../theme/constants.scss";
+
+.container {
+   display: flex;
+}
+
+.header_mock {
+   height: $dashboard-header-height;
+   width: 100vw;
+   border-bottom: 1px solid;
+}
+.child_container {
+   padding: 1rem;
+   width: 100%;
+   min-height: $dashboard-child-height;
+}
