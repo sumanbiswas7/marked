@@ -41,6 +41,7 @@
          & > p:nth-child(3) {
             font-size: 2.5vw; // Your all in one...
             font-weight: 500;
+
             @media (orientation: portrait) and (max-width: $breakpoint-md) {
                font-size: 4vw;
             }
@@ -121,7 +122,7 @@
       }
 
       transition: all 0.3s;
-      animation: demo_img-load_animation 0.75s;
+      animation: demo_img-load_animation 0.5s;
    }
 }
 
@@ -171,6 +172,7 @@
    0% {
       transform: translateY(1.5rem) scale(0.8);
    }
+
    100% {
       transform: translateY(0) scale(1);
    }
@@ -178,7 +180,10 @@
 
 @keyframes left_cont-load_animation {
    0% {
-      transform: translateX(-2rem) scale(1);
+      transform: translateX(-2.5rem) scale(1);
+   }
+   50% {
+      transform: translateX(1rem) scale(1);
    }
    100% {
       transform: translateX(0) scale(1);
