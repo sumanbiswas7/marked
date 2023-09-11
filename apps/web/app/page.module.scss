@@ -39,7 +39,7 @@
          }
          & > p:nth-child(2),
          & > p:nth-child(3) {
-            font-size: 2.5vw; // Your all in one...
+            font-size: 3vw; // Your all in one...
             font-weight: 500;
 
             @media (orientation: portrait) and (max-width: $breakpoint-md) {
@@ -64,14 +64,16 @@
          }
 
          & > p:nth-child(4) {
-            font-size: 1.2vw;
-            max-width: 40ch;
+            font-size: 1.1vw;
+            max-width: 55ch;
 
             @media (orientation: portrait) and (max-width: $breakpoint-md) {
                font-size: 2vw;
+               max-width: 45ch;
             }
             @media (orientation: portrait) and (max-width: $breakpoint-sm) {
                font-size: 0.85rem;
+               max-width: 40ch;
             }
          }
       }
