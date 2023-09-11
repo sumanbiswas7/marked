@@ -4,9 +4,14 @@
    height: $dashboard-header-height;
    width: $dashboard-children_width;
    border-bottom: 1px solid;
-   padding-inline: 1rem;
+   padding-inline: 1.5rem;
 
    display: flex;
    align-items: center;
    justify-content: space-between;
+
+   & > p {
+      font-size: 0.85rem;
+      font-weight: 500;
+   }
 }
