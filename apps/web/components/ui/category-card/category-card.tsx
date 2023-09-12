@@ -1,6 +1,8 @@
+import { Menu } from "@mantine/core";
 import { COLORS } from "../../../theme/colors";
 import { lightenHexColor } from "../../../utils/lighten-hexcol";
 import { sliceText } from "../../../utils/slice-text";
+import { CategoryCardMenu } from "../../menu/category-card-menu";
 import styles from "./category-card.module.scss";
 import { OptionButton } from "./option-button";
 
@@ -19,54 +21,65 @@ export function CategoryCard({
    const lightenBgCol = lightenHexColor(bgCol || "#000", 50);
 
    return (
-      <div
-         className={styles.container}
-         style={{ borderColor: COLORS.textSwatch }}
-      >
-         <div className={styles.top_box} style={style}>
+      <Menu>
+         <div style={{ position: "relative" }}>
             <div
-               style={{
-                  color: COLORS.textSwatch,
-                  backgroundColor: lightenBgCol,
-                  display: bgImg && "none",
-               }}
+               className={styles.container}
+               style={{ borderColor: COLORS.textSwatch }}
             >
-               {title.slice(0, 1)}
-            </div>
+               <div className={styles.top_box} style={style}>
+                  <div
+                     style={{
+                        color: COLORS.textSwatch,
+                        backgroundColor: lightenBgCol,
+                        display: bgImg && "none",
+                     }}
+                  >
+                     {title.slice(0, 1)}
+                  </div>
+                  <Menu.Target>
+                     <OptionButton />
+                  </Menu.Target>
+               </div>
 
-            <OptionButton />
-         </div>
-
-         <div
-            className={styles.bottom_box}
-            style={{ justifyContent: description ? "flex-start" : "center" }}
-         >
-            <p style={{ color: COLORS.textSwatch }}>{title}</p>
-            <p style={{ color: COLORS.textLightSwatch }}>
-               {sliceText(description, 40, true)}
-            </p>
-
-            {/* Bottom date and important label */}
-            {impotant && (
-               <span
-                  className={styles.important_label}
-                  //   style={{ backgroundColor: COLORS.red }}
+               <div
+                  className={styles.bottom_box}
+                  style={{
+                     justifyContent: description ? "flex-start" : "center",
+                  }}
                >
-                  important
-               </span>
-            )}
+                  <p style={{ color: COLORS.textSwatch }}>{title}</p>
+                  <p style={{ color: COLORS.textLightSwatch }}>
+                     {sliceText(description, 40, true)}
+                  </p>
 
-            <div className={styles.date_box}>
-               <span>
-                  <img
-                     src="/category_card/calendar.svg"
-                     style={{ marginTop: -1 }}
-                  />
-               </span>
-               {date}
+                  {/* Bottom date and important label */}
+                  {impotant && (
+                     <span
+                        className={styles.important_label}
+                        //   style={{ backgroundColor: COLORS.red }}
+                     >
+                        important
+                     </span>
+                  )}
+
+                  <div className={styles.date_box}>
+                     <span>
+                        <img
+                           src="/category_card/calendar.svg"
+                           style={{ marginTop: -1 }}
+                        />
+                     </span>
+                     {date}
+                  </div>
+               </div>
+            </div>
+
+            <div className={styles.menu_cont}>
+               <CategoryCardMenu title={title} />
             </div>
          </div>
-      </div>
+      </Menu>
    );
 }
 
