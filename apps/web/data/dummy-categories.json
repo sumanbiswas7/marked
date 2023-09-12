@@ -5,7 +5,7 @@
       "description": "list of all movies I wanna watch over the week",
       "isImportant": false,
       "date": "13th Aug",
-      "image": null,
+      "image": "https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg",
       "color": "#FFCEAA"
    },
    {
@@ -41,7 +41,7 @@
       "description": "A collection of delicious recipes to try out.",
       "isImportant": false,
       "date": "15 Feb",
-      "image": "https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg",
-      "color": null
+      "image": null,
+      "color": "#FFCEAA"
    }
 ]

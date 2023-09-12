@@ -18,9 +18,8 @@ export function CategoryCard({
 }: Props): JSX.Element {
    const [menu, setMenu] = useState(false);
 
-   const style = bgCol
-      ? { backgroundColor: bgCol }
-      : { backgroundImage: `url(${bgImg})` };
+   const bgColStyle = { backgroundColor: bgCol! };
+   const bgImgStyle = { backgroundImage: `url(${bgImg})` };
 
    const lightenBgCol = lightenHexColor(bgCol || "#000", 50);
 
@@ -36,12 +35,15 @@ export function CategoryCard({
                className={styles.container}
                style={{ borderColor: COLORS.textSwatch }}
             >
-               <div className={styles.top_box} style={style}>
+               <div
+                  className={styles.top_box}
+                  style={bgImg ? bgImgStyle : bgColStyle}
+               >
                   <div
                      style={{
                         color: COLORS.textSwatch,
                         backgroundColor: lightenBgCol,
-                        // display: bgImg ? "none" : "block",
+                        display: bgImg ? "none" : "flex",
                      }}
                   >
                      {title.slice(0, 1)}
