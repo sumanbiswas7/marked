@@ -2,6 +2,7 @@ import Link from "next/link";
 import { COLORS } from "../../../theme/colors";
 import { SideNavLink } from "./link";
 import styles from "./sidenav.module.scss";
+import { truncateEmail } from "../../../utils/slice-email";
 
 export function SideNav(): JSX.Element {
    const customContStyles = { borderColor: COLORS.borderSwatch };
@@ -24,7 +25,7 @@ export function SideNav(): JSX.Element {
             <div className={styles.logged_user_cont__user_cont}>
                <h4 style={{ color: COLORS.textSwatch }}>Suman Biswas</h4>
                <p style={{ color: COLORS.textLightSwatch }}>
-                  sumanbiswas@gmail.com
+                  {truncateEmail("sumanbiswas842001@gmail.com", 25)}
                </p>
             </div>
          </div>

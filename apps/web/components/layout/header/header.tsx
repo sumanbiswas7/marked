@@ -9,7 +9,7 @@ export function Header(): JSX.Element {
          style={{ borderColor: COLORS.borderSwatch }}
       >
          <p>Hello, Suman Biswas</p>
-         <NotificationButton />
+         <NotificationButton count={3} />
       </div>
    );
 }
