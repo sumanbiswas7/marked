@@ -3,11 +3,12 @@
 import { Grid } from "@mantine/core";
 import { CategoryCard } from "../../../components/ui/category-card/category-card";
 import styles from "./links.module.scss";
+import { DashboardSlotHeader } from "../../../components/layout/dashboard-header/dashboard-header";
 
 export default function DashboardLinksPage(): JSX.Element {
    return (
       <div>
-         <h1>Links</h1>
+         <DashboardSlotHeader title="Categories" buttonTitle="Add New" />
 
          {/* Small to mid - 2 cols, mid to lg - 3 cols, more than lg - 4 cols */}
          <Grid>
