@@ -2,7 +2,7 @@
 
 .main_container {
    height: 100dvh;
-   width: $dashboard-sidenav_width;
+   min-width: $dashboard-sidenav_width;
    display: flex;
    flex-direction: column;
 

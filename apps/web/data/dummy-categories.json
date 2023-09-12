@@ -1,0 +1,47 @@
+[
+   {
+      "id": "1",
+      "title": "Movies to Watch",
+      "description": "list of all movies I wanna watch over the week",
+      "isImportant": false,
+      "date": "13th Aug",
+      "image": null,
+      "color": "#FFCEAA"
+   },
+   {
+      "id": "2",
+      "title": "Books to Read",
+      "description": "A collection of books I plan to read in the near future.",
+      "isImportant": false,
+      "date": "20th Sept",
+      "image": null,
+      "color": "#A7F294"
+   },
+   {
+      "id": "3",
+      "title": "Travel Bucket List",
+      "description": "Dream destinations and places I'd love to visit someday.",
+      "isImportant": true,
+      "date": "22 Sept",
+      "image": null,
+      "color": "#AAD6FF"
+   },
+   {
+      "id": "4",
+      "title": "Fitness Goals",
+      "description": "My fitness objectives and workout routines.",
+      "isImportant": true,
+      "date": "10 Jan",
+      "image": null,
+      "color": "#FFAAAA"
+   },
+   {
+      "id": "5",
+      "title": "Recipe Ideas",
+      "description": "A collection of delicious recipes to try out.",
+      "isImportant": false,
+      "date": "15 Feb",
+      "image": "https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg",
+      "color": null
+   }
+]

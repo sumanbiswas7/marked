@@ -1,17 +1,15 @@
 export function sliceText(
    str: string | undefined | null,
    maxLen: number,
-   threeDot?: boolean
+   threeDots?: boolean
 ): string | null {
    if (!str) return null;
 
-   let res: string | null = null;
+   if (str.length <= maxLen) return str;
 
-   if (threeDot) {
-      res = str.slice(0, 40) + "...";
-   } else {
-      if (str.length > maxLen) res = str.slice(0, 43);
+   if (threeDots && maxLen >= 3) {
+      return str.slice(0, maxLen - 3) + "...";
    }
 
-   return res;
+   return str.slice(0, maxLen);
 }

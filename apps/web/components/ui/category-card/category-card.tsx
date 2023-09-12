@@ -41,7 +41,7 @@ export function CategoryCard({
                      style={{
                         color: COLORS.textSwatch,
                         backgroundColor: lightenBgCol,
-                        display: bgImg && "none",
+                        // display: bgImg ? "none" : "block",
                      }}
                   >
                      {title.slice(0, 1)}
@@ -121,8 +121,8 @@ function openCategoryDeleteModal(title?: string) {
 interface Props {
    title: string;
    date: string;
-   bgImg?: string;
-   bgCol?: string;
-   description?: string;
+   bgImg: string | null;
+   bgCol: string | null;
+   description?: string | null;
    impotant?: boolean;
 }
