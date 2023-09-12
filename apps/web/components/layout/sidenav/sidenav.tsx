@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { COLORS } from "../../../theme/colors";
 import { SideNavLink } from "./link";
 import styles from "./sidenav.module.scss";
@@ -9,9 +10,9 @@ export function SideNav(): JSX.Element {
       <div className={styles.main_container} style={customContStyles}>
          {/* Top header with logo and texture */}
          <div className={styles.header_top_cont}>
-            <div className={styles.header_top_cont__logo_cont}>
+            <Link href="/" className={styles.header_top_cont__logo_cont}>
                <img src="/text-logo.svg" />
-            </div>
+            </Link>
          </div>
 
          {/* Logged User */}
