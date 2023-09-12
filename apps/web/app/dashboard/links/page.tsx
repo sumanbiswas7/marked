@@ -37,7 +37,7 @@ export default function DashboardLinksPage(): JSX.Element {
                <CategoryCard
                   title="Movies to Watch"
                   date="2nd Sept"
-                  description="list of all movies I wanna watch this.."
+                  description="list of all movies I wanna watch this sum"
                   impotant
                   bgCol="#FFAAAA"
                />

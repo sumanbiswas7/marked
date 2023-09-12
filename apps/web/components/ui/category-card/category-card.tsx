@@ -1,5 +1,6 @@
 import { COLORS } from "../../../theme/colors";
 import { lightenHexColor } from "../../../utils/lighten-hexcol";
+import { sliceText } from "../../../utils/slice-text";
 import styles from "./category-card.module.scss";
 import { OptionButton } from "./option-button";
 
@@ -41,7 +42,9 @@ export function CategoryCard({
             style={{ justifyContent: description ? "flex-start" : "center" }}
          >
             <p style={{ color: COLORS.textSwatch }}>{title}</p>
-            <p style={{ color: COLORS.textLightSwatch }}>{description}</p>
+            <p style={{ color: COLORS.textLightSwatch }}>
+               {sliceText(description, 40, true)}
+            </p>
 
             {/* Bottom date and important label */}
             {impotant && (

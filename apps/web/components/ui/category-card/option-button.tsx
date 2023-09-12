@@ -9,6 +9,7 @@ export function OptionButton({ onClick }: Props): JSX.Element {
       <motion.button
          onClick={onClick}
          whileHover={{ scale: 1.2, rotate: 180 }}
+         whileTap={{ scale: 0.85 }}
          className={styles.options}
          style={{ backgroundColor: COLORS.textSwatch }}
       >
