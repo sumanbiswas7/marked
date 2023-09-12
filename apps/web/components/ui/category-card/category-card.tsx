@@ -1,6 +1,7 @@
 import { COLORS } from "../../../theme/colors";
 import { lightenHexColor } from "../../../utils/lighten-hexcol";
 import styles from "./category-card.module.scss";
+import { OptionButton } from "./option-button";
 
 export function CategoryCard({
    date,
@@ -31,6 +32,8 @@ export function CategoryCard({
             >
                {title.slice(0, 1)}
             </div>
+
+            <OptionButton />
          </div>
 
          <div
