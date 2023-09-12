@@ -1,4 +1,9 @@
 export function lightenHexColor(hexColor: string, percent: number) {
+   // Check if the input is not a valid hex color
+   if (!/^#([0-9A-Fa-f]{3}){1,2}$/.test(hexColor)) {
+      return null;
+   }
+
    // Remove the '#' character if it's present
    hexColor = hexColor.replace(/^#/, "");
 
