@@ -18,6 +18,7 @@
       },
       "clean:win": {
          "cache": false
-      }
+      },
+      "test": { "cache": false }
    }
 }
