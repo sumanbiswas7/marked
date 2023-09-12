@@ -1,4 +1,4 @@
-import { Menu } from "@mantine/core";
+import { Menu, Text } from "@mantine/core";
 import { COLORS } from "../../../theme/colors";
 import { lightenHexColor } from "../../../utils/lighten-hexcol";
 import { sliceText } from "../../../utils/slice-text";
@@ -6,6 +6,7 @@ import { CategoryCardMenu } from "../../menu/category-card-menu";
 import styles from "./category-card.module.scss";
 import { OptionButton } from "./option-button";
 import { useState } from "react";
+import { modals } from "@mantine/modals";
 
 export function CategoryCard({
    date,
@@ -22,6 +23,11 @@ export function CategoryCard({
       : { backgroundImage: `url(${bgImg})` };
 
    const lightenBgCol = lightenHexColor(bgCol || "#000", 50);
+
+   function handleDeleteCategoryClick() {
+      setMenu(false);
+      openCategoryDeleteModal(title);
+   }
 
    return (
       <Menu opened={menu} shadow="md">
@@ -78,12 +84,39 @@ export function CategoryCard({
             </div>
 
             <div className={styles.menu_cont}>
-               <CategoryCardMenu title={title} />
+               <CategoryCardMenu
+                  title={title}
+                  onDelete={handleDeleteCategoryClick}
+               />
             </div>
          </div>
       </Menu>
    );
 }
+
+function openCategoryDeleteModal(title?: string) {
+   modals.openConfirmModal({
+      title: `Delete ${title}`,
+      centered: true,
+      children: (
+         <Text size="sm">
+            Are you absolutely certain you wish to proceed with the deletion of
+            this category? Please be aware that this action is irreversible and
+            will result in the loss of all links contained within it.
+         </Text>
+      ),
+      labels: { confirm: "Delete category", cancel: "No don't delete it" },
+      confirmProps: { color: "red" },
+      onCancel: () => console.log("Cancel"),
+      onConfirm: () => console.log("Confirmed"),
+   });
+}
+
+/**
+ * -----------------
+ *       Types
+ * -----------------
+ */
 
 interface Props {
    title: string;

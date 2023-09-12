@@ -1,6 +1,7 @@
 "use client";
 
 import { MantineProvider } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
 
 export function CustomMantineProvider({ children }) {
    return (
@@ -17,7 +18,7 @@ export function CustomMantineProvider({ children }) {
             },
          }}
       >
-         {children}
+         <ModalsProvider>{children}</ModalsProvider>
       </MantineProvider>
    );
 }

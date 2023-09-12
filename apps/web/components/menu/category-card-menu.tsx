@@ -1,13 +1,9 @@
-import { Menu, Button, Text } from "@mantine/core";
-import {
-   IconSettings,
-   IconMessageCircle,
-   IconTrash,
-   IconAlarm,
-} from "@tabler/icons-react";
+import { Menu, Text } from "@mantine/core";
+import { IconSettings, IconTrash, IconAlarm } from "@tabler/icons-react";
 import { COLORS } from "../../theme/colors";
+import { modals } from "@mantine/modals";
 
-export function CategoryCardMenu({ title }: Props) {
+export function CategoryCardMenu({ title, onDelete }: Props) {
    return (
       <div>
          <Menu.Dropdown>
@@ -23,7 +19,11 @@ export function CategoryCardMenu({ title }: Props) {
 
             <Menu.Divider />
 
-            <Menu.Item color="red" icon={<IconTrash size={14} />}>
+            <Menu.Item
+               color="red"
+               icon={<IconTrash size={14} />}
+               onClick={onDelete}
+            >
                Delete Category
             </Menu.Item>
          </Menu.Dropdown>
@@ -31,6 +31,12 @@ export function CategoryCardMenu({ title }: Props) {
    );
 }
 
+/**
+ * ----------------
+ *     Types
+ * ----------------
+ */
 interface Props {
    title?: string;
+   onDelete?: () => void;
 }
