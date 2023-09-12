@@ -1,22 +1,23 @@
 import { Menu, Button, Text } from "@mantine/core";
 import {
    IconSettings,
-   IconSearch,
-   IconPhoto,
    IconMessageCircle,
    IconTrash,
-   IconArrowsLeftRight,
+   IconAlarm,
 } from "@tabler/icons-react";
+import { COLORS } from "../../theme/colors";
 
 export function CategoryCardMenu({ title }: Props) {
    return (
       <div>
          <Menu.Dropdown>
             <Menu.Label>Category Options</Menu.Label>
-            <Menu.Item icon={<IconSettings size={14} />}>
+            <Menu.Item
+               icon={<IconSettings size={14} color={COLORS.textSwatch} />}
+            >
                Edit Category
             </Menu.Item>
-            <Menu.Item icon={<IconMessageCircle size={14} />}>
+            <Menu.Item icon={<IconAlarm size={15} color={COLORS.textSwatch} />}>
                Add Reminder
             </Menu.Item>
 

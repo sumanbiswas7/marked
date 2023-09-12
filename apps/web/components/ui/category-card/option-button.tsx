@@ -1,10 +1,11 @@
 "use client";
 
+import { IconX, IconDots } from "@tabler/icons-react";
 import { COLORS } from "../../../theme/colors";
 import styles from "./option-button.module.scss";
 import { motion } from "framer-motion";
 
-export function OptionButton({ onClick }: Props): JSX.Element {
+export function OptionButton({ onClick, opened }: Props): JSX.Element {
    return (
       <motion.button
          onClick={onClick}
@@ -13,11 +14,16 @@ export function OptionButton({ onClick }: Props): JSX.Element {
          className={styles.options}
          style={{ backgroundColor: COLORS.textSwatch }}
       >
-         <img src="/category_card/three-dot.svg" />
+         {opened ? (
+            <IconX size={13} color={COLORS.textLight2Swatch} />
+         ) : (
+            <IconDots size={13} color={COLORS.textLight2Swatch} />
+         )}
       </motion.button>
    );
 }
 
 interface Props {
    onClick?: () => void;
+   opened?: boolean;
 }

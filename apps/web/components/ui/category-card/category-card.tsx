@@ -5,6 +5,7 @@ import { sliceText } from "../../../utils/slice-text";
 import { CategoryCardMenu } from "../../menu/category-card-menu";
 import styles from "./category-card.module.scss";
 import { OptionButton } from "./option-button";
+import { useState } from "react";
 
 export function CategoryCard({
    date,
@@ -14,6 +15,8 @@ export function CategoryCard({
    description,
    impotant,
 }: Props): JSX.Element {
+   const [menu, setMenu] = useState(false);
+
    const style = bgCol
       ? { backgroundColor: bgCol }
       : { backgroundImage: `url(${bgImg})` };
@@ -21,8 +24,8 @@ export function CategoryCard({
    const lightenBgCol = lightenHexColor(bgCol || "#000", 50);
 
    return (
-      <Menu>
-         <div style={{ position: "relative" }}>
+      <Menu opened={menu} shadow="md">
+         <div style={{ position: "relative" }} className={styles.main_div}>
             <div
                className={styles.container}
                style={{ borderColor: COLORS.textSwatch }}
@@ -37,9 +40,8 @@ export function CategoryCard({
                   >
                      {title.slice(0, 1)}
                   </div>
-                  <Menu.Target>
-                     <OptionButton />
-                  </Menu.Target>
+
+                  <OptionButton onClick={() => setMenu(!menu)} opened={menu} />
                </div>
 
                <div
