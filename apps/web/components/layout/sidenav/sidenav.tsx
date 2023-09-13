@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { THEME } from "../../../theme/colors";
+import { THEME } from "../../../theme";
 import { SideNavLink } from "./link";
 import styles from "./sidenav.module.scss";
 import { truncateEmail } from "../../../utils/slice-email";
@@ -35,7 +35,12 @@ export function SideNav(): JSX.Element {
          {/* Logged User */}
          <div
             className={styles.logged_user_cont}
-            style={{ borderColor: THEME.text.shade1 }}
+            style={{
+               borderColor:
+                  THEME.colorScheme === "dark"
+                     ? THEME.border.shade1
+                     : THEME.text.shade1,
+            }}
          >
             <img src="/sidenav/logged_user.png" />
             <div className={styles.logged_user_cont__user_cont}>

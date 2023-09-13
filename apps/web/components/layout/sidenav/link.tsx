@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import styles from "./link.module.scss";
-import { THEME } from "../../../theme/colors";
+import { THEME } from "../../../theme";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import React from "react";

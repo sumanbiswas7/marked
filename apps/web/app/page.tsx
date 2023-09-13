@@ -1,5 +1,5 @@
 import styles from "./page.module.scss";
-import { THEME } from "../theme/colors";
+import { THEME } from "../theme";
 
 import { Contact } from "@marked/ui";
 import { Button } from "../components/ui/button/button";

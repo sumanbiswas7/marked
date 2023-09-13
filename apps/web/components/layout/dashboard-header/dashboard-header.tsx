@@ -2,7 +2,7 @@
 
 import { IconPlus } from "@tabler/icons-react";
 import styles from "./dashboard-header.module.scss";
-import { THEME } from "../../../theme/colors";
+import { THEME } from "../../../theme";
 import { motion } from "framer-motion";
 
 export function DashboardSlotHeader({

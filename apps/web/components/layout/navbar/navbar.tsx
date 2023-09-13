@@ -1,4 +1,4 @@
-import { THEME } from "../../../theme/colors";
+import { THEME } from "../../../theme";
 import styles from "./navbar.module.scss";
 import { Button } from "../../ui/button/button";
 import Link from "next/link";

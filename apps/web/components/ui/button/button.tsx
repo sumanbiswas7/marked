@@ -1,4 +1,4 @@
-import { THEME } from "../../../theme/colors";
+import { THEME } from "../../../theme";
 import styles from "./button.module.scss";
 import Link from "next/link";
 

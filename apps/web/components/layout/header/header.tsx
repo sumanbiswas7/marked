@@ -1,4 +1,4 @@
-import { THEME } from "../../../theme/colors";
+import { THEME } from "../../../theme";
 import { NotificationButton } from "../../ui/notification-button/notification-button";
 import styles from "./header.module.scss";
 

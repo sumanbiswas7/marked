@@ -1,5 +1,5 @@
 import { Menu, Text } from "@mantine/core";
-import { THEME } from "../../../theme/colors";
+import { THEME } from "../../../theme";
 import { lightenHexColor } from "../../../utils/lighten-hexcol";
 import { sliceText } from "../../../utils/slice-text";
 import { CategoryCardMenu } from "../../menu/category-card-menu";
@@ -32,7 +32,12 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
          <div style={{ position: "relative" }} className={styles.main_div}>
             <div
                className={styles.container}
-               style={{ borderColor: THEME.accent }}
+               style={{
+                  borderColor:
+                     THEME.colorScheme === "dark"
+                        ? THEME.border.shade1
+                        : THEME.accent,
+               }}
             >
                <div
                   className={styles.top_box}
@@ -40,7 +45,10 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                >
                   <div
                      style={{
-                        color: THEME.text.shade1,
+                        color:
+                           THEME.colorScheme === "dark"
+                              ? THEME.background
+                              : THEME.text.shade1,
                         backgroundColor: lightenBgCol || "#4d4d4d",
                         display: category.image ? "none" : "flex",
                      }}

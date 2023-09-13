@@ -2,7 +2,7 @@
 
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
-import { THEME } from "../../theme/colors";
+import { THEME } from "../../theme";
 
 export function CustomMantineProvider({ children }) {
    const brandColors: any = new Array(10).fill(THEME.accent);

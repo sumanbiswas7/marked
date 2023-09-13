@@ -1,7 +1,7 @@
 "use client";
 
 import { IconX, IconDots } from "@tabler/icons-react";
-import { THEME } from "../../../theme/colors";
+import { THEME } from "../../../theme";
 import styles from "./option-button.module.scss";
 import { motion } from "framer-motion";
 

@@ -1,6 +1,6 @@
 import { Menu } from "@mantine/core";
 import { IconSettings, IconTrash, IconAlarm } from "@tabler/icons-react";
-import { THEME } from "../../theme/colors";
+import { THEME } from "../../theme";
 
 export function CategoryCardMenu({
    title,

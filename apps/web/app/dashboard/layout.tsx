@@ -1,6 +1,6 @@
 import { Header } from "../../components/layout/header/header";
 import { SideNav } from "../../components/layout/sidenav/sidenav";
-import { THEME } from "../../theme/colors";
+import { THEME } from "../../theme";
 import styles from "./layout.module.scss";
 
 export default function DashboardPage({ children }): JSX.Element {
