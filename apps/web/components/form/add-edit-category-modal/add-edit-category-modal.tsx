@@ -26,6 +26,11 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
       title: "",
    });
 
+   /**
+    * ----------------------------
+    *          Handlers
+    * ----------------------------
+    */
    async function handleSubmit() {
       setUploading(true);
       await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -39,7 +44,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
    }
 
    function handleImgChange(file: File) {
-      if (!file) return;
+      if (!file) return setImg({ file: null, preview: null });
       const preview = URL.createObjectURL(file);
       setImg({ file, preview: preview });
    }
@@ -108,8 +113,8 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
                      : form.image
                      ? `url(${form.image})`
                      : "none",
-                  // backgroundImage: form.image ? `url(${form.image})` : "none",
                   backgroundSize: "cover",
+                  backgroundPosition: "center",
                   color: "#ced4da",
                   fontSize: "0.8rem",
                }}
