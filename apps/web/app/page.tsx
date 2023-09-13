@@ -1,5 +1,5 @@
 import styles from "./page.module.scss";
-import { COLORS } from "../theme/colors";
+import { THEME } from "../theme/colors";
 
 import { Contact } from "@marked/ui";
 import { Button } from "../components/ui/button/button";
@@ -8,7 +8,7 @@ import { NavBar } from "../components/layout/navbar/navbar";
 export default function HomePage(): JSX.Element {
    return (
       <div
-         style={{ backgroundColor: COLORS.background }}
+         style={{ backgroundColor: THEME.background }}
          className={styles.body_cont}
       >
          <NavBar />
@@ -16,8 +16,8 @@ export default function HomePage(): JSX.Element {
             <div className={styles.left_container}>
                {/* Header and paras */}
                <div className={styles.txt_container}>
-                  <p style={{ color: COLORS.textLightSwatch }}>INTRODUCING</p>
-                  <p style={{ color: COLORS.textSwatch }}>
+                  <p style={{ color: THEME.text.shade2 }}>INTRODUCING</p>
+                  <p style={{ color: THEME.text.shade1 }}>
                      Your{" "}
                      <span className={styles.all_in_one_txt}>
                         <img
@@ -31,24 +31,24 @@ export default function HomePage(): JSX.Element {
                         />
                      </span>
                   </p>
-                  <p style={{ color: COLORS.textSwatch }}>
-                     <span style={{ color: COLORS.green }}>Productivity </span>
+                  <p style={{ color: THEME.text.shade1 }}>
+                     <span style={{ color: THEME.green }}>Productivity </span>
                      Powerhouse
                   </p>
-                  <p style={{ color: COLORS.textLightSwatch }}>
+                  <p style={{ color: THEME.text.shade2 }}>
                      Streamline Your Life with an All-in-One Solution for
-                     <span style={{ color: COLORS.textSwatch }}> Link </span>
+                     <span style={{ color: THEME.text.shade1 }}> Link </span>
                      Management,
-                     <span style={{ color: COLORS.textSwatch }}> Task </span>
+                     <span style={{ color: THEME.text.shade1 }}> Task </span>
                      Tracking,
-                     <span style={{ color: COLORS.textSwatch }}>
+                     <span style={{ color: THEME.text.shade1 }}>
                         {" "}
                         Note{" "}
                      </span>{" "}
                      Taking and{" "}
-                     <span style={{ color: COLORS.textSwatch }}> Expense </span>
+                     <span style={{ color: THEME.text.shade1 }}> Expense </span>
                      Tracking - All with Handy
-                     <span style={{ color: COLORS.textSwatch }}>
+                     <span style={{ color: THEME.text.shade1 }}>
                         {" "}
                         Reminders
                      </span>
@@ -75,8 +75,8 @@ export default function HomePage(): JSX.Element {
 
          <div style={{ marginTop: "1rem" }}>
             <Contact
-               bgCol={COLORS.textSwatch}
-               color={COLORS.textLightSwatch}
+               bgCol={THEME.text.shade1}
+               color={THEME.text.shade2}
                icons={{ email: "/home/email.svg", location: "/home/pin.svg" }}
                me="/home/me.png"
                socials={{
@@ -103,7 +103,7 @@ function FreeToUse(): JSX.Element {
    return (
       <div className={styles.freeuse_cont}>
          <img src="/home/left_focus.svg" />
-         <p style={{ color: COLORS.textLightSwatch }}>
+         <p style={{ color: THEME.text.shade2 }}>
             FREE TO USE
             <br /> NO CARDS
          </p>
@@ -116,7 +116,7 @@ function Copyright() {
    return (
       <div
          className={styles.copyright_cont}
-         style={{ color: COLORS.textLightSwatch }}
+         style={{ color: THEME.text.shade2 }}
       >
          <p>Copyright</p>
          <p>
@@ -125,7 +125,7 @@ function Copyright() {
                <a
                   href="https://www.linkedin.com/in/sumanbiswas7"
                   target="_blank"
-                  style={{ color: COLORS.textLightSwatch }}
+                  style={{ color: THEME.text.shade2 }}
                >
                   Suman Biswas
                </a>

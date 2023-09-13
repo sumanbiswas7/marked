@@ -9,6 +9,23 @@ export const COLORS: MyTheme = {
    background: "#fff",
 };
 
+export const THEME = {
+   colorScheme: "light",
+   accent: "#2E2E2E",
+   background: "#fff",
+   text: {
+      shade1: "#2E2E2E",
+      shade2: "#909090",
+      shade3: "#EEEEEE",
+   },
+   border: {
+      shade1: "#DBDBDB",
+      shade2: "#EFEFEF",
+   },
+   green: "#89DC7C",
+   red: "#F36C6C",
+};
+
 // Not in use
 export const DARK_THEME: MyTheme = {
    colorScheme: "dark",
