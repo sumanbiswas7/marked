@@ -7,7 +7,10 @@ import { NavBar } from "../components/layout/navbar/navbar";
 
 export default function HomePage(): JSX.Element {
    return (
-      <div>
+      <div
+         style={{ backgroundColor: COLORS.background }}
+         className={styles.body_cont}
+      >
          <NavBar />
          <div className={styles.main_container}>
             <div className={styles.left_container}>
@@ -70,26 +73,28 @@ export default function HomePage(): JSX.Element {
             </div>
          </div>
 
-         <Contact
-            bgCol={COLORS.textSwatch}
-            color={COLORS.textLightSwatch}
-            icons={{ email: "/home/email.svg", location: "/home/pin.svg" }}
-            me="/home/me.png"
-            socials={{
-               ig: {
-                  img: "/home/instagram.svg",
-                  link: "https://www.instagram.com/sumanbiswas7",
-               },
-               gh: {
-                  img: "/home/github.svg",
-                  link: "https://github.com/sumanbiswas7",
-               },
-               fb: {
-                  img: "/home/facebook.svg",
-                  link: "https://www.facebook.com/people/Suman-Biswas/100009266254381",
-               },
-            }}
-         />
+         <div style={{ marginTop: "1rem" }}>
+            <Contact
+               bgCol={COLORS.textSwatch}
+               color={COLORS.textLightSwatch}
+               icons={{ email: "/home/email.svg", location: "/home/pin.svg" }}
+               me="/home/me.png"
+               socials={{
+                  ig: {
+                     img: "/home/instagram.svg",
+                     link: "https://www.instagram.com/sumanbiswas7",
+                  },
+                  gh: {
+                     img: "/home/github.svg",
+                     link: "https://github.com/sumanbiswas7",
+                  },
+                  fb: {
+                     img: "/home/facebook.svg",
+                     link: "https://www.facebook.com/people/Suman-Biswas/100009266254381",
+                  },
+               }}
+            />
+         </div>
       </div>
    );
 }

@@ -1,5 +1,13 @@
 @import "../theme/constants.scss";
 
+.body_cont {
+   padding-bottom: 1rem;
+
+   @media (max-width: $breakpoint-sm) {
+      padding-bottom: 0;
+   }
+}
+
 .main_container {
    display: flex;
    height: $screen-height;
