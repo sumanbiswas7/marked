@@ -10,12 +10,12 @@ import {
 } from "@mantine/core";
 import { IconUpload } from "@tabler/icons-react";
 import { SelectItem, data as selectData } from "./select-item";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Category } from "@marked/types";
 
 export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
    const [uploading, setUploading] = useState(false);
-
+   const [img, setImg] = useState<ImgState>({ file: null, preview: null });
    const [form, setForm] = useState<Category>({
       color: "",
       date: "",
@@ -26,23 +26,28 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
       title: "",
    });
 
-   const img = false;
-
    async function handleSubmit() {
       setUploading(true);
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setUploading(false);
-
+      //TODO: Implement submittion logic
       console.log("SUBMITTING", form);
    }
-
-   useLayoutEffect(() => {
-      if (isEdit && data) setForm(data);
-   }, [data]);
 
    function handleFormChange(key: keyof typeof form, value: string) {
       setForm((prevForm) => ({ ...prevForm, [key]: value }));
    }
+
+   function handleImgChange(file: File) {
+      if (!file) return;
+      const preview = URL.createObjectURL(file);
+      setImg({ file, preview: preview });
+   }
+
+   useLayoutEffect(() => {
+      if (isEdit && data) setForm(data);
+      if (img.preview) setImg({ file: null, preview: null });
+   }, [data]);
 
    return (
       <>
@@ -86,6 +91,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
                icon={<IconUpload size={14} />}
                mb={"sm"}
                accept="image/png,image/jpeg"
+               onChange={handleImgChange}
             />
 
             <Flex
@@ -97,13 +103,18 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
                   borderRadius: 5,
                   width: "100%",
                   height: "5rem",
-                  backgroundImage: form.image ? `url(${form.image})` : "none",
+                  backgroundImage: img.preview
+                     ? `url(${img.preview})`
+                     : form.image
+                     ? `url(${form.image})`
+                     : "none",
+                  // backgroundImage: form.image ? `url(${form.image})` : "none",
                   backgroundSize: "cover",
                   color: "#ced4da",
                   fontSize: "0.8rem",
                }}
             >
-               {!form.image && "Cover Image Preview"}
+               {!form.image && !img.preview && "Cover Image Preview"}
             </Flex>
 
             <Switch
@@ -138,4 +149,9 @@ interface Props {
    close: () => void;
    isEdit?: boolean;
    data?: Category;
+}
+
+interface ImgState {
+   file: File | null;
+   preview: string | null;
 }
