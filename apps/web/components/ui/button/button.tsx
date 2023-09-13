@@ -1,3 +1,4 @@
+import { COLORS } from "../../../theme/colors";
 import styles from "./button.module.scss";
 import Link from "next/link";
 
@@ -6,13 +7,13 @@ export function Button({ type, onCLick, title, link }: Props): JSX.Element {
       type == "outlined"
          ? {
               backgroundColor: "transparent",
-              borderColor: "#2E2E2E",
-              color: "#2E2E2E",
+              borderColor: COLORS.textSwatch,
+              color: COLORS.textSwatch,
            }
          : {
-              backgroundColor: "#2E2E2E",
-              borderColor: "#2E2E2E",
-              color: "#FFF",
+              backgroundColor: COLORS.textSwatch,
+              borderColor: COLORS.textSwatch,
+              color: COLORS.textLight2Swatch,
            };
 
    if (link)
