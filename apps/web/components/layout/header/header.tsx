@@ -6,7 +6,10 @@ export function Header(): JSX.Element {
    return (
       <div
          className={styles.container}
-         style={{ borderColor: COLORS.borderSwatch }}
+         style={{
+            borderColor: COLORS.borderSwatch,
+            backgroundColor: COLORS.background,
+         }}
       >
          <p>Hello, Suman Biswas</p>
          <NotificationButton count={3} />

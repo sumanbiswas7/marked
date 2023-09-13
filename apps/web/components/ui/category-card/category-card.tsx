@@ -51,9 +51,11 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                   <OptionButton onClick={() => setMenu(!menu)} opened={menu} />
                </div>
 
+               {/* Bottom box */}
                <div
                   className={styles.bottom_box}
                   style={{
+                     backgroundColor: COLORS.background,
                      justifyContent: category.description
                         ? "flex-start"
                         : "center",

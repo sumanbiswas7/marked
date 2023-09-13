@@ -5,25 +5,17 @@ import { ModalsProvider } from "@mantine/modals";
 import { COLORS } from "../../theme/colors";
 
 export function CustomMantineProvider({ children }) {
+   const brandColors: any = new Array(10).fill(COLORS.textSwatch);
+
    return (
       <MantineProvider
          withGlobalStyles
          withNormalizeCSS
          theme={{
             colors: {
-               brand: [
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-                  COLORS.textSwatch,
-               ],
+               brand: brandColors,
             },
+            colorScheme: COLORS.colorScheme,
             primaryColor: "brand",
             breakpoints: {
                xs: "30em", // 480px

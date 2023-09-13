@@ -5,7 +5,10 @@ import styles from "./sidenav.module.scss";
 import { truncateEmail } from "../../../utils/slice-email";
 
 export function SideNav(): JSX.Element {
-   const customContStyles = { borderColor: COLORS.borderSwatch };
+   const customContStyles = {
+      borderColor: COLORS.borderSwatch,
+      backgroundColor: COLORS.background,
+   };
 
    return (
       <div className={styles.main_container} style={customContStyles}>
