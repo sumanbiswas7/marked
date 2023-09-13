@@ -1,7 +1,7 @@
 import { DARK_THEME } from "./dark-theme";
 import { LIGHT_THEME } from "./light-theme";
 
-export const THEME = DARK_THEME;
+export const THEME = LIGHT_THEME;
 
 export interface MyTheme {
    colorScheme: "light" | "dark";

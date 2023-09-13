@@ -8,6 +8,7 @@ import { OptionButton } from "./option-button";
 import { useState } from "react";
 import { modals } from "@mantine/modals";
 import { Category } from "@marked/types";
+import { IconCalendar } from "@tabler/icons-react";
 
 export function CategoryCard({ category, onEdit }: Props): JSX.Element {
    const [menu, setMenu] = useState(false);
@@ -83,12 +84,7 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                      className={styles.date_box}
                      style={{ color: THEME.text.shade1 }}
                   >
-                     <span>
-                        <img
-                           src="/category_card/calendar.svg"
-                           style={{ marginTop: -1 }}
-                        />
-                     </span>
+                     <IconCalendar color={THEME.text.shade1} size={15} />
                      {category.date}
                   </div>
                </div>

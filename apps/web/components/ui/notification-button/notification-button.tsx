@@ -4,6 +4,7 @@ import Link from "next/link";
 import { THEME } from "../../../theme";
 import styles from "./notification-button.module.scss";
 import { motion } from "framer-motion";
+import { IconBell } from "@tabler/icons-react";
 
 export function NotificationButton({ count }: NotificationProps): JSX.Element {
    const zoom = {
@@ -17,7 +18,8 @@ export function NotificationButton({ count }: NotificationProps): JSX.Element {
             className={styles.notification_container}
             style={{ backgroundColor: THEME.card.shade2 }}
          >
-            <img src="/dashboard_header/bell.svg" />
+            {/* <img src="/dashboard_header/bell.svg" /> */}
+            <IconBell color={THEME.text.shade1} size={20} />
 
             <motion.span
                className={styles.count_container}

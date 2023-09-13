@@ -2,6 +2,7 @@ import { THEME } from "../../../theme";
 import styles from "./navbar.module.scss";
 import { Button } from "../../ui/button/button";
 import Link from "next/link";
+import { IconBrandGithub } from "@tabler/icons-react";
 
 export function NavBar(): JSX.Element {
    return (
@@ -20,7 +21,7 @@ export function NavBar(): JSX.Element {
                className={styles.github_btn}
                style={{ backgroundColor: THEME.card.shade1 }}
             >
-               <img src="/navbar/github.svg" className={styles.github_icon} />
+               <IconBrandGithub color={THEME.text.shade1} size={20} />
             </a>
             <Button title="Login" type="outlined" link="/login" />
             <Button title="Sign up" type="filled" link="/signup" />
