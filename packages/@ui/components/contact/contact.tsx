@@ -5,6 +5,7 @@ export function Contact({
    color,
    icons,
    me,
+   headerCol,
    socials,
 }: Props): JSX.Element {
    return (
@@ -15,7 +16,7 @@ export function Contact({
          <div className="contact-container">
             {/* Left Container */}
             <div className="contact-container-left_container">
-               <h4>Contact Me</h4>
+               <h4 style={{ color: headerCol }}>Contact Me</h4>
                <p>
                   <img src={icons?.email} /> hellosumanbiswas@gmail.com
                </p>
@@ -55,6 +56,7 @@ export function Contact({
 interface Props {
    color: string;
    bgCol: string;
+   headerCol: string;
    icons: { email: string; location: string };
    me: string;
 

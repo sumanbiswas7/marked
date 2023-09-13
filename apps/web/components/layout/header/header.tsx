@@ -1,4 +1,4 @@
-import { COLORS } from "../../../theme/colors";
+import { THEME } from "../../../theme/colors";
 import { NotificationButton } from "../../ui/notification-button/notification-button";
 import styles from "./header.module.scss";
 
@@ -7,8 +7,8 @@ export function Header(): JSX.Element {
       <div
          className={styles.container}
          style={{
-            borderColor: COLORS.borderSwatch,
-            backgroundColor: COLORS.background,
+            borderColor: THEME.border.shade1,
+            backgroundColor: THEME.background,
          }}
       >
          <p>Hello, Suman Biswas</p>

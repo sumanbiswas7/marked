@@ -2,7 +2,7 @@
 
 import { IconPlus } from "@tabler/icons-react";
 import styles from "./dashboard-header.module.scss";
-import { COLORS } from "../../../theme/colors";
+import { THEME } from "../../../theme/colors";
 import { motion } from "framer-motion";
 
 export function DashboardSlotHeader({
@@ -16,14 +16,14 @@ export function DashboardSlotHeader({
 
    return (
       <div className={styles.container}>
-         <h2>{title}</h2>
+         <h2 style={{ color: THEME.text.shade1 }}>{title}</h2>
          <motion.button
             whileHover="animate"
             whileTap={{ scale: 0.9 }}
             onClick={onClick}
             style={{
-               backgroundColor: COLORS.textSwatch,
-               color: COLORS.textLight2Swatch,
+               backgroundColor: THEME.accent,
+               color: THEME.text.shade3,
             }}
          >
             <motion.div
@@ -34,7 +34,7 @@ export function DashboardSlotHeader({
                   alignItems: "center",
                }}
             >
-               <IconPlus size={14} color={COLORS.textLight2Swatch} />
+               <IconPlus size={14} color={THEME.text.shade3} />
             </motion.div>
 
             {buttonTitle}

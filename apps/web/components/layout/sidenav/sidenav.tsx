@@ -1,14 +1,27 @@
 import Link from "next/link";
-import { COLORS } from "../../../theme/colors";
+import { THEME } from "../../../theme/colors";
 import { SideNavLink } from "./link";
 import styles from "./sidenav.module.scss";
 import { truncateEmail } from "../../../utils/slice-email";
 
+import {
+   IconLayoutDashboard,
+   IconLink,
+   IconList,
+   IconNotes,
+   IconCreditCard,
+   IconSettings,
+} from "@tabler/icons-react";
+
 export function SideNav(): JSX.Element {
    const customContStyles = {
-      borderColor: COLORS.borderSwatch,
-      backgroundColor: COLORS.background,
+      borderColor: THEME.border.shade1,
+      backgroundColor: THEME.background,
    };
+
+   const inactvColor = THEME.accent;
+   const actvColor = THEME.text.shade3;
+   const iconSize = 20;
 
    return (
       <div className={styles.main_container} style={customContStyles}>
@@ -22,12 +35,12 @@ export function SideNav(): JSX.Element {
          {/* Logged User */}
          <div
             className={styles.logged_user_cont}
-            style={{ borderColor: COLORS.textSwatch }}
+            style={{ borderColor: THEME.text.shade1 }}
          >
             <img src="/sidenav/logged_user.png" />
             <div className={styles.logged_user_cont__user_cont}>
-               <h4 style={{ color: COLORS.textSwatch }}>Suman Biswas</h4>
-               <p style={{ color: COLORS.textLightSwatch }}>
+               <h4 style={{ color: THEME.text.shade1 }}>Suman Biswas</h4>
+               <p style={{ color: THEME.text.shade2 }}>
                   {truncateEmail("sumanbiswas842001@gmail.com", 25)}
                </p>
             </div>
@@ -39,40 +52,46 @@ export function SideNav(): JSX.Element {
                title="Dashboard"
                to="/dashboard"
                icons={{
-                  inactive: "/sidenav/icons/dashboard-dark.svg",
-                  active: "/sidenav/icons/dashboard-light.svg",
+                  inactive: (
+                     <IconLayoutDashboard size={iconSize} color={inactvColor} />
+                  ),
+                  active: (
+                     <IconLayoutDashboard size={iconSize} color={actvColor} />
+                  ),
                }}
             />
             <SideNavLink
                title="Saved Links"
                to="/dashboard/links"
                icons={{
-                  inactive: "/sidenav/icons/links-dark.svg",
-                  active: "/sidenav/icons/links-light.svg",
+                  active: <IconLink size={iconSize} color={actvColor} />,
+                  inactive: <IconLink size={iconSize} color={inactvColor} />,
                }}
             />
             <SideNavLink
                title="Tasks"
                to="/dashboard/tasks"
                icons={{
-                  inactive: "/sidenav/icons/tasks-dark.svg",
-                  active: "/sidenav/icons/tasks-light.svg",
+                  active: <IconList size={iconSize} color={actvColor} />,
+                  inactive: <IconList size={iconSize} color={inactvColor} />,
                }}
             />
             <SideNavLink
                title="Notes"
                to="/dashboard/notes"
                icons={{
-                  inactive: "/sidenav/icons/notes-dark.svg",
-                  active: "/sidenav/icons/notes-light.svg",
+                  active: <IconNotes size={iconSize} color={actvColor} />,
+                  inactive: <IconNotes size={iconSize} color={inactvColor} />,
                }}
             />
             <SideNavLink
                title="Expense Tracker"
                to="/dashboard/expenses"
                icons={{
-                  inactive: "/sidenav/icons/expenses-dark.svg",
-                  active: "/sidenav/icons/expenses-light.svg",
+                  active: <IconCreditCard size={iconSize} color={actvColor} />,
+                  inactive: (
+                     <IconCreditCard size={iconSize} color={inactvColor} />
+                  ),
                }}
             />
          </div>
@@ -82,8 +101,8 @@ export function SideNav(): JSX.Element {
             title="Settings"
             to="/settings"
             icons={{
-               inactive: "/sidenav/icons/settings-dark.svg",
-               active: "/sidenav/icons/settings-light.svg",
+               active: <IconSettings size={iconSize} />,
+               inactive: <IconSettings size={iconSize} />,
             }}
          />
       </div>

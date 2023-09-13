@@ -1,7 +1,6 @@
-import { Menu, Text } from "@mantine/core";
+import { Menu } from "@mantine/core";
 import { IconSettings, IconTrash, IconAlarm } from "@tabler/icons-react";
-import { COLORS } from "../../theme/colors";
-import { modals } from "@mantine/modals";
+import { THEME } from "../../theme/colors";
 
 export function CategoryCardMenu({
    title,
@@ -14,7 +13,7 @@ export function CategoryCardMenu({
          <Menu.Dropdown>
             <Menu.Label>Category Options</Menu.Label>
             <Menu.Item
-               icon={<IconSettings size={14} color={COLORS.textSwatch} />}
+               icon={<IconSettings size={14} color={THEME.text.shade1} />}
                onClick={onEdit}
             >
                Edit Category
@@ -23,7 +22,7 @@ export function CategoryCardMenu({
                icon={
                   <IconAlarm
                      size={15}
-                     color={COLORS.textSwatch}
+                     color={THEME.text.shade1}
                      onClick={onAddReminder}
                   />
                }

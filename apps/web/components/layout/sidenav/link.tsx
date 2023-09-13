@@ -2,27 +2,29 @@
 
 import Link from "next/link";
 import styles from "./link.module.scss";
-import { COLORS } from "../../../theme/colors";
+import { THEME } from "../../../theme/colors";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import React from "react";
 
 export function SideNavLink({
    to,
    title,
    iconSize,
    icons,
+   icon,
    bottom,
 }: Props): JSX.Element {
    const pathname = usePathname();
 
    const style = {
-      backgroundColor: pathname === to ? COLORS.textSwatch : "transparent",
-      color: pathname === to ? COLORS.textLight2Swatch : COLORS.textSwatch,
+      backgroundColor: pathname === to ? THEME.accent : "transparent",
+      color: pathname === to ? THEME.text.shade3 : THEME.accent,
    };
 
    const bottomStyle = {
-      backgroundColor: COLORS.textLight2Swatch,
-      color: COLORS.textSwatch,
+      backgroundColor: THEME.card.shade1,
+      color: THEME.text.shade1,
    };
 
    const arrow = {
@@ -41,27 +43,9 @@ export function SideNavLink({
             style={bottom ? bottomStyle : style}
          >
             <motion.span variants={arrow} className={styles.icon_title_cont}>
-               {icons?.active && icons?.inactive && (
-                  <span className={styles.icon_cont}>
-                     {pathname === to ? (
-                        <img
-                           src={icons?.active}
-                           style={{
-                              width: iconSize || 15,
-                              height: iconSize || 15,
-                           }}
-                        />
-                     ) : (
-                        <img
-                           src={icons?.inactive}
-                           style={{
-                              width: iconSize || 15,
-                              height: iconSize || 15,
-                           }}
-                        />
-                     )}
-                  </span>
-               )}
+               <span className={styles.icon_cont}>
+                  {pathname === to ? icons?.active : icons?.inactive}
+               </span>
                <p>{title}</p>
             </motion.span>
          </Link>
@@ -73,6 +57,8 @@ interface Props {
    to: string;
    title: string;
    iconSize?: number;
-   icons?: { active: string; inactive: string };
+   icons?: { active: React.ReactNode; inactive: React.ReactNode };
    bottom?: boolean;
+
+   icon?: React.ReactNode;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { COLORS } from "../../../theme/colors";
+import { THEME } from "../../../theme/colors";
 import styles from "./notification-button.module.scss";
 import { motion } from "framer-motion";
 
@@ -15,13 +15,13 @@ export function NotificationButton({ count }: NotificationProps): JSX.Element {
          <motion.div
             whileHover="animate"
             className={styles.notification_container}
-            style={{ backgroundColor: COLORS.textLight2Swatch }}
+            style={{ backgroundColor: THEME.card.shade2 }}
          >
             <img src="/dashboard_header/bell.svg" />
 
             <motion.span
                className={styles.count_container}
-               style={{ backgroundColor: count ? COLORS.red : COLORS.green }}
+               style={{ backgroundColor: count ? THEME.red : THEME.green }}
                variants={zoom}
             >
                {count ? count : <img src="/dashboard_header/tick.svg" />}

@@ -1,15 +1,4 @@
-export const COLORS: MyTheme = {
-   colorScheme: "light",
-   borderSwatch: "#DBDBDB",
-   textSwatch: "#2E2E2E",
-   textLightSwatch: "#909090",
-   textLight2Swatch: "#EEEEEE",
-   green: "#89DC7C",
-   red: "#F36C6C",
-   background: "#fff",
-};
-
-export const THEME = {
+export const THEME: MyTheme = {
    colorScheme: "light",
    accent: "#2E2E2E",
    background: "#fff",
@@ -22,12 +11,16 @@ export const THEME = {
       shade1: "#DBDBDB",
       shade2: "#EFEFEF",
    },
+   card: {
+      shade1: "#DBDBDB",
+      shade2: "#EFEFEF",
+   },
    green: "#89DC7C",
    red: "#F36C6C",
 };
 
 // Not in use
-export const DARK_THEME: MyTheme = {
+export const DARK_THEME = {
    colorScheme: "dark",
    borderSwatch: "#3B3B3B",
    textSwatch: "#C5C5C5",
@@ -40,11 +33,21 @@ export const DARK_THEME: MyTheme = {
 
 interface MyTheme {
    colorScheme: "light" | "dark";
-   borderSwatch: string;
-   textSwatch: string;
-   textLightSwatch: string;
-   textLight2Swatch: string;
+   accent: string;
+   background: string;
+   text: {
+      shade1: string;
+      shade2: string;
+      shade3: string;
+   };
+   border: {
+      shade1: string;
+      shade2: string;
+   };
+   card: {
+      shade1: string;
+      shade2: string;
+   };
    green: string;
    red: string;
-   background: string;
 }

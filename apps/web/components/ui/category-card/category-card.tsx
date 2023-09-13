@@ -1,5 +1,5 @@
 import { Menu, Text } from "@mantine/core";
-import { COLORS } from "../../../theme/colors";
+import { THEME } from "../../../theme/colors";
 import { lightenHexColor } from "../../../utils/lighten-hexcol";
 import { sliceText } from "../../../utils/slice-text";
 import { CategoryCardMenu } from "../../menu/category-card-menu";
@@ -32,7 +32,7 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
          <div style={{ position: "relative" }} className={styles.main_div}>
             <div
                className={styles.container}
-               style={{ borderColor: COLORS.textSwatch }}
+               style={{ borderColor: THEME.accent }}
             >
                <div
                   className={styles.top_box}
@@ -40,7 +40,7 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                >
                   <div
                      style={{
-                        color: COLORS.textSwatch,
+                        color: THEME.text.shade1,
                         backgroundColor: lightenBgCol || "#4d4d4d",
                         display: category.image ? "none" : "flex",
                      }}
@@ -55,28 +55,26 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                <div
                   className={styles.bottom_box}
                   style={{
-                     backgroundColor: COLORS.background,
+                     backgroundColor: THEME.background,
                      justifyContent: category.description
                         ? "flex-start"
                         : "center",
                   }}
                >
-                  <p style={{ color: COLORS.textSwatch }}>{category.title}</p>
-                  <p style={{ color: COLORS.textLightSwatch }}>
+                  <p style={{ color: THEME.text.shade1 }}>{category.title}</p>
+                  <p style={{ color: THEME.text.shade2 }}>
                      {sliceText(category.description, 40, true)}
                   </p>
 
                   {/* Bottom date and important label */}
                   {category.isImportant && (
-                     <span
-                        className={styles.important_label}
-                        //   style={{ backgroundColor: COLORS.red }}
-                     >
-                        important
-                     </span>
+                     <span className={styles.important_label}>important</span>
                   )}
 
-                  <div className={styles.date_box}>
+                  <div
+                     className={styles.date_box}
+                     style={{ color: THEME.text.shade1 }}
+                  >
                      <span>
                         <img
                            src="/category_card/calendar.svg"

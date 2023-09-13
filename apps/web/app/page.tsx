@@ -37,22 +37,14 @@ export default function HomePage(): JSX.Element {
                   </p>
                   <p style={{ color: THEME.text.shade2 }}>
                      Streamline Your Life with an All-in-One Solution for
-                     <span style={{ color: THEME.text.shade1 }}> Link </span>
+                     <span style={{ color: THEME.accent }}> Link </span>
                      Management,
-                     <span style={{ color: THEME.text.shade1 }}> Task </span>
+                     <span style={{ color: THEME.accent }}> Task </span>
                      Tracking,
-                     <span style={{ color: THEME.text.shade1 }}>
-                        {" "}
-                        Note{" "}
-                     </span>{" "}
-                     Taking and{" "}
-                     <span style={{ color: THEME.text.shade1 }}> Expense </span>
+                     <span style={{ color: THEME.accent }}> Note </span> Taking
+                     and <span style={{ color: THEME.accent }}> Expense </span>
                      Tracking - All with Handy
-                     <span style={{ color: THEME.text.shade1 }}>
-                        {" "}
-                        Reminders
-                     </span>
-                     .
+                     <span style={{ color: THEME.accent }}> Reminders</span>.
                   </p>
                   <div
                      style={{ marginTop: "1rem" }}
@@ -75,8 +67,9 @@ export default function HomePage(): JSX.Element {
 
          <div style={{ marginTop: "1rem" }}>
             <Contact
-               bgCol={THEME.text.shade1}
+               bgCol={THEME.accent}
                color={THEME.text.shade2}
+               headerCol={THEME.text.shade3}
                icons={{ email: "/home/email.svg", location: "/home/pin.svg" }}
                me="/home/me.png"
                socials={{

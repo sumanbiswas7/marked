@@ -2,10 +2,10 @@
 
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
-import { COLORS } from "../../theme/colors";
+import { THEME } from "../../theme/colors";
 
 export function CustomMantineProvider({ children }) {
-   const brandColors: any = new Array(10).fill(COLORS.textSwatch);
+   const brandColors: any = new Array(10).fill(THEME.accent);
 
    return (
       <MantineProvider
@@ -15,7 +15,7 @@ export function CustomMantineProvider({ children }) {
             colors: {
                brand: brandColors,
             },
-            colorScheme: COLORS.colorScheme,
+            colorScheme: THEME.colorScheme,
             primaryColor: "brand",
             breakpoints: {
                xs: "30em", // 480px
