@@ -1,17 +1,25 @@
 "use client";
 
+import styles from "./links.module.scss";
+import { useState } from "react";
 import { Grid } from "@mantine/core";
 import { CategoryCard } from "../../../components/ui/category-card/category-card";
-import styles from "./links.module.scss";
 import { DashboardSlotHeader } from "../../../components/layout/dashboard-header/dashboard-header";
 import { Category } from "@marked/types";
-
+import { useDisclosure } from "@mantine/hooks";
 import DUMMY_CATEGORIES from "../../../data/dummy-categories.json";
+import { AddEditCategoryModal } from "../../../components/form/add-edit-category-modal/add-edit-category-modal";
 
 export default function DashboardLinksPage(): JSX.Element {
+   const [opened, { open, close }] = useDisclosure(false);
+
    return (
       <div>
-         <DashboardSlotHeader title="Categories" buttonTitle="Add New" />
+         <DashboardSlotHeader
+            title="Categories"
+            buttonTitle="Add New"
+            onClick={open}
+         />
 
          {/* Small to mid - 2 cols, mid to lg - 3 cols, more than lg - 4 cols */}
          <Grid>
@@ -31,6 +39,9 @@ export default function DashboardLinksPage(): JSX.Element {
                );
             })}
          </Grid>
+
+         {/* Add or Edit Category Modal */}
+         <AddEditCategoryModal opened={opened} close={close} />
       </div>
    );
 }
