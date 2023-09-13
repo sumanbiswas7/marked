@@ -2,6 +2,7 @@
 
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
+import { COLORS } from "../../theme/colors";
 
 export function CustomMantineProvider({ children }) {
    return (
@@ -9,6 +10,21 @@ export function CustomMantineProvider({ children }) {
          withGlobalStyles
          withNormalizeCSS
          theme={{
+            colors: {
+               brand: [
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+                  COLORS.textSwatch,
+               ],
+            },
+            primaryColor: "brand",
             breakpoints: {
                xs: "30em", // 480px
                sm: "48em", // 768px

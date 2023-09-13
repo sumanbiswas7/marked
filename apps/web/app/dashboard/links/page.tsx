@@ -11,37 +11,48 @@ import DUMMY_CATEGORIES from "../../../data/dummy-categories.json";
 import { AddEditCategoryModal } from "../../../components/form/add-edit-category-modal/add-edit-category-modal";
 
 export default function DashboardLinksPage(): JSX.Element {
-   const [opened, { open, close }] = useDisclosure(false);
+   const [openedAdd, { open: openAdd, close: closeAdd }] = useDisclosure(false);
+   const [openedEdit, { open: openEdit, close: closeEdit }] =
+      useDisclosure(false);
+   const [editModalData, setEditModalData] = useState<Category | null>(null);
+
+   function handleOpenEditModal(id: string) {
+      const data = DUMMY_CATEGORIES.find((c) => c.id === id);
+      if (!data) return;
+      setEditModalData(data);
+      openEdit();
+   }
 
    return (
       <div>
          <DashboardSlotHeader
             title="Categories"
             buttonTitle="Add New"
-            onClick={open}
+            onClick={openAdd}
          />
 
          {/* Small to mid - 2 cols, mid to lg - 3 cols, more than lg - 4 cols */}
          <Grid>
-            {DUMMY_CATEGORIES.map((c: Category) => {
+            {DUMMY_CATEGORIES.map((category: Category) => {
                return (
                   <Grid.Col sm={6} md={4} lg={3}>
                      <CategoryCard
-                        key={c.id}
-                        title={c.title}
-                        date={c.date}
-                        bgCol={c.color}
-                        description={c.description}
-                        impotant={c.isImportant}
-                        bgImg={c.image}
+                        category={category}
+                        onEdit={handleOpenEditModal}
                      />
                   </Grid.Col>
                );
             })}
          </Grid>
 
-         {/* Add or Edit Category Modal */}
-         <AddEditCategoryModal opened={opened} close={close} />
+         {/* Add and Edit Category Modal */}
+         <AddEditCategoryModal opened={openedAdd} close={closeAdd} />
+         <AddEditCategoryModal
+            opened={openedEdit}
+            close={closeEdit}
+            isEdit
+            data={editModalData!}
+         />
       </div>
    );
 }

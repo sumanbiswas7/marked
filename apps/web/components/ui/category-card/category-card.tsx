@@ -7,25 +7,24 @@ import styles from "./category-card.module.scss";
 import { OptionButton } from "./option-button";
 import { useState } from "react";
 import { modals } from "@mantine/modals";
+import { Category } from "@marked/types";
 
-export function CategoryCard({
-   date,
-   title,
-   bgCol,
-   bgImg,
-   description,
-   impotant,
-}: Props): JSX.Element {
+export function CategoryCard({ category, onEdit }: Props): JSX.Element {
    const [menu, setMenu] = useState(false);
 
-   const bgColStyle = { backgroundColor: bgCol! };
-   const bgImgStyle = { backgroundImage: `url(${bgImg})` };
+   const bgColStyle = { backgroundColor: category.color! };
+   const bgImgStyle = { backgroundImage: `url(${category.image})` };
 
-   const lightenBgCol = lightenHexColor(bgCol || "#000", 50);
+   const lightenBgCol = lightenHexColor(category.color || "#000", 50);
 
    function handleDeleteCategoryClick() {
       setMenu(false);
-      openCategoryDeleteModal(title);
+      openCategoryDeleteModal(category.title);
+   }
+
+   function handleEditCategoryClick() {
+      setMenu(false);
+      if (onEdit) onEdit(category.id);
    }
 
    return (
@@ -37,16 +36,16 @@ export function CategoryCard({
             >
                <div
                   className={styles.top_box}
-                  style={bgImg ? bgImgStyle : bgColStyle}
+                  style={category.image ? bgImgStyle : bgColStyle}
                >
                   <div
                      style={{
                         color: COLORS.textSwatch,
-                        backgroundColor: lightenBgCol,
-                        display: bgImg ? "none" : "flex",
+                        backgroundColor: lightenBgCol || "#4d4d4d",
+                        display: category.image ? "none" : "flex",
                      }}
                   >
-                     {title.slice(0, 1)}
+                     {category.title.slice(0, 1)}
                   </div>
 
                   <OptionButton onClick={() => setMenu(!menu)} opened={menu} />
@@ -55,16 +54,18 @@ export function CategoryCard({
                <div
                   className={styles.bottom_box}
                   style={{
-                     justifyContent: description ? "flex-start" : "center",
+                     justifyContent: category.description
+                        ? "flex-start"
+                        : "center",
                   }}
                >
-                  <p style={{ color: COLORS.textSwatch }}>{title}</p>
+                  <p style={{ color: COLORS.textSwatch }}>{category.title}</p>
                   <p style={{ color: COLORS.textLightSwatch }}>
-                     {sliceText(description, 40, true)}
+                     {sliceText(category.description, 40, true)}
                   </p>
 
                   {/* Bottom date and important label */}
-                  {impotant && (
+                  {category.isImportant && (
                      <span
                         className={styles.important_label}
                         //   style={{ backgroundColor: COLORS.red }}
@@ -80,15 +81,16 @@ export function CategoryCard({
                            style={{ marginTop: -1 }}
                         />
                      </span>
-                     {date}
+                     {category.date}
                   </div>
                </div>
             </div>
 
             <div className={styles.menu_cont}>
                <CategoryCardMenu
-                  title={title}
+                  title={category.title}
                   onDelete={handleDeleteCategoryClick}
+                  onEdit={handleEditCategoryClick}
                />
             </div>
          </div>
@@ -121,10 +123,6 @@ function openCategoryDeleteModal(title?: string) {
  */
 
 interface Props {
-   title: string;
-   date: string;
-   bgImg: string | null;
-   bgCol: string | null;
-   description?: string | null;
-   impotant?: boolean;
+   category: Category;
+   onEdit?: (id: string) => void;
 }

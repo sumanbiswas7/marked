@@ -3,17 +3,31 @@ import { IconSettings, IconTrash, IconAlarm } from "@tabler/icons-react";
 import { COLORS } from "../../theme/colors";
 import { modals } from "@mantine/modals";
 
-export function CategoryCardMenu({ title, onDelete }: Props) {
+export function CategoryCardMenu({
+   title,
+   onDelete,
+   onAddReminder,
+   onEdit,
+}: Props) {
    return (
       <div>
          <Menu.Dropdown>
             <Menu.Label>Category Options</Menu.Label>
             <Menu.Item
                icon={<IconSettings size={14} color={COLORS.textSwatch} />}
+               onClick={onEdit}
             >
                Edit Category
             </Menu.Item>
-            <Menu.Item icon={<IconAlarm size={15} color={COLORS.textSwatch} />}>
+            <Menu.Item
+               icon={
+                  <IconAlarm
+                     size={15}
+                     color={COLORS.textSwatch}
+                     onClick={onAddReminder}
+                  />
+               }
+            >
                Add Reminder
             </Menu.Item>
 
@@ -39,4 +53,6 @@ export function CategoryCardMenu({ title, onDelete }: Props) {
 interface Props {
    title?: string;
    onDelete?: () => void;
+   onEdit?: () => void;
+   onAddReminder?: () => void;
 }
