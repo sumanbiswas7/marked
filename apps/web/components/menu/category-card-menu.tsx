@@ -3,6 +3,7 @@
 import { Menu } from "@mantine/core";
 import { IconSettings, IconTrash, IconAlarm } from "@tabler/icons-react";
 import { useTheme } from "../../hooks/use-theme";
+import React from "react";
 
 export function CategoryCardMenu({ onDelete, onAddReminder, onEdit }: Props) {
    const { theme } = useTheme();
@@ -51,6 +52,6 @@ export function CategoryCardMenu({ onDelete, onAddReminder, onEdit }: Props) {
 interface Props {
    title?: string;
    onDelete?: () => void;
-   onEdit?: () => void;
+   onEdit?: (e: React.MouseEvent) => void;
    onAddReminder?: () => void;
 }

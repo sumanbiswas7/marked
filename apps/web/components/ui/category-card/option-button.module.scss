@@ -7,8 +7,9 @@
    position: absolute;
    outline: none;
    border: none;
-
    cursor: pointer;
+
+   z-index: 3;
 
    display: flex;
    justify-content: center;

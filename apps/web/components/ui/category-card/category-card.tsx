@@ -11,6 +11,7 @@ import { modals } from "@mantine/modals";
 import { Category } from "@marked/types";
 import { IconCalendar } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
+import Link from "next/link";
 
 export function CategoryCard({ category, onEdit }: Props): JSX.Element {
    const [menu, setMenu] = useState(false);
@@ -34,64 +35,72 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
    return (
       <Menu opened={menu} shadow="md">
          <div style={{ position: "relative" }} className={styles.main_div}>
-            <div
-               className={styles.container}
-               style={{
-                  borderColor:
-                     theme.colorScheme === "dark"
-                        ? theme.border.shade1
-                        : theme.accent,
-               }}
+            <OptionButton onClick={() => setMenu(!menu)} opened={menu} />
+            <Link
+               href={`/dashboard/links/${category.id}`}
+               style={{ textDecoration: "none" }}
             >
                <div
-                  className={styles.top_box}
-                  style={category.image ? bgImgStyle : bgColStyle}
-               >
-                  <div
-                     style={{
-                        color:
-                           theme.colorScheme === "dark"
-                              ? theme.background
-                              : theme.text.shade1,
-                        backgroundColor: lightenBgCol || "#4d4d4d",
-                        display: category.image ? "none" : "flex",
-                     }}
-                  >
-                     {category.title.slice(0, 1)}
-                  </div>
-
-                  <OptionButton onClick={() => setMenu(!menu)} opened={menu} />
-               </div>
-
-               {/* Bottom box */}
-               <div
-                  className={styles.bottom_box}
+                  className={styles.container}
                   style={{
-                     backgroundColor: theme.background,
-                     justifyContent: category.description
-                        ? "flex-start"
-                        : "center",
+                     borderColor:
+                        theme.colorScheme === "dark"
+                           ? theme.border.shade1
+                           : theme.accent,
                   }}
                >
-                  <p style={{ color: theme.text.shade1 }}>{category.title}</p>
-                  <p style={{ color: theme.text.shade2 }}>
-                     {sliceText(category.description, 40, true)}
-                  </p>
-
-                  {/* Bottom date and important label */}
-                  {category.isImportant && (
-                     <span className={styles.important_label}>important</span>
-                  )}
-
                   <div
-                     className={styles.date_box}
-                     style={{ color: theme.text.shade1 }}
+                     className={styles.top_box}
+                     style={category.image ? bgImgStyle : bgColStyle}
                   >
-                     <IconCalendar color={theme.text.shade1} size={15} />
-                     {category.date}
+                     <div
+                        style={{
+                           color:
+                              theme.colorScheme === "dark"
+                                 ? theme.background
+                                 : theme.text.shade1,
+                           backgroundColor: lightenBgCol || "#4d4d4d",
+                           display: category.image ? "none" : "flex",
+                        }}
+                     >
+                        {category.title.slice(0, 1)}
+                     </div>
+                  </div>
+
+                  {/* Bottom box */}
+                  <div
+                     className={styles.bottom_box}
+                     style={{
+                        backgroundColor: theme.background,
+                        justifyContent: category.description
+                           ? "flex-start"
+                           : "center",
+                     }}
+                  >
+                     <p style={{ color: theme.text.shade1 }}>
+                        {category.title}
+                     </p>
+                     <p style={{ color: theme.text.shade2 }}>
+                        {sliceText(category.description, 40, true)}
+                     </p>
+
+                     {/* Bottom date and important label */}
+                     {category.isImportant && (
+                        <span className={styles.important_label}>
+                           important
+                        </span>
+                     )}
+
+                     <div
+                        className={styles.date_box}
+                        style={{ color: theme.text.shade1 }}
+                     >
+                        <IconCalendar color={theme.text.shade1} size={15} />
+                        {category.date}
+                     </div>
                   </div>
                </div>
-            </div>
+            </Link>
 
             <div className={styles.menu_cont}>
                <CategoryCardMenu
