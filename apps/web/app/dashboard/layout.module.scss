@@ -15,5 +15,6 @@
 .child_container {
    padding: 0.85rem 1.5rem;
    width: 100%;
-   min-height: $dashboard-child-height;
+   max-height: $dashboard-child-height;
+   overflow-y: scroll;
 }
