@@ -9,8 +9,11 @@ import { Category } from "@marked/types";
 import { useDisclosure } from "@mantine/hooks";
 import DUMMY_CATEGORIES from "../../../data/dummy-categories.json";
 import { AddEditCategoryModal } from "../../../components/form/add-edit-category-modal/add-edit-category-modal";
+import { IconPlus } from "@tabler/icons-react";
+import { useTheme } from "../../../hooks/use-theme";
 
 export default function DashboardLinksPage(): JSX.Element {
+   const { theme } = useTheme();
    const [openedAdd, { open: openAdd, close: closeAdd }] = useDisclosure(false);
    const [openedEdit, { open: openEdit, close: closeEdit }] =
       useDisclosure(false);
@@ -29,6 +32,7 @@ export default function DashboardLinksPage(): JSX.Element {
             title="Categories"
             buttonTitle="Add New"
             onClick={openAdd}
+            icon={<IconPlus size={14} color={theme.text.shade3} />}
          />
 
          {/* Small to mid - 2 cols, mid to lg - 3 cols, more than lg - 4 cols */}

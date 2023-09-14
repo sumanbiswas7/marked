@@ -1,3 +1,5 @@
+import { Link } from "./link";
+
 export interface Category {
    id: string;
    title: string;
@@ -6,4 +8,5 @@ export interface Category {
    date: string;
    image: string | null;
    color: string | null;
+   links: Link[];
 }

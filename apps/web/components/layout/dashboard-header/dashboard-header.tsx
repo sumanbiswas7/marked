@@ -1,14 +1,15 @@
 "use client";
 
-import { IconPlus } from "@tabler/icons-react";
 import styles from "./dashboard-header.module.scss";
 import { motion } from "framer-motion";
 import { useTheme } from "../../../hooks/use-theme";
+import React from "react";
 
 export function DashboardSlotHeader({
    title,
    buttonTitle,
    onClick,
+   icon,
 }: Props): JSX.Element {
    const { theme } = useTheme();
 
@@ -36,7 +37,7 @@ export function DashboardSlotHeader({
                   alignItems: "center",
                }}
             >
-               <IconPlus size={14} color={theme.text.shade3} />
+               {icon}
             </motion.div>
 
             {buttonTitle}
@@ -49,4 +50,5 @@ interface Props {
    title: string;
    buttonTitle?: string;
    onClick?: () => void;
+   icon: React.ReactNode;
 }

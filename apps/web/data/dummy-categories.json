@@ -6,7 +6,27 @@
       "isImportant": false,
       "date": "13th Aug",
       "image": "https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg",
-      "color": "#FFCEAA"
+      "color": "#FFCEAA",
+      "links": [
+         {
+            "id": "1",
+            "title": "The Godfather",
+            "createdAt": "15 Sept",
+            "link": "https://www.imdb.com/title/tt0071562/"
+         },
+         {
+            "id": "1",
+            "title": null,
+            "createdAt": "15 Sept",
+            "link": "https://www.imdb.com/title/tt0071562/"
+         },
+         {
+            "id": "1",
+            "title": "Barbie",
+            "createdAt": "15 Sept",
+            "link": "https://www.imdb.com/title/tt0071562/"
+         }
+      ]
    },
    {
       "id": "2",
@@ -15,7 +35,8 @@
       "isImportant": false,
       "date": "20th Sept",
       "image": null,
-      "color": "#A7F294"
+      "color": "#A7F294",
+      "links": []
    },
    {
       "id": "3",
@@ -24,7 +45,8 @@
       "isImportant": true,
       "date": "22 Sept",
       "image": null,
-      "color": "#AAD6FF"
+      "color": "#AAD6FF",
+      "links": []
    },
    {
       "id": "4",
@@ -33,7 +55,8 @@
       "isImportant": true,
       "date": "10 Jan",
       "image": null,
-      "color": "#FFAAAA"
+      "color": "#FFAAAA",
+      "links": []
    },
    {
       "id": "5",
@@ -42,6 +65,7 @@
       "isImportant": false,
       "date": "15 Feb",
       "image": null,
-      "color": "#FFCEAA"
+      "color": "#FFCEAA",
+      "links": []
    }
 ]
