@@ -11,6 +11,7 @@ import DUMMY_CATEGORIES from "../../../data/dummy-categories.json";
 import { AddEditCategoryModal } from "../../../components/form/add-edit-category-modal/add-edit-category-modal";
 import { IconPlus } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
+import { NoData } from "../../../components/ui/empty-state/no-data";
 
 export default function DashboardLinksPage(): JSX.Element {
    const { theme } = useTheme();
@@ -37,16 +38,26 @@ export default function DashboardLinksPage(): JSX.Element {
 
          {/* Small to mid - 2 cols, mid to lg - 3 cols, more than lg - 4 cols */}
          <Grid>
-            {DUMMY_CATEGORIES.map((category: Category) => {
-               return (
-                  <Grid.Col sm={6} md={4} lg={3}>
-                     <CategoryCard
-                        category={category}
-                        onEdit={handleOpenEditModal}
-                     />
-                  </Grid.Col>
-               );
-            })}
+            {DUMMY_CATEGORIES.length > 0 ? (
+               <>
+                  {DUMMY_CATEGORIES.map((category: Category) => {
+                     return (
+                        <Grid.Col sm={6} md={4} lg={3}>
+                           <CategoryCard
+                              category={category}
+                              onEdit={handleOpenEditModal}
+                           />
+                        </Grid.Col>
+                     );
+                  })}
+               </>
+            ) : (
+               <NoData
+                  title="No Categories found"
+                  description="You haven’t saved any links yet , add a category first then save links init"
+                  img="/empty-states/no-data.png"
+               />
+            )}
          </Grid>
 
          {/* Add and Edit Category Modal */}

@@ -2,16 +2,20 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
+import styles from "./category-link.module.scss";
 import { useEffect, useState } from "react";
 import { DashboardSlotHeader } from "../../../../components/layout/dashboard-header/dashboard-header";
 import { useTheme } from "../../../../hooks/use-theme";
-import { IconArrowLeft } from "@tabler/icons-react";
+import { IconArrowLeft, IconPlus } from "@tabler/icons-react";
 import { Category, Link as LinkType } from "@marked/types";
 
 import DUMMY_CATEGORY from "../../../../data/dummy-categories.json";
 import { CategoryLink } from "../../../../components/ui/category-card/category-link";
 import { Loader } from "@mantine/core";
+import { NoData } from "../../../../components/ui/empty-state/no-data";
+
+import { motion } from "framer-motion";
+import { CircleButton } from "../../../../components/ui/button/circle-button";
 
 export default function CategoryLinksPage() {
    const [loading, setLoading] = useState(true);
@@ -26,6 +30,8 @@ export default function CategoryLinksPage() {
       if (categoryById) setCategory(categoryById);
       setLoading(false);
    }, []);
+
+   function handleAddLink() {}
 
    if (loading) return <Loader />;
 
@@ -44,9 +50,20 @@ export default function CategoryLinksPage() {
                   <CategoryLink link={link} />
                ))
             ) : (
-               <p>No Links added yet</p>
+               <NoData
+                  title="No Links Added"
+                  description="You haven’t saved any links yet , add a link by clicking add button"
+                  img="/empty-states/no-data.png"
+                  buttonTitle="Add Link"
+                  onClick={handleAddLink}
+               />
             )}
          </div>
+
+         <CircleButton
+            onClick={handleAddLink}
+            icon={<IconPlus size={25} color={theme.text.shade3} />}
+         />
       </div>
    );
 }
