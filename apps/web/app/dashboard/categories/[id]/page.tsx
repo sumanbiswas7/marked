@@ -69,7 +69,7 @@ export default function CategoryLinksPage() {
 }
 
 function extractDashboardId(path: string): string | null {
-   const regex = /\/dashboard\/links\/(\d+)/;
+   const regex = /\/dashboard\/categories\/(\d+)/;
    const match = path.match(regex) || null;
    return match ? match[1] : null;
 }

@@ -37,7 +37,7 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
          <div style={{ position: "relative" }} className={styles.main_div}>
             <OptionButton onClick={() => setMenu(!menu)} opened={menu} />
             <Link
-               href={`/dashboard/links/${category.id}`}
+               href={`/dashboard/categories/${category.id}`}
                style={{ textDecoration: "none" }}
             >
                <div

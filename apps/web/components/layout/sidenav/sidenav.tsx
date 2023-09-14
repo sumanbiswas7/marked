@@ -79,7 +79,7 @@ export function SideNav(): JSX.Element {
             />
             <SideNavLink
                title="Saved Links"
-               to="/dashboard/links"
+               to="/dashboard/categories"
                icons={{
                   active: <IconLink size={iconSize} color={actvColor} />,
                   inactive: <IconLink size={iconSize} color={inactvColor} />,
