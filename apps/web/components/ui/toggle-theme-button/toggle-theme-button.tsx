@@ -5,8 +5,10 @@ import { useTheme } from "../../../hooks/use-theme";
 import styles from "./toggle-theme-button.module.scss";
 import { IconMoon, IconSunHigh } from "@tabler/icons-react";
 import { DARK_THEME, LIGHT_THEME } from "../../../theme";
+import { useState } from "react";
 
 export function ToggleThemeButton() {
+   const [hover, setHover] = useState(false);
    const { setTheme, theme } = useTheme();
 
    function onToggle() {
@@ -16,6 +18,10 @@ export function ToggleThemeButton() {
 
    return (
       <motion.button
+         whileHover={{ scale: 1.1 }}
+         whileTap={{ scale: 0.8 }}
+         onMouseEnter={() => setHover(true)}
+         onMouseLeave={() => setHover(false)}
          onClick={onToggle}
          className={styles.container}
          style={{ backgroundColor: theme.card.shade2 }}

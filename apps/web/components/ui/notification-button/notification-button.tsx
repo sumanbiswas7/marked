@@ -16,6 +16,8 @@ export function NotificationButton({ count }: NotificationProps): JSX.Element {
    return (
       <Link href={"/notifications"}>
          <motion.div
+            // whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.8 }}
             whileHover="animate"
             className={styles.notification_container}
             style={{ backgroundColor: theme.card.shade2 }}

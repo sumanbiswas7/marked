@@ -30,7 +30,15 @@ export function SideNav(): JSX.Element {
    return (
       <div className={styles.main_container} style={customContStyles}>
          {/* Top header with logo and texture */}
-         <div className={styles.header_top_cont}>
+         <div
+            className={styles.header_top_cont}
+            style={{
+               backgroundImage:
+                  theme.colorScheme === "dark"
+                     ? `url("/sidenav/bg_texture.webp")`
+                     : `url("/sidenav/bg_texture.webp")`,
+            }}
+         >
             <Link href="/" className={styles.header_top_cont__logo_cont}>
                <img src="/text-logo.svg" />
             </Link>
