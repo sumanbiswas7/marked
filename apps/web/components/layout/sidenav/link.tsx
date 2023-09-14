@@ -2,29 +2,23 @@
 
 import Link from "next/link";
 import styles from "./link.module.scss";
-import { THEME } from "../../../theme";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import React from "react";
+import { useTheme } from "../../../hooks/use-theme";
 
-export function SideNavLink({
-   to,
-   title,
-   iconSize,
-   icons,
-   icon,
-   bottom,
-}: Props): JSX.Element {
+export function SideNavLink({ to, title, icons, bottom }: Props): JSX.Element {
    const pathname = usePathname();
+   const { theme } = useTheme();
 
    const style = {
-      backgroundColor: pathname === to ? THEME.accent : "transparent",
-      color: pathname === to ? THEME.text.shade3 : THEME.accent,
+      backgroundColor: pathname === to ? theme.accent : "transparent",
+      color: pathname === to ? theme.text.shade3 : theme.accent,
    };
 
    const bottomStyle = {
-      backgroundColor: THEME.card.shade1,
-      color: THEME.text.shade1,
+      backgroundColor: theme.card.shade1,
+      color: theme.text.shade1,
    };
 
    const arrow = {
@@ -59,6 +53,4 @@ interface Props {
    iconSize?: number;
    icons?: { active: React.ReactNode; inactive: React.ReactNode };
    bottom?: boolean;
-
-   icon?: React.ReactNode;
 }

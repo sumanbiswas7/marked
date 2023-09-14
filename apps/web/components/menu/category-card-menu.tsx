@@ -1,19 +1,18 @@
+"use client";
+
 import { Menu } from "@mantine/core";
 import { IconSettings, IconTrash, IconAlarm } from "@tabler/icons-react";
-import { THEME } from "../../theme";
+import { useTheme } from "../../hooks/use-theme";
 
-export function CategoryCardMenu({
-   title,
-   onDelete,
-   onAddReminder,
-   onEdit,
-}: Props) {
+export function CategoryCardMenu({ onDelete, onAddReminder, onEdit }: Props) {
+   const { theme } = useTheme();
+
    return (
       <div>
          <Menu.Dropdown>
             <Menu.Label>Category Options</Menu.Label>
             <Menu.Item
-               icon={<IconSettings size={14} color={THEME.text.shade1} />}
+               icon={<IconSettings size={14} color={theme.text.shade1} />}
                onClick={onEdit}
             >
                Edit Category
@@ -22,7 +21,7 @@ export function CategoryCardMenu({
                icon={
                   <IconAlarm
                      size={15}
-                     color={THEME.text.shade1}
+                     color={theme.text.shade1}
                      onClick={onAddReminder}
                   />
                }

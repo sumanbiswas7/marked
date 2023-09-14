@@ -1,5 +1,6 @@
+"use client";
+
 import Link from "next/link";
-import { THEME } from "../../../theme";
 import { SideNavLink } from "./link";
 import styles from "./sidenav.module.scss";
 import { truncateEmail } from "../../../utils/slice-email";
@@ -12,15 +13,18 @@ import {
    IconCreditCard,
    IconSettings,
 } from "@tabler/icons-react";
+import { useTheme } from "../../../hooks/use-theme";
 
 export function SideNav(): JSX.Element {
+   const { theme } = useTheme();
+
    const customContStyles = {
-      borderColor: THEME.border.shade1,
-      backgroundColor: THEME.background,
+      borderColor: theme.border.shade1,
+      backgroundColor: theme.background,
    };
 
-   const inactvColor = THEME.accent;
-   const actvColor = THEME.text.shade3;
+   const inactvColor = theme.accent;
+   const actvColor = theme.text.shade3;
    const iconSize = 20;
 
    return (
@@ -37,15 +41,15 @@ export function SideNav(): JSX.Element {
             className={styles.logged_user_cont}
             style={{
                borderColor:
-                  THEME.colorScheme === "dark"
-                     ? THEME.border.shade1
-                     : THEME.text.shade1,
+                  theme.colorScheme === "dark"
+                     ? theme.border.shade1
+                     : theme.text.shade1,
             }}
          >
             <img src="/sidenav/logged_user.png" />
             <div className={styles.logged_user_cont__user_cont}>
-               <h4 style={{ color: THEME.text.shade1 }}>Suman Biswas</h4>
-               <p style={{ color: THEME.text.shade2 }}>
+               <h4 style={{ color: theme.text.shade1 }}>Suman Biswas</h4>
+               <p style={{ color: theme.text.shade2 }}>
                   {truncateEmail("sumanbiswas842001@gmail.com", 25)}
                </p>
             </div>

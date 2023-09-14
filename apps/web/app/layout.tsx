@@ -1,8 +1,8 @@
-import { MantineProvider } from "@mantine/core";
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { CustomMantineProvider } from "../components/provider/mantine-provider";
+import { ThemeContextProvider } from "../components/provider/theme-provider";
 
 const poppins = Poppins({
    weight: ["200", "300", "400", "500", "600"],
@@ -21,9 +21,11 @@ export default function RootLayout({
 }): JSX.Element {
    return (
       <html lang="en">
-         <CustomMantineProvider>
-            <body className={poppins.className}>{children}</body>
-         </CustomMantineProvider>
+         <ThemeContextProvider>
+            <CustomMantineProvider>
+               <body className={poppins.className}>{children}</body>
+            </CustomMantineProvider>
+         </ThemeContextProvider>
       </html>
    );
 }

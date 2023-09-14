@@ -1,14 +1,17 @@
-import styles from "./page.module.scss";
-import { THEME } from "../theme";
+"use client";
 
+import styles from "./page.module.scss";
 import { Contact } from "@marked/ui";
 import { Button } from "../components/ui/button/button";
 import { NavBar } from "../components/layout/navbar/navbar";
+import { useTheme } from "../hooks/use-theme";
 
 export default function HomePage(): JSX.Element {
+   const { theme } = useTheme();
+
    return (
       <div
-         style={{ backgroundColor: THEME.background }}
+         style={{ backgroundColor: theme.background }}
          className={styles.body_cont}
       >
          <NavBar />
@@ -16,8 +19,8 @@ export default function HomePage(): JSX.Element {
             <div className={styles.left_container}>
                {/* Header and paras */}
                <div className={styles.txt_container}>
-                  <p style={{ color: THEME.text.shade2 }}>INTRODUCING</p>
-                  <p style={{ color: THEME.text.shade1 }}>
+                  <p style={{ color: theme.text.shade2 }}>INTRODUCING</p>
+                  <p style={{ color: theme.text.shade1 }}>
                      Your{" "}
                      <span className={styles.all_in_one_txt}>
                         <img
@@ -31,20 +34,20 @@ export default function HomePage(): JSX.Element {
                         />
                      </span>
                   </p>
-                  <p style={{ color: THEME.text.shade1 }}>
-                     <span style={{ color: THEME.green }}>Productivity </span>
+                  <p style={{ color: theme.text.shade1 }}>
+                     <span style={{ color: theme.green }}>Productivity </span>
                      Powerhouse
                   </p>
-                  <p style={{ color: THEME.text.shade2 }}>
+                  <p style={{ color: theme.text.shade2 }}>
                      Streamline Your Life with an All-in-One Solution for
-                     <span style={{ color: THEME.accent }}> Link </span>
+                     <span style={{ color: theme.accent }}> Link </span>
                      Management,
-                     <span style={{ color: THEME.accent }}> Task </span>
+                     <span style={{ color: theme.accent }}> Task </span>
                      Tracking,
-                     <span style={{ color: THEME.accent }}> Note </span> Taking
-                     and <span style={{ color: THEME.accent }}> Expense </span>
+                     <span style={{ color: theme.accent }}> Note </span> Taking
+                     and <span style={{ color: theme.accent }}> Expense </span>
                      Tracking - All with Handy
-                     <span style={{ color: THEME.accent }}> Reminders</span>.
+                     <span style={{ color: theme.accent }}> Reminders</span>.
                   </p>
                   <div
                      style={{ marginTop: "1rem" }}
@@ -67,9 +70,9 @@ export default function HomePage(): JSX.Element {
 
          <div style={{ marginTop: "1rem" }}>
             <Contact
-               bgCol={THEME.accent}
-               color={THEME.text.shade2}
-               headerCol={THEME.text.shade3}
+               bgCol={theme.accent}
+               color={theme.text.shade2}
+               headerCol={theme.text.shade3}
                icons={{ email: "/home/email.svg", location: "/home/pin.svg" }}
                me="/home/me.png"
                socials={{
@@ -93,10 +96,12 @@ export default function HomePage(): JSX.Element {
 }
 
 function FreeToUse(): JSX.Element {
+   const { theme } = useTheme();
+
    return (
       <div className={styles.freeuse_cont}>
          <img src="/home/left_focus.svg" />
-         <p style={{ color: THEME.text.shade2 }}>
+         <p style={{ color: theme.text.shade2 }}>
             FREE TO USE
             <br /> NO CARDS
          </p>
@@ -106,10 +111,12 @@ function FreeToUse(): JSX.Element {
 }
 
 function Copyright() {
+   const { theme } = useTheme();
+
    return (
       <div
          className={styles.copyright_cont}
-         style={{ color: THEME.text.shade2 }}
+         style={{ color: theme.text.shade2 }}
       >
          <p>Copyright</p>
          <p>
@@ -118,7 +125,7 @@ function Copyright() {
                <a
                   href="https://www.linkedin.com/in/sumanbiswas7"
                   target="_blank"
-                  style={{ color: THEME.text.shade2 }}
+                  style={{ color: theme.text.shade2 }}
                >
                   Suman Biswas
                </a>

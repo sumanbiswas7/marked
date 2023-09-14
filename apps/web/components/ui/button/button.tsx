@@ -1,19 +1,23 @@
-import { THEME } from "../../../theme";
+"use client";
+
+import { useTheme } from "../../../hooks/use-theme";
 import styles from "./button.module.scss";
 import Link from "next/link";
 
 export function Button({ type, onCLick, title, link }: Props): JSX.Element {
+   const { theme } = useTheme();
+
    const customStyles =
       type == "outlined"
          ? {
               backgroundColor: "transparent",
-              borderColor: THEME.accent,
-              color: THEME.accent,
+              borderColor: theme.accent,
+              color: theme.accent,
            }
          : {
-              backgroundColor: THEME.accent,
-              borderColor: THEME.accent,
-              color: THEME.text.shade3,
+              backgroundColor: theme.accent,
+              borderColor: theme.accent,
+              color: theme.text.shade3,
            };
 
    if (link)

@@ -1,5 +1,6 @@
+"use client";
+
 import { Menu, Text } from "@mantine/core";
-import { THEME } from "../../../theme";
 import { lightenHexColor } from "../../../utils/lighten-hexcol";
 import { sliceText } from "../../../utils/slice-text";
 import { CategoryCardMenu } from "../../menu/category-card-menu";
@@ -9,9 +10,11 @@ import { useState } from "react";
 import { modals } from "@mantine/modals";
 import { Category } from "@marked/types";
 import { IconCalendar } from "@tabler/icons-react";
+import { useTheme } from "../../../hooks/use-theme";
 
 export function CategoryCard({ category, onEdit }: Props): JSX.Element {
    const [menu, setMenu] = useState(false);
+   const { theme } = useTheme();
 
    const bgColStyle = { backgroundColor: category.color! };
    const bgImgStyle = { backgroundImage: `url(${category.image})` };
@@ -35,9 +38,9 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                className={styles.container}
                style={{
                   borderColor:
-                     THEME.colorScheme === "dark"
-                        ? THEME.border.shade1
-                        : THEME.accent,
+                     theme.colorScheme === "dark"
+                        ? theme.border.shade1
+                        : theme.accent,
                }}
             >
                <div
@@ -47,9 +50,9 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                   <div
                      style={{
                         color:
-                           THEME.colorScheme === "dark"
-                              ? THEME.background
-                              : THEME.text.shade1,
+                           theme.colorScheme === "dark"
+                              ? theme.background
+                              : theme.text.shade1,
                         backgroundColor: lightenBgCol || "#4d4d4d",
                         display: category.image ? "none" : "flex",
                      }}
@@ -64,14 +67,14 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                <div
                   className={styles.bottom_box}
                   style={{
-                     backgroundColor: THEME.background,
+                     backgroundColor: theme.background,
                      justifyContent: category.description
                         ? "flex-start"
                         : "center",
                   }}
                >
-                  <p style={{ color: THEME.text.shade1 }}>{category.title}</p>
-                  <p style={{ color: THEME.text.shade2 }}>
+                  <p style={{ color: theme.text.shade1 }}>{category.title}</p>
+                  <p style={{ color: theme.text.shade2 }}>
                      {sliceText(category.description, 40, true)}
                   </p>
 
@@ -82,9 +85,9 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
 
                   <div
                      className={styles.date_box}
-                     style={{ color: THEME.text.shade1 }}
+                     style={{ color: theme.text.shade1 }}
                   >
-                     <IconCalendar color={THEME.text.shade1} size={15} />
+                     <IconCalendar color={theme.text.shade1} size={15} />
                      {category.date}
                   </div>
                </div>
