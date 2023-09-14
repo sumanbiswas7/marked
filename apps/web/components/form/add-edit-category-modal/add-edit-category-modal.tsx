@@ -24,6 +24,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
       image: "",
       isImportant: false,
       title: "",
+      links: [],
    });
 
    /**
