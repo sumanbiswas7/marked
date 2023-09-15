@@ -1,3 +1,5 @@
+@import "../../../theme/constants.scss";
+
 .container {
    width: 100%;
    display: flex;
@@ -8,6 +10,10 @@
 
    & > h2 {
       font-size: 1.85rem;
+
+      @media only screen and (max-width: $breakpoint-sm) {
+         font-size: 1.25rem;
+      }
    }
 
    & > button {

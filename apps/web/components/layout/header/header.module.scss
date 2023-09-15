@@ -3,9 +3,11 @@
 .container {
    height: $dashboard-header-height;
    width: $dashboard-children_width;
+   background-color: red;
 
    @media only screen and (max-width: $breakpoint-dashboard-shift) {
       width: $dashboard-children_width-md;
+      width: 100%;
    }
 
    @media only screen and (max-width: $breakpoint-sm) {
