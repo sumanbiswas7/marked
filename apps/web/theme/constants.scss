@@ -4,10 +4,19 @@ $screen-height: 87dvh;
 
 $dashboard-header-height: 12vh;
 $dashboard-child-height: 88vh;
+
 $dashboard-sidenav_width: 20vw;
 $dashboard-children_width: 80vw;
 
+// For screen <= 1050px
+$dashboard-sidenav_width-md: 30vw;
+$dashboard-children_width-md: 70vw;
+// For screen <= 500px
+$dashboard-sidenav_width-sm: 15vw;
+$dashboard-children_width-sm: 85vw;
+
 // Breakpoints
+$breakpoint-dashboard-shift: 1050px;
 $breakpoint-sm: 500px;
 $breakpoint-md: 900px;
 

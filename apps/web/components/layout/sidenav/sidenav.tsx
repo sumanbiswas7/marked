@@ -40,8 +40,13 @@ export function SideNav(): JSX.Element {
             }}
          >
             <Link href="/" className={styles.header_top_cont__logo_cont}>
-               <img src="/text-logo.svg" />
+               <img src="/text-logo.svg" className={styles.logo_big_screen} />
             </Link>
+
+            <img
+               src="/logo_small_screen.svg"
+               className={styles.logo_small_screen}
+            />
          </div>
 
          {/* Logged User */}

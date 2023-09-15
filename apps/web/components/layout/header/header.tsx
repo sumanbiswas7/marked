@@ -18,7 +18,7 @@ export function Header(): JSX.Element {
          }}
       >
          <p style={{ color: theme.text.shade1 }}>
-            {getGreeting()} Suman Biswas
+            {getGreeting()} <span className={styles.name}>Suman Biswas</span>
          </p>
 
          <div className={styles.theme_noti_cont}>

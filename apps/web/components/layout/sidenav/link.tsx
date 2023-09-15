@@ -40,7 +40,7 @@ export function SideNavLink({ to, title, icons, bottom }: Props): JSX.Element {
                <span className={styles.icon_cont}>
                   {pathname === to ? icons?.active : icons?.inactive}
                </span>
-               <p>{title}</p>
+               <p className={styles.title}>{title}</p>
             </motion.span>
          </Link>
       </motion.div>

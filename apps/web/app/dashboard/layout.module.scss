@@ -10,11 +10,18 @@
 .header_mock {
    height: $dashboard-header-height;
    width: $dashboard-children_width;
+   @media only screen and (max-width: $breakpoint-dashboard-shift) {
+      width: $dashboard-children_width-md;
+   }
+
+   @media only screen and (max-width: $breakpoint-sm) {
+      width: $dashboard-children_width-sm;
+   }
    border-bottom: 1px solid;
 }
 .child_container {
    padding: 0.85rem 1.5rem;
    width: 100%;
-   max-height: $dashboard-child-height;
+   height: $dashboard-child-height;
    overflow-y: scroll;
 }
