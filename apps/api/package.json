@@ -9,21 +9,24 @@
       "clean:win": "if exist .turbo rmdir /s /q .turbo && if exist node_modules rmdir /s /q node_modules && if exist dist rmdir /s /q dist",
       "build": "tsc",
       "deploy": "serverless deploy",
+      "push_db": "npx prisma db push",
       "dev": "tsc && concurrently \"tsc --watch\" \"nodemon dist/devServer.js\""
    },
    "keywords": [],
    "author": "",
    "dependencies": {
-      "express": "^4.18.2",
-      "serverless-http": "^3.1.1",
+      "@marked/types": "*",
       "@marked/utils": "*",
-      "@marked/types": "*"
+      "@prisma/client": "^5.3.1",
+      "express": "^4.18.2",
+      "serverless-http": "^3.1.1"
    },
    "devDependencies": {
-      "concurrently": "^8.2.1",
       "@types/express": "^4.17.15",
+      "concurrently": "^8.2.1",
       "dotenv": "^16.0.3",
       "nodemon": "^2.0.20",
+      "prisma": "^5.3.1",
       "serverless-plugin-monorepo": "^0.11.0",
       "serverless-plugin-typescript": "^2.1.4",
       "ts-node": "^10.9.1",

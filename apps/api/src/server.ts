@@ -1,13 +1,11 @@
 import serverless from "serverless-http";
 import express, { Request, Response } from "express";
-import moviesRoute from "./routes/moviesRoute";
-import animalsRoute from "./routes/animalsRoute";
+import userRoute from "./routes/userRoute";
 import { sayMyName, hello } from "@marked/utils";
 
 export const app = express();
 
-app.use("/movies", moviesRoute);
-app.use("/animals", animalsRoute);
+app.use("/user", userRoute);
 
 app.get("/", (req: Request, res: Response) => {
    res.json({

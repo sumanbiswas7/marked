@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  name          String
+  email         String
+  age           Int?
+  image         String?
+  views         Int
+  social        Social?
+  categories    Category[]
+  notifications Notification[]
+}
+
+model Social {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  instagram String?
+  github    String?
+  facebook  String?
+  tiktok    String?
+  twitter   String?
+  snapchat  String?
+  leetcode  String?
+  youtube   String?
+  other     String?
+  portfolio String?
+  userId    String   @unique @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Category {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  isImportant Boolean
+  image       String?
+  color       String
+  links       Link[]
+  userId      String   @map("user_id")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Link {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  title      String?
+  link       String
+  categoryId String   @map("category_id")
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@index([categoryId])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  on        DateTime
+  forId     String   @map("for_id")
+  forType   String   @map("for_type")
+  forTitle  String   @map("for_title")
+  forNote   String   @map("for_note")
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
