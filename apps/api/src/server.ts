@@ -1,17 +1,20 @@
 import serverless from "serverless-http";
 import express from "express";
-import userRoute from "./routes/userRoute";
 import bodyParser from "body-parser";
 import { globalErrorHandler } from "./middleware/error-handler";
 import { handleRouteError } from "./utils/handle-route-error";
 
+import userRoutes from "./routes/userRoutes";
+import statusRoutes from "./routes/statusRoutes";
+
 export const app = express();
 
 // Middlewares
-app.use("/user", userRoute);
+app.use(bodyParser.json());
+app.use("/user", userRoutes);
+app.use("/", statusRoutes);
 app.all("*", handleRouteError);
 
-app.use(bodyParser.json());
 app.use(globalErrorHandler);
 
 export const handler = serverless(app);

@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client";
 import { Router, Request, Response, NextFunction } from "express";
 import { HttpResponse } from "../models/response";
 import { HTTP_STATUS } from "@marked/utils";
+import { generateJwtToken } from "../lib/jwt";
+import { handleError } from "../utils/error-handler";
 const route = Router();
 
 route.get("/", async (req: Request, res: Response) => {
@@ -84,19 +86,31 @@ route.get("/", async (req: Request, res: Response) => {
    });
 });
 
+/** Login user route */
 route.get("/login", async (req: Request, res: Response, next: NextFunction) => {
    try {
-      const user = req.body();
-      
+      const { email, id } = req.body;
+      if (!email || !id) {
+         return handleError(
+            null,
+            null,
+            `User Email and ID is required but got email:${email}, id:${id}`
+         )(req, res, next);
+      }
 
+      const token = await generateJwtToken({ email, id }, req, res, next);
+      if (!token) {
+         return handleError(null, null, "No token generated")(req, res, next);
+      } else {
+         const response = new HttpResponse({
+            status: HTTP_STATUS.OK,
+            message: "Login successfull",
+            data: { token },
+         });
+         res.status(HTTP_STATUS.OK).json(response);
+      }
    } catch (error) {
-      const err = new HttpResponse({
-         status: HTTP_STATUS.SERVICE_UNAVAILABLE,
-         isError: true,
-         message: `Unable to login user`,
-      });
-
-      next(err);
+      handleError(error)(req, res, next);
    }
 });
 
