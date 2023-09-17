@@ -1,4 +1,7 @@
-import { Router, Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
+import { Router, Request, Response, NextFunction } from "express";
+import { HttpResponse } from "../models/response";
+import { HTTP_STATUS } from "@marked/utils";
 const route = Router();
 
 route.get("/", async (req: Request, res: Response) => {
@@ -79,6 +82,34 @@ route.get("/", async (req: Request, res: Response) => {
          },
       ],
    });
+});
+
+route.get("/login", async (req: Request, res: Response, next: NextFunction) => {
+   try {
+      const user = req.body();
+      
+
+   } catch (error) {
+      const err = new HttpResponse({
+         status: HTTP_STATUS.SERVICE_UNAVAILABLE,
+         isError: true,
+         message: `Unable to login user`,
+      });
+
+      next(err);
+   }
+});
+
+route.get("/all", async (req: Request, res: Response) => {
+   const prisma = new PrismaClient();
+
+   try {
+      const result = await prisma.user.findMany();
+      res.json(result);
+   } catch (error) {
+      console.log("Error", error);
+      res.json({ success: false });
+   }
 });
 
 export default route;
