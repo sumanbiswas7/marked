@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { Router, Request, Response, NextFunction } from "express";
 import { HttpResponse } from "../models/response";
-import { HTTP_STATUS } from "@marked/utils";
+import { HTTP_STATUS, isValidEmail } from "@marked/utils";
 import { generateJwtToken } from "../lib/jwt";
 import { handleError } from "../utils/error-handler";
 const route = Router();
@@ -86,33 +86,71 @@ route.get("/", async (req: Request, res: Response) => {
    });
 });
 
-/** Login user route */
+const prisma = new PrismaClient();
+
+/**
+ * --------------------
+ *     Login User
+ * --------------------
+ */
 route.get("/login", async (req: Request, res: Response, next: NextFunction) => {
    try {
       const { email, id } = req.body;
+      const error = new HttpResponse({ isError: true });
+      const success = new HttpResponse({});
+
       if (!email || !id) {
-         return handleError(
-            null,
-            null,
-            `User Email and ID is required but got email:${email}, id:${id}`
-         )(req, res, next);
+         error.status = HTTP_STATUS.BAD_REQUEST;
+         error.message = `User Email and ID is required but got email:${email}, id:${id}`;
+         return handleError(error)(req, res, next);
+      }
+
+      if (isValidEmail(email) === false) {
+         error.status = HTTP_STATUS.BAD_REQUEST;
+         error.message = `Invalid email provided - ${email}`;
+         return handleError(error)(req, res, next);
+      }
+
+      const isUserExist = await prisma.user.findUnique({
+         where: { email, id },
+      });
+
+      if (!isUserExist) {
+         error.status = HTTP_STATUS.NOT_FOUND;
+         error.message = `User with email:${email} and id:${id} doesn't exist`;
+         return handleError(error)(req, res, next);
       }
 
       const token = await generateJwtToken({ email, id }, req, res, next);
       if (!token) {
-         return handleError(null, null, "No token generated")(req, res, next);
-      } else {
-         const response = new HttpResponse({
-            status: HTTP_STATUS.OK,
-            message: "Login successfull",
-            data: { token },
-         });
-         res.status(HTTP_STATUS.OK).json(response);
+         error.status = HTTP_STATUS.INTERNAL_SERVER_ERROR;
+         error.message = "No token generated";
+         return handleError(error)(req, res, next);
       }
+
+      success.status = HTTP_STATUS.OK;
+      success.message = `Login with user - ${email} successfull`;
+      success.data = { token };
+      res.status(success.status).json(success);
    } catch (error) {
       handleError(error)(req, res, next);
    }
 });
+
+route.get(
+   "/bio/:email",
+   async (req: Request, res: Response, next: NextFunction) => {
+      const error = new HttpResponse({ isError: true });
+
+      if (isValidEmail(req.params.email) === false) {
+         error.status = HTTP_STATUS.BAD_REQUEST;
+         error.message = `Invalid email provided - ${req.params.email}`;
+         return handleError(error)(req, res, next);
+      }
+      // TODO: Do this bro
+      res.send(req.params);
+   }
+);
 
 route.get("/all", async (req: Request, res: Response) => {
    const prisma = new PrismaClient();

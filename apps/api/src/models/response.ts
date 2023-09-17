@@ -6,7 +6,7 @@ export class HttpResponse {
 
    constructor({ status, message, data, isError }: ConstructorType) {
       this.isError = isError || false;
-      this.status = status;
+      this.status = status || 500;
       this.message = message || null;
       this.data = data || null;
    }
@@ -20,7 +20,7 @@ export class HttpResponse {
 
 type ConstructorType = {
    isError?: boolean;
-   status: number;
+   status?: number;
    message?: string | null;
    data?: any;
 };
