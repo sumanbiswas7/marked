@@ -8,9 +8,8 @@ export function handleError(
    message?: string
 ) {
    return (req: Request, res: Response, next: NextFunction) => {
-      console.error("Error: handleError()", err);
-
       let error;
+      console.error("Error: handleError()", err);
 
       if (err instanceof HttpResponse) {
          error = err;

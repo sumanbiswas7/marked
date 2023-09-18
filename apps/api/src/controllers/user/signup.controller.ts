@@ -5,7 +5,7 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { signJwtToken } from "../../lib/jwt";
 
-export async function loginController(
+export async function signupController(
    req: Request,
    res: Response,
    next: NextFunction
@@ -13,43 +13,47 @@ export async function loginController(
    const prisma = new PrismaClient();
 
    try {
-      const { email, id } = req.body;
+      const { email, name, age, image } = req.body;
       const error = new HttpResponse({ isError: true });
       const success = new HttpResponse({});
 
-      if (!email || !id) {
+      if (!email || !name) {
          error.status = HTTP_STATUS.BAD_REQUEST;
-         error.message = `User Email and ID is required but got email:${email}, id:${id}`;
+         error.message = `Email and Name is required but got email - ${email} name - ${name}`;
          return handleError(error)(req, res, next);
       }
 
       if (isValidEmail(email) === false) {
          error.status = HTTP_STATUS.BAD_REQUEST;
-         error.message = `Invalid email provided - ${email}`;
+         error.message = `Provided email - ${email} is invalid`;
          return handleError(error)(req, res, next);
       }
 
-      const isUserExist = await prisma.user.findUnique({
-         where: { email, id },
+      const emailExists = await prisma.user.findUnique({ where: { email } });
+      if (emailExists) {
+         error.status = HTTP_STATUS.BAD_REQUEST;
+         error.message = `User with email - ${email} already exists`;
+         return handleError(error)(req, res, next);
+      }
+
+      const newUser = await prisma.user.create({
+         data: { email, name, views: 0, image, age },
       });
 
-      if (!isUserExist) {
-         error.status = HTTP_STATUS.NOT_FOUND;
-         error.message = `User with email:${email} and id:${id} doesn't exist`;
-         return handleError(error)(req, res, next);
-      }
-
-      const token = signJwtToken({ email, id })(req, res, next);
-
-      if (!token) {
+      if (!newUser) {
          error.status = HTTP_STATUS.INTERNAL_SERVER_ERROR;
-         error.message = "No token generated";
+         error.message = `Unable to create an user`;
          return handleError(error)(req, res, next);
       }
 
-      success.status = HTTP_STATUS.OK;
-      success.message = `Login with user - ${email} successfull`;
-      success.data = { token };
+      const newToken = signJwtToken({
+         id: newUser.id,
+         email: newUser.email,
+      })(req, res, next);
+
+      success.status = HTTP_STATUS.CREATED;
+      success.message = `User with email - ${email} created successfully`;
+      success.data = { token: newToken, user: newUser };
       res.status(success.status).json(success);
    } catch (error) {
       handleError(error)(req, res, next);
