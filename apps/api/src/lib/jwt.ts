@@ -49,8 +49,7 @@ export function verifyJwtToken(jwtToken: string) {
          }
 
          const token = jwt.verify(jwtToken, secret);
-         console.log("Verify", token);
-         
+
          if (!token) {
             error.message = "signJwtToken(): Unable to generate jwt token";
             error.status = HTTP_STATUS.INTERNAL_SERVER_ERROR;

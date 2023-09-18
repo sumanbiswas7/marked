@@ -7,6 +7,7 @@ import { signupController } from "../controllers/user/signup.controller";
 import { allController } from "../controllers/user/all.controller";
 import { deleteAllExceptController } from "../controllers/user/all.controller";
 import { meController } from "../controllers/user/me.controller";
+import { updateController } from "../controllers/user/update.controller";
 
 const route = Router();
 
@@ -17,10 +18,13 @@ const route = Router();
  */
 route.get("/mock", mockUserController);
 route.get("/me", meController);
+route.get("/bio/:email", bioController);
 route.get("/all", allController);
-route.delete("/delete_all", deleteAllExceptController);
+
+route.post("/update/me", updateController);
 route.post("/login", loginController);
 route.post("/signup", signupController);
-route.get("/bio/:email", bioController);
+
+route.delete("/delete_all", deleteAllExceptController);
 
 export default route;
