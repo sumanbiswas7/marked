@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response, NextFunction } from "express";
-import { HTTP_STATUS, isValidEmail } from "@marked/utils";
+import { HTTP_STATUS, isValidEmail, isValidUrl } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { signJwtToken } from "../../lib/jwt";
@@ -26,6 +26,12 @@ export async function signupController(
       if (isValidEmail(email) === false) {
          error.status = HTTP_STATUS.BAD_REQUEST;
          error.message = `Provided email - ${email} is invalid`;
+         return handleError(error)(req, res, next);
+      }
+
+      if (image && isValidUrl(image) === false) {
+         error.status = HTTP_STATUS.BAD_REQUEST;
+         error.message = `Given image - ${image} is not a valid url`;
          return handleError(error)(req, res, next);
       }
 

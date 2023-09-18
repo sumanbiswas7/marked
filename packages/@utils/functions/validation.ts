@@ -27,6 +27,18 @@ export function isValidEmail(email: string): boolean {
 }
 
 /**
+ * Checks if a string is url format.
+ *
+ * URLs starting with either "http://" or "https://" or "ftp://", followed by valid characters
+ * @param {string} str - The value to validate.
+ * @returns {boolean} - Returns true if given string is an url.
+ */
+export function isValidUrl(str: string): boolean {
+   const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+   return urlPattern.test(str);
+}
+
+/**
  * Checks if a value has a valid length.
  *
  * @param {string} value - The value to validate.
