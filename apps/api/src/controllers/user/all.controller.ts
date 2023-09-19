@@ -4,11 +4,7 @@ import { HTTP_STATUS, isValidEmail } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 
-export async function allController(
-   req: Request,
-   res: Response,
-   next: NextFunction
-) {
+export async function allController(req: Request, res: Response, next: NextFunction) {
    const prisma = new PrismaClient();
    const success = new HttpResponse({});
 
@@ -25,11 +21,7 @@ export async function allController(
 }
 
 // REVIEW: Delete for dev only
-export async function deleteAllExceptController(
-   req: Request,
-   res: Response,
-   next: NextFunction
-) {
+export async function deleteAllExceptController(req: Request, res: Response, next: NextFunction) {
    const prisma = new PrismaClient();
    try {
       const resp = await prisma.user.deleteMany();

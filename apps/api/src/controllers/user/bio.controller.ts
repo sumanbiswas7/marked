@@ -4,11 +4,7 @@ import { HTTP_STATUS, isValidEmail } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 
-export async function bioController(
-   req: Request,
-   res: Response,
-   next: NextFunction
-) {
+export async function bioController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();
       const error = new HttpResponse({ isError: true });

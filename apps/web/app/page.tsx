@@ -10,10 +10,7 @@ export default function HomePage(): JSX.Element {
    const { theme } = useTheme();
 
    return (
-      <div
-         style={{ backgroundColor: theme.background }}
-         className={styles.body_cont}
-      >
+      <div style={{ backgroundColor: theme.background }} className={styles.body_cont}>
          <NavBar />
          <div className={styles.main_container}>
             <div className={styles.left_container}>
@@ -23,15 +20,9 @@ export default function HomePage(): JSX.Element {
                   <p style={{ color: theme.text.shade1 }}>
                      Your{" "}
                      <span className={styles.all_in_one_txt}>
-                        <img
-                           src="/home/left_quote.svg"
-                           className={styles.left_quote}
-                        />
+                        <img src="/home/left_quote.svg" className={styles.left_quote} />
                         all in one
-                        <img
-                           src="/home/right_quote.svg"
-                           className={styles.right_quote}
-                        />
+                        <img src="/home/right_quote.svg" className={styles.right_quote} />
                      </span>
                   </p>
                   <p style={{ color: theme.text.shade1 }}>
@@ -44,15 +35,12 @@ export default function HomePage(): JSX.Element {
                      Management,
                      <span style={{ color: theme.accent }}> Task </span>
                      Tracking,
-                     <span style={{ color: theme.accent }}> Note </span> Taking
-                     and <span style={{ color: theme.accent }}> Expense </span>
+                     <span style={{ color: theme.accent }}> Note </span> Taking and{" "}
+                     <span style={{ color: theme.accent }}> Expense </span>
                      Tracking - All with Handy
                      <span style={{ color: theme.accent }}> Reminders</span>.
                   </p>
-                  <div
-                     style={{ marginTop: "1rem" }}
-                     className={styles.btn_free_cont}
-                  >
+                  <div style={{ marginTop: "1rem" }} className={styles.btn_free_cont}>
                      <Button title="Get Started" link="/dashboard" />
                      <FreeToUse />
                   </div>
@@ -61,10 +49,7 @@ export default function HomePage(): JSX.Element {
             </div>
             <div className={styles.right_container}>
                <div className={styles.bg_img_cont} />
-               <img
-                  src="/home/demo-image-800px.webp"
-                  className={styles.demo_img}
-               />
+               <img src="/home/demo-image-800px.webp" className={styles.demo_img} />
             </div>
          </div>
 
@@ -114,19 +99,12 @@ function Copyright() {
    const { theme } = useTheme();
 
    return (
-      <div
-         className={styles.copyright_cont}
-         style={{ color: theme.text.shade2 }}
-      >
+      <div className={styles.copyright_cont} style={{ color: theme.text.shade2 }}>
          <p>Copyright</p>
          <p>
             ©{" "}
             <span>
-               <a
-                  href="https://www.linkedin.com/in/sumanbiswas7"
-                  target="_blank"
-                  style={{ color: theme.text.shade2 }}
-               >
+               <a href="https://www.linkedin.com/in/sumanbiswas7" target="_blank" style={{ color: theme.text.shade2 }}>
                   Suman Biswas
                </a>
             </span>

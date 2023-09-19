@@ -48,8 +48,7 @@ export default {
       {
          id: "2",
          title: "Books to Read",
-         description:
-            "A collection of books I plan to read in the near future.",
+         description: "A collection of books I plan to read in the near future.",
          isImportant: false,
          date: "20th Sept",
          image: null,

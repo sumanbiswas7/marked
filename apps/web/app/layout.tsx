@@ -14,11 +14,7 @@ export const metadata: Metadata = {
    description: "All in one productivity app",
 };
 
-export default function RootLayout({
-   children,
-}: {
-   children: React.ReactNode;
-}): JSX.Element {
+export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
    return (
       <html lang="en">
          <ThemeContextProvider>

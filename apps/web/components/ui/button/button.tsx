@@ -22,22 +22,13 @@ export function Button({ type, onCLick, title, link }: Props): JSX.Element {
 
    if (link)
       return (
-         <Link
-            href={link}
-            onClick={onCLick}
-            className={styles.container}
-            style={customStyles}
-         >
+         <Link href={link} onClick={onCLick} className={styles.container} style={customStyles}>
             {title}
          </Link>
       );
 
    return (
-      <button
-         onClick={onCLick}
-         className={styles.container}
-         style={customStyles}
-      >
+      <button onClick={onCLick} className={styles.container} style={customStyles}>
          {title}
       </button>
    );

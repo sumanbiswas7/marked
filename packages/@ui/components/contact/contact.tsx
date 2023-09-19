@@ -1,18 +1,8 @@
 import "./contact.scss";
 
-export function Contact({
-   bgCol,
-   color,
-   icons,
-   me,
-   headerCol,
-   socials,
-}: Props): JSX.Element {
+export function Contact({ bgCol, color, icons, me, headerCol, socials }: Props): JSX.Element {
    return (
-      <div
-         style={{ backgroundColor: bgCol, color }}
-         className="contact-main-container"
-      >
+      <div style={{ backgroundColor: bgCol, color }} className="contact-main-container">
          <div className="contact-container">
             {/* Left Container */}
             <div className="contact-container-left_container">

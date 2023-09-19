@@ -10,10 +10,7 @@ export function NavBar(): JSX.Element {
    const { theme } = useTheme();
 
    return (
-      <div
-         className={styles.container}
-         style={{ borderColor: theme.border.shade1 }}
-      >
+      <div className={styles.container} style={{ borderColor: theme.border.shade1 }}>
          <Link href={"/"}>
             <img src="/text-logo.svg" className={styles.logo} />
          </Link>

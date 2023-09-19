@@ -9,11 +9,7 @@ import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 /**
  * Extracts email from access_token and returns the user
  */
-export async function meController(
-   req: Request,
-   res: Response,
-   next: NextFunction
-) {
+export async function meController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();
       const success = new HttpResponse({});

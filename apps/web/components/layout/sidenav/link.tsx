@@ -29,17 +29,11 @@ export function SideNavLink({ to, title, icons, bottom }: Props): JSX.Element {
       <motion.div whileHover="animate">
          <Link
             href={to}
-            className={
-               bottom
-                  ? `${styles.container} ${styles.bottom_link}`
-                  : styles.container
-            }
+            className={bottom ? `${styles.container} ${styles.bottom_link}` : styles.container}
             style={bottom ? bottomStyle : style}
          >
             <motion.span variants={arrow} className={styles.icon_title_cont}>
-               <span className={styles.icon_cont}>
-                  {pathname === to ? icons?.active : icons?.inactive}
-               </span>
+               <span className={styles.icon_cont}>{pathname === to ? icons?.active : icons?.inactive}</span>
                <p className={styles.title}>{title}</p>
             </motion.span>
          </Link>

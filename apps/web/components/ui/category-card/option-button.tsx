@@ -16,11 +16,7 @@ export function OptionButton({ onClick, opened }: Props): JSX.Element {
          className={styles.options}
          style={{ backgroundColor: theme.accent }}
       >
-         {opened ? (
-            <IconX size={13} color={theme.text.shade3} />
-         ) : (
-            <IconDots size={13} color={theme.text.shade3} />
-         )}
+         {opened ? <IconX size={13} color={theme.text.shade3} /> : <IconDots size={13} color={theme.text.shade3} />}
       </motion.button>
    );
 }

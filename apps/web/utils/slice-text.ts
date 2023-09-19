@@ -1,8 +1,4 @@
-export function sliceText(
-   str: string | undefined | null,
-   maxLen: number,
-   threeDots?: boolean
-): string | null {
+export function sliceText(str: string | undefined | null, maxLen: number, threeDots?: boolean): string | null {
    // BUG: If there's a space at the end it's getting counted with maxLen
    if (!str) return null;
    if (str.length <= maxLen) return str;

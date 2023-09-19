@@ -4,13 +4,7 @@ import { useTheme } from "../../../hooks/use-theme";
 import styles from "./no-data.module.scss";
 import { motion } from "framer-motion";
 
-export function NoData({
-   img,
-   description,
-   title,
-   buttonTitle,
-   onClick,
-}: Props) {
+export function NoData({ img, description, title, buttonTitle, onClick }: Props) {
    const { theme } = useTheme();
 
    return (

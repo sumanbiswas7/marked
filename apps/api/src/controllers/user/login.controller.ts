@@ -5,11 +5,7 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { signJwtToken } from "../../lib/jwt";
 
-export async function loginController(
-   req: Request,
-   res: Response,
-   next: NextFunction
-) {
+export async function loginController(req: Request, res: Response, next: NextFunction) {
    const prisma = new PrismaClient();
 
    try {

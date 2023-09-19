@@ -18,9 +18,7 @@ export function lightenHexColor(hexColor: string, percent: number) {
    const newBlue = Math.min(255, blue + (255 - blue) * (percent / 100));
 
    // Convert the new RGB values back to a hex color
-   const newHexColor = `#${Math.round(newRed)
-      .toString(16)
-      .padStart(2, "0")}${Math.round(newGreen)
+   const newHexColor = `#${Math.round(newRed).toString(16).padStart(2, "0")}${Math.round(newGreen)
       .toString(16)
       .padStart(2, "0")}${Math.round(newBlue).toString(16).padStart(2, "0")}`;
 

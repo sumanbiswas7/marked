@@ -9,10 +9,7 @@ export default function DashboardPage({ children }): JSX.Element {
    const { theme } = useTheme();
 
    return (
-      <div
-         className={styles.container}
-         style={{ backgroundColor: theme.background }}
-      >
+      <div className={styles.container} style={{ backgroundColor: theme.background }}>
          <SideNav />
          <div className={styles.right_cont}>
             <Header />

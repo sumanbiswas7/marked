@@ -5,7 +5,7 @@
    "scripts": {
       "build": "turbo run build",
       "dev": "turbo run dev",
-      "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+      "format": "prettier --write .",
       "clean": "turbo clean:win",
       "deploy": "turbo run deploy",
       "build:pkg": "turbo run build:pkg",

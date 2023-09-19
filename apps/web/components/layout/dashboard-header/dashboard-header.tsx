@@ -5,12 +5,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "../../../hooks/use-theme";
 import React from "react";
 
-export function DashboardSlotHeader({
-   title,
-   buttonTitle,
-   onClick,
-   icon,
-}: Props): JSX.Element {
+export function DashboardSlotHeader({ title, buttonTitle, onClick, icon }: Props): JSX.Element {
    const { theme } = useTheme();
 
    const arrow = {

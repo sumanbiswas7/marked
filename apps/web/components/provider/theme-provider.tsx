@@ -9,11 +9,7 @@ export const ThemeContext = createContext<ThemeContextType | null>(null);
 export function ThemeContextProvider({ children }: Props) {
    const [theme, setTheme] = useState<MyTheme>(LIGHT_THEME);
 
-   return (
-      <ThemeContext.Provider value={{ theme, setTheme }}>
-         {children}
-      </ThemeContext.Provider>
-   );
+   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
 
 /**

@@ -46,9 +46,7 @@ export default function CategoryLinksPage() {
 
          <div>
             {category?.links.length! > 0 ? (
-               category?.links.map((link: LinkType) => (
-                  <CategoryLink link={link} />
-               ))
+               category?.links.map((link: LinkType) => <CategoryLink link={link} />)
             ) : (
                <NoData
                   title="No Links Added"
@@ -60,10 +58,7 @@ export default function CategoryLinksPage() {
             )}
          </div>
 
-         <CircleButton
-            onClick={handleAddLink}
-            icon={<IconPlus size={25} color={theme.text.shade3} />}
-         />
+         <CircleButton onClick={handleAddLink} icon={<IconPlus size={25} color={theme.text.shade3} />} />
       </div>
    );
 }

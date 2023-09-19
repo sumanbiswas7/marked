@@ -3,11 +3,7 @@ import { HTTP_STATUS } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 
-export async function statusController(
-   req: Request,
-   res: Response,
-   next: NextFunction
-) {
+export async function statusController(req: Request, res: Response, next: NextFunction) {
    const success = new HttpResponse({});
 
    try {

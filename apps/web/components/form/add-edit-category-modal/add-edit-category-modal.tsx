@@ -1,13 +1,4 @@
-import {
-   Modal,
-   TextInput,
-   Flex,
-   Select,
-   Switch,
-   LoadingOverlay,
-   FileInput,
-   Button,
-} from "@mantine/core";
+import { Modal, TextInput, Flex, Select, Switch, LoadingOverlay, FileInput, Button } from "@mantine/core";
 import { IconUpload } from "@tabler/icons-react";
 import { SelectItem, data as selectData } from "./select-item";
 import { useLayoutEffect, useState } from "react";
@@ -59,12 +50,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
       <>
          <LoadingOverlay visible={uploading} />
 
-         <Modal
-            opened={opened}
-            onClose={close}
-            title={isEdit ? "Edit Category" : "Add new Category"}
-            centered
-         >
+         <Modal opened={opened} onClose={close} title={isEdit ? "Edit Category" : "Add new Category"} centered>
             <Flex gap={"sm"} mb="sm">
                <TextInput
                   placeholder="Free AI Tools"
@@ -109,11 +95,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
                   borderRadius: 5,
                   width: "100%",
                   height: "5rem",
-                  backgroundImage: img.preview
-                     ? `url(${img.preview})`
-                     : form.image
-                     ? `url(${form.image})`
-                     : "none",
+                  backgroundImage: img.preview ? `url(${img.preview})` : form.image ? `url(${form.image})` : "none",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   color: "#ced4da",
@@ -129,12 +111,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
                // description="Adds an important tag with the category"
                mb={"md"}
                checked={form.isImportant}
-               onChange={(e) =>
-                  handleFormChange(
-                     "isImportant",
-                     e.currentTarget.checked as any
-                  )
-               }
+               onChange={(e) => handleFormChange("isImportant", e.currentTarget.checked as any)}
             />
 
             <Button fullWidth onClick={handleSubmit}>

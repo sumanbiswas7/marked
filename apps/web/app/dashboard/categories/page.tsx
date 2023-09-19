@@ -16,8 +16,7 @@ import { NoData } from "../../../components/ui/empty-state/no-data";
 export default function DashboardLinksPage(): JSX.Element {
    const { theme } = useTheme();
    const [openedAdd, { open: openAdd, close: closeAdd }] = useDisclosure(false);
-   const [openedEdit, { open: openEdit, close: closeEdit }] =
-      useDisclosure(false);
+   const [openedEdit, { open: openEdit, close: closeEdit }] = useDisclosure(false);
    const [editModalData, setEditModalData] = useState<Category | null>(null);
 
    function handleOpenEditModal(id: string) {
@@ -43,10 +42,7 @@ export default function DashboardLinksPage(): JSX.Element {
                   {DUMMY_CATEGORIES.map((category: Category) => {
                      return (
                         <Grid.Col sm={6} md={4} lg={3}>
-                           <CategoryCard
-                              category={category}
-                              onEdit={handleOpenEditModal}
-                           />
+                           <CategoryCard category={category} onEdit={handleOpenEditModal} />
                         </Grid.Col>
                      );
                   })}
@@ -62,12 +58,7 @@ export default function DashboardLinksPage(): JSX.Element {
 
          {/* Add and Edit Category Modal */}
          <AddEditCategoryModal opened={openedAdd} close={closeAdd} />
-         <AddEditCategoryModal
-            opened={openedEdit}
-            close={closeEdit}
-            isEdit
-            data={editModalData!}
-         />
+         <AddEditCategoryModal opened={openedEdit} close={closeEdit} isEdit data={editModalData!} />
       </div>
    );
 }

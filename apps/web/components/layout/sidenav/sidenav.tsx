@@ -5,14 +5,7 @@ import { SideNavLink } from "./link";
 import styles from "./sidenav.module.scss";
 import { truncateEmail } from "../../../utils/slice-email";
 
-import {
-   IconLayoutDashboard,
-   IconLink,
-   IconList,
-   IconNotes,
-   IconCreditCard,
-   IconSettings,
-} from "@tabler/icons-react";
+import { IconLayoutDashboard, IconLink, IconList, IconNotes, IconCreditCard, IconSettings } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
 
 export function SideNav(): JSX.Element {
@@ -34,37 +27,27 @@ export function SideNav(): JSX.Element {
             className={styles.header_top_cont}
             style={{
                backgroundImage:
-                  theme.colorScheme === "dark"
-                     ? `url("/sidenav/bg_texture.webp")`
-                     : `url("/sidenav/bg_texture.webp")`,
+                  theme.colorScheme === "dark" ? `url("/sidenav/bg_texture.webp")` : `url("/sidenav/bg_texture.webp")`,
             }}
          >
             <Link href="/" className={styles.header_top_cont__logo_cont}>
                <img src="/text-logo.svg" className={styles.logo_big_screen} />
             </Link>
 
-            <img
-               src="/logo_small_screen.svg"
-               className={styles.logo_small_screen}
-            />
+            <img src="/logo_small_screen.svg" className={styles.logo_small_screen} />
          </div>
 
          {/* Logged User */}
          <div
             className={styles.logged_user_cont}
             style={{
-               borderColor:
-                  theme.colorScheme === "dark"
-                     ? theme.border.shade1
-                     : theme.text.shade1,
+               borderColor: theme.colorScheme === "dark" ? theme.border.shade1 : theme.text.shade1,
             }}
          >
             <img src="/sidenav/logged_user.png" />
             <div className={styles.logged_user_cont__user_cont}>
                <h4 style={{ color: theme.text.shade1 }}>Suman Biswas</h4>
-               <p style={{ color: theme.text.shade2 }}>
-                  {truncateEmail("sumanbiswas842001@gmail.com", 25)}
-               </p>
+               <p style={{ color: theme.text.shade2 }}>{truncateEmail("sumanbiswas842001@gmail.com", 25)}</p>
             </div>
          </div>
 
@@ -74,12 +57,8 @@ export function SideNav(): JSX.Element {
                title="Dashboard"
                to="/dashboard"
                icons={{
-                  inactive: (
-                     <IconLayoutDashboard size={iconSize} color={inactvColor} />
-                  ),
-                  active: (
-                     <IconLayoutDashboard size={iconSize} color={actvColor} />
-                  ),
+                  inactive: <IconLayoutDashboard size={iconSize} color={inactvColor} />,
+                  active: <IconLayoutDashboard size={iconSize} color={actvColor} />,
                }}
             />
             <SideNavLink
@@ -111,9 +90,7 @@ export function SideNav(): JSX.Element {
                to="/dashboard/expenses"
                icons={{
                   active: <IconCreditCard size={iconSize} color={actvColor} />,
-                  inactive: (
-                     <IconCreditCard size={iconSize} color={inactvColor} />
-                  ),
+                  inactive: <IconCreditCard size={iconSize} color={inactvColor} />,
                }}
             />
          </div>

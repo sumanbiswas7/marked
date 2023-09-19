@@ -1,29 +1,29 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
 
 body {
-  overflow-x: hidden;
+   overflow-x: hidden;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+   width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+   background: #f1f1f1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #2e2e2e;
+   background: #2e2e2e;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e2e2e;
+   background: #2e2e2e;
 }

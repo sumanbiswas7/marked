@@ -36,29 +36,17 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
       <Menu opened={menu} shadow="md">
          <div style={{ position: "relative" }} className={styles.main_div}>
             <OptionButton onClick={() => setMenu(!menu)} opened={menu} />
-            <Link
-               href={`/dashboard/categories/${category.id}`}
-               style={{ textDecoration: "none" }}
-            >
+            <Link href={`/dashboard/categories/${category.id}`} style={{ textDecoration: "none" }}>
                <div
                   className={styles.container}
                   style={{
-                     borderColor:
-                        theme.colorScheme === "dark"
-                           ? theme.border.shade1
-                           : theme.accent,
+                     borderColor: theme.colorScheme === "dark" ? theme.border.shade1 : theme.accent,
                   }}
                >
-                  <div
-                     className={styles.top_box}
-                     style={category.image ? bgImgStyle : bgColStyle}
-                  >
+                  <div className={styles.top_box} style={category.image ? bgImgStyle : bgColStyle}>
                      <div
                         style={{
-                           color:
-                              theme.colorScheme === "dark"
-                                 ? theme.background
-                                 : theme.text.shade1,
+                           color: theme.colorScheme === "dark" ? theme.background : theme.text.shade1,
                            backgroundColor: lightenBgCol || "#4d4d4d",
                            display: category.image ? "none" : "flex",
                         }}
@@ -72,29 +60,16 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                      className={styles.bottom_box}
                      style={{
                         backgroundColor: theme.background,
-                        justifyContent: category.description
-                           ? "flex-start"
-                           : "center",
+                        justifyContent: category.description ? "flex-start" : "center",
                      }}
                   >
-                     <p style={{ color: theme.text.shade1 }}>
-                        {category.title}
-                     </p>
-                     <p style={{ color: theme.text.shade2 }}>
-                        {sliceText(category.description, 40, true)}
-                     </p>
+                     <p style={{ color: theme.text.shade1 }}>{category.title}</p>
+                     <p style={{ color: theme.text.shade2 }}>{sliceText(category.description, 40, true)}</p>
 
                      {/* Bottom date and important label */}
-                     {category.isImportant && (
-                        <span className={styles.important_label}>
-                           important
-                        </span>
-                     )}
+                     {category.isImportant && <span className={styles.important_label}>important</span>}
 
-                     <div
-                        className={styles.date_box}
-                        style={{ color: theme.text.shade1 }}
-                     >
+                     <div className={styles.date_box} style={{ color: theme.text.shade1 }}>
                         <IconCalendar color={theme.text.shade1} size={15} />
                         {category.date}
                      </div>
@@ -120,9 +95,8 @@ function openCategoryDeleteModal(title?: string) {
       centered: true,
       children: (
          <Text size="sm">
-            Are you absolutely certain you wish to proceed with the deletion of
-            this category? Please be aware that this action is irreversible and
-            will result in the loss of all links contained within it.
+            Are you absolutely certain you wish to proceed with the deletion of this category? Please be aware that this
+            action is irreversible and will result in the loss of all links contained within it.
          </Text>
       ),
       labels: { confirm: "Delete category", cancel: "No don't delete it" },

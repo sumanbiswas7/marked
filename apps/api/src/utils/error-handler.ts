@@ -2,11 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { HttpResponse } from "../models/response";
 import { HTTP_STATUS } from "@marked/utils";
 
-export function handleError(
-   err: Error | unknown,
-   status?: number | null,
-   message?: string
-) {
+export function handleError(err: Error | unknown, status?: number | null, message?: string) {
    return (req: Request, res: Response, next: NextFunction) => {
       let error;
       console.error("Error: handleError()", err);

@@ -9,11 +9,7 @@ import { validateUpdateUser } from "../../utils/validators/update-user-validate"
 /**
  * Extracts email from access_token and updates the user
  */
-export async function updateController(
-   req: Request,
-   res: Response,
-   next: NextFunction
-) {
+export async function updateController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();
       const success = new HttpResponse({});

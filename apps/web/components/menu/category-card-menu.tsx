@@ -12,31 +12,16 @@ export function CategoryCardMenu({ onDelete, onAddReminder, onEdit }: Props) {
       <div>
          <Menu.Dropdown>
             <Menu.Label>Category Options</Menu.Label>
-            <Menu.Item
-               icon={<IconSettings size={14} color={theme.text.shade1} />}
-               onClick={onEdit}
-            >
+            <Menu.Item icon={<IconSettings size={14} color={theme.text.shade1} />} onClick={onEdit}>
                Edit Category
             </Menu.Item>
-            <Menu.Item
-               icon={
-                  <IconAlarm
-                     size={15}
-                     color={theme.text.shade1}
-                     onClick={onAddReminder}
-                  />
-               }
-            >
+            <Menu.Item icon={<IconAlarm size={15} color={theme.text.shade1} onClick={onAddReminder} />}>
                Add Reminder
             </Menu.Item>
 
             <Menu.Divider />
 
-            <Menu.Item
-               color="red"
-               icon={<IconTrash size={14} />}
-               onClick={onDelete}
-            >
+            <Menu.Item color="red" icon={<IconTrash size={14} />} onClick={onDelete}>
                Delete Category
             </Menu.Item>
          </Menu.Dropdown>
