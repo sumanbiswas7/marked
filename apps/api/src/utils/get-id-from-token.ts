@@ -26,7 +26,7 @@ export function getIdFromAccessToken() {
       const decoded = verifyJwtToken(token)(req, res, next);
       const userId: string = (decoded as any).id;
 
-      if (!userId) {
+      if (!userId || typeof userId !== "string") {
          error.status = HTTP_STATUS.NOT_FOUND;
          error.message = `No Id found in decoded token - ${decoded}`;
          error.data = { userId };

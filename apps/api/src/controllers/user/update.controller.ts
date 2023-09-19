@@ -3,7 +3,6 @@ import { Request, Response, NextFunction } from "express";
 import { HTTP_STATUS } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
-import { verifyJwtToken } from "../../lib/jwt";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 import { validateUpdateUser } from "../../utils/validators/update-user-validate";
 

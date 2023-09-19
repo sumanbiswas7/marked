@@ -18,6 +18,7 @@ functions:
 
       environment:
          DATABASE_URL: ${env:DATABASE_URL}
+         JWT_SECRET: ${env:JWT_SECRET}
 
 plugins:
    - serverless-plugin-typescript
