@@ -1,4 +1,4 @@
-service: serverless-api
+service: marked
 frameworkVersion: "3"
 useDotenv: true
 
@@ -10,7 +10,7 @@ provider:
    timeout: 10
 
 functions:
-   hello:
+   rest:
       handler: src/server.handler
       events:
          - http: ANY /{proxy+}
