@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response, NextFunction } from "express";
-import { HTTP_STATUS, isValidUrl } from "@marked/utils";
+import { HTTP_STATUS } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
@@ -41,7 +41,7 @@ export async function deleteLink(req: Request, res: Response, next: NextFunction
       const deleted = await prisma.link.delete({ where: { id: deleteId } });
 
       success.status = HTTP_STATUS.CREATED;
-      success.message = `New link added successfully`;
+      success.message = `Link - ${deleteId} deleted`;
       success.data = { deleted };
       res.status(success.status).json(success);
    } catch (error) {
