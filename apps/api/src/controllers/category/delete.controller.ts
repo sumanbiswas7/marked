@@ -13,6 +13,13 @@ export async function deleteController(req: Request, res: Response, next: NextFu
 
       const userId = getIdFromAccessToken()(req, res, next);
       const categoryId = req.params.id;
+      if (!categoryId) {
+         error.status = HTTP_STATUS.NOT_FOUND;
+         error.message = `Category id not found`;
+         error.data = { categoryId };
+         return handleError(error)(req, res, next);
+      }
+
       const category = await prisma.category.findUnique({ where: { id: categoryId } });
 
       if (!category) {

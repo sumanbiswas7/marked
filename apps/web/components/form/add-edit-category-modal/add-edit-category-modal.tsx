@@ -3,10 +3,11 @@ import { IconUpload } from "@tabler/icons-react";
 import { SelectItem, data as selectData } from "./select-item";
 import { useLayoutEffect, useState } from "react";
 import { Category } from "@marked/types";
-import { updateCategory, validateUpdateCategory } from "../../../api/category/update-category";
+import { updateCategory, validateCategory } from "../../../api/category/update-category";
 import { successNotification, warnNotification } from "../../../utils/show-notifications";
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../provider/tanstack-provider";
+import { createCategory } from "../../../api/category/create-category";
 
 export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd }: Props) {
    const [uploading, setUploading] = useState(false);
@@ -22,8 +23,14 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
       links: [],
    });
 
-   const mutation = useMutation({
+   const editMutation = useMutation({
       mutationFn: (data: any) => updateCategory(form.id, data),
+      onSuccess: onMutationSuccesss,
+      onError: onMutationError,
+   });
+
+   const createMutation = useMutation({
+      mutationFn: (data: any) => createCategory(data),
       onSuccess: onMutationSuccesss,
       onError: onMutationError,
    });
@@ -34,7 +41,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
       await new Promise((resolve) => setTimeout(resolve, 500));
       setUploading(false);
       if (onSubmitEnd) onSubmitEnd();
-      successNotification(`Category Updated successfully`);
+      successNotification(`Category ${isEdit ? "Updated" : "Created"} successfully`);
    }
 
    function onMutationError() {
@@ -47,9 +54,8 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
     *          Handlers
     * ----------------------------
     */
-   async function handleSubmit() {
-      if (!form.id) return;
 
+   async function handleSubmit() {
       const data = {};
       if (form.title) data["title"] = form.title;
       if (form.color) data["color"] = form.color;
@@ -57,11 +63,26 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
       if (form.description) data["description"] = form.description;
       data["isImportant"] = form.isImportant;
 
-      const error = validateUpdateCategory(data);
-      if (error) return warnNotification(error);
+      if (isEdit) formEditSubmit();
+      else formCreateSubmit();
 
-      setUploading(true);
-      mutation.mutate(data);
+      // Helpers
+      async function formCreateSubmit() {
+         const error = validateCategory(data, "create");
+         if (error) return warnNotification(error);
+
+         setUploading(true);
+         createMutation.mutate(data);
+      }
+
+      async function formEditSubmit() {
+         if (!form.id) return;
+         const error = validateCategory(data, "update");
+         if (error) return warnNotification(error);
+
+         setUploading(true);
+         editMutation.mutate(data);
+      }
    }
 
    function handleFormChange(key: keyof typeof form, value: string) {

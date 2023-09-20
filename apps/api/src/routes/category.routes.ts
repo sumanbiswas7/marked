@@ -16,6 +16,6 @@ const route = Router();
 route.get("/me/all", getAllCategory);
 route.post("/update/:id", updateController);
 route.post("/create", createController);
-route.delete("/:key", deleteController);
+route.delete("/:id", deleteController);
 
 export default route;

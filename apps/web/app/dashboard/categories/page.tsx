@@ -71,7 +71,7 @@ export default function DashboardLinksPage(): JSX.Element {
          </Grid>
 
          {/* Add and Edit Category Modal */}
-         <AddEditCategoryModal opened={openedAdd} close={closeAdd} onSubmitEnd={closeAdd} />
+         <AddEditCategoryModal opened={openedAdd} close={closeAdd} onSubmitEnd={closeAdd} isEdit={false} />
          <AddEditCategoryModal
             opened={openedEdit}
             close={closeEdit}
