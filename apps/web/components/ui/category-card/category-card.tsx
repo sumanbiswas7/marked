@@ -43,12 +43,15 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                      borderColor: theme.colorScheme === "dark" ? theme.border.shade1 : theme.accent,
                   }}
                >
-                  <div className={styles.top_box} style={category.image ? bgImgStyle : bgColStyle}>
+                  {/* Hide image for now */}
+                  {/* <div className={styles.top_box} style={category.image ? bgImgStyle : bgColStyle}> */}
+                  <div className={styles.top_box} style={bgColStyle}>
                      <div
                         style={{
                            color: theme.colorScheme === "dark" ? theme.background : theme.text.shade1,
                            backgroundColor: lightenBgCol || "#4d4d4d",
-                           display: category.image ? "none" : "flex",
+                           // display: category.image ? "none" : "flex",
+                           display: category.image ? "flex" : "flex",
                         }}
                      >
                         {category.title.slice(0, 1)}
