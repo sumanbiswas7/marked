@@ -43,22 +43,3 @@ export function validateUpdateSocials(linksObj: any) {
 function isValidKey(key: string) {
    return socialMediaKeys.includes(key);
 }
-
-/**
- * -------------------
- *      Types
- * -------------------
- */
-interface Social {
-   instagram?: String;
-   github?: String;
-   facebook?: String;
-   tiktok?: String;
-   twitter?: String;
-   snapchat?: String;
-   leetcode?: String;
-   youtube?: String;
-   other?: String;
-   portfolio?: String;
-   linkedin?: String;
-}

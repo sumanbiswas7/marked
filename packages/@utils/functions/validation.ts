@@ -39,6 +39,19 @@ export function isValidUrl(str: string): boolean {
 }
 
 /**
+ * Checks if a string is a valid hexadecimal color code.
+ *
+ * Hexadecimal color codes should start with a '#' followed by either 3 or 6 valid hex characters (0-9, A-F, a-f).
+ *
+ * @param {string} str - The value to validate.
+ * @returns {boolean} - Returns true if the given string is a valid hexadecimal color code.
+ */
+export function isValidHexcolor(str: string): boolean {
+   const hexColorPattern = /^#([A-Fa-f0-9]{3}){1,2}$/;
+   return hexColorPattern.test(str);
+}
+
+/**
  * Checks if a value has a valid length.
  *
  * @param {string} value - The value to validate.
