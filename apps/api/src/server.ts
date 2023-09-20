@@ -1,6 +1,8 @@
 import serverless from "serverless-http";
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
+
 import { globalErrorHandler } from "./middleware/error-handler";
 import { handleRouteError } from "./utils/handle-route-error";
 
@@ -13,6 +15,7 @@ export const app = express();
 
 // Middlewares
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use("/category", categoryRoutes);
 app.use("/social", socialRoutes);

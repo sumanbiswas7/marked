@@ -4,3 +4,6 @@ export { isValidEmail, isValidUrl, isValidHexcolor } from "./functions/validatio
 
 // Constants
 export { HTTP_STATUS } from "./constants/http-status";
+
+// Models
+export { HttpResponse } from "./models/http-response";
