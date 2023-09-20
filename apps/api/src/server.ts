@@ -4,9 +4,9 @@ import bodyParser from "body-parser";
 import { globalErrorHandler } from "./middleware/error-handler";
 import { handleRouteError } from "./utils/handle-route-error";
 
-import userRoutes from "./routes/userRoutes";
-import socialRoutes from "./routes/socialRoutes";
-import statusRoutes from "./routes/statusRoutes";
+import userRoutes from "./routes/user.routes";
+import socialRoutes from "./routes/social.routes";
+import statusRoutes from "./routes/status.routes";
 
 export const app = express();
 
