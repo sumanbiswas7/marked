@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { deleteController } from "../controllers/category/delete.controller";
 import { createLink } from "../controllers/link/create.controller";
+import { deleteLink } from "../controllers/link/delete.controller";
 
 const route = Router();
 
@@ -12,6 +12,6 @@ const route = Router();
  */
 
 route.post("/create", createLink);
-route.delete("/:id", deleteController);
+route.delete("/:id", deleteLink);
 
 export default route;
