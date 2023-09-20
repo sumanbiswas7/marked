@@ -5,7 +5,6 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-
    margin-bottom: 1.5rem;
 
    & > h2 {
@@ -13,6 +12,7 @@
 
       @media only screen and (max-width: $breakpoint-sm) {
          font-size: 1.25rem;
+         font-size: 1rem;
       }
    }
 
@@ -29,5 +29,10 @@
 
       padding: 0.5rem 0.8rem;
       border-radius: 0.3rem;
+
+      @media only screen and (max-width: $breakpoint-sm) {
+         padding: 0.4rem 0.5rem;
+         font-size: 0.75rem;
+      }
    }
 }
