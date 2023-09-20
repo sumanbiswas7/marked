@@ -76,8 +76,8 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
                value={form.description!}
                onChange={(e) => handleFormChange("description", e.target.value)}
             />
-
-            <FileInput
+            {/* REVIEW: Hide cover image upload for now */}
+            {/* <FileInput
                label="Cover image"
                placeholder="Add Cover Image"
                icon={<IconUpload size={14} />}
@@ -103,7 +103,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
                }}
             >
                {!form.image && !img.preview && "Cover Image Preview"}
-            </Flex>
+            </Flex> */}
 
             <Switch
                labelPosition="left"

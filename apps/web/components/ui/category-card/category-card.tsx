@@ -43,7 +43,7 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
                      borderColor: theme.colorScheme === "dark" ? theme.border.shade1 : theme.accent,
                   }}
                >
-                  {/* Hide image for now */}
+                  {/* REVIEW: Hide cover image for now */}
                   {/* <div className={styles.top_box} style={category.image ? bgImgStyle : bgColStyle}> */}
                   <div className={styles.top_box} style={bgColStyle}>
                      <div
