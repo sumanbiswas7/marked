@@ -55,10 +55,11 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
       if (form.color) data["color"] = form.color;
       if (form.image) data["image"] = form.image;
       if (form.description) data["description"] = form.description;
-      if (form.isImportant) data["isImportant"] = form.isImportant;
+      data["isImportant"] = form.isImportant;
 
       const error = validateUpdateCategory(data);
       if (error) return warnNotification(error);
+
       setUploading(true);
       mutation.mutate(data);
    }

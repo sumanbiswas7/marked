@@ -43,7 +43,7 @@ export function validateUpdateCatagory(body: any) {
       if (body.title) modifiedCategory["title"] = body.title;
       if (body.image) modifiedCategory["image"] = body.image;
       if (body.description) modifiedCategory["description"] = body.description;
-      if (body.isImportant) modifiedCategory["isImportant"] = body.isImportant;
+      modifiedCategory["isImportant"] = body.isImportant || false;
       return modifiedCategory;
    };
 }
