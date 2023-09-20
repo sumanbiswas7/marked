@@ -4,7 +4,6 @@ import { HTTP_STATUS } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
-import { validateUpdateCatagory } from "../../utils/validators/category-validate";
 
 export async function deleteController(req: Request, res: Response, next: NextFunction) {
    try {

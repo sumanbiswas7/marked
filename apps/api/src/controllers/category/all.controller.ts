@@ -11,7 +11,7 @@ export async function getAllCategory(req: Request, res: Response, next: NextFunc
       const success = new HttpResponse({});
 
       const userId = getIdFromAccessToken()(req, res, next);
-      const categories = await prisma.category.findMany({ where: { userId: userId! } });
+      const categories = await prisma.category.findMany({ where: { userId: userId! }, include: { links: true } });
 
       success.status = HTTP_STATUS.OK;
       success.message = `All categories by - ${userId}`;
