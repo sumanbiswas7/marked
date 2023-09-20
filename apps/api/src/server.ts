@@ -10,6 +10,7 @@ import userRoutes from "./routes/user.routes";
 import socialRoutes from "./routes/social.routes";
 import statusRoutes from "./routes/status.routes";
 import categoryRoutes from "./routes/category.routes";
+import linkRoutes from "./routes/link.routes";
 
 export const app = express();
 
@@ -17,6 +18,7 @@ export const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use("/link", linkRoutes);
 app.use("/category", categoryRoutes);
 app.use("/social", socialRoutes);
 app.use("/user", userRoutes);
