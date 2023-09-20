@@ -7,13 +7,14 @@ import { CategoryCard } from "../../../components/ui/category-card/category-card
 import { DashboardSlotHeader } from "../../../components/layout/dashboard-header/dashboard-header";
 import { Category } from "@marked/types";
 import { useDisclosure } from "@mantine/hooks";
-import DUMMY_CATEGORIES from "../../../data/dummy-categories.json";
 import { AddEditCategoryModal } from "../../../components/form/add-edit-category-modal/add-edit-category-modal";
 import { IconPlus } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
 import { NoData } from "../../../components/ui/empty-state/no-data";
 import { useQuery, type QueryResponse } from "../../../hooks/use-query";
 import { getAllCategory } from "../../../api/category/get-all-category";
+import DUMMY_CATEGORIES from "../../../data/dummy-categories.json";
+import { setToken } from "../../../utils/get-token";
 
 export default function DashboardLinksPage(): JSX.Element {
    const { theme } = useTheme();
@@ -21,6 +22,13 @@ export default function DashboardLinksPage(): JSX.Element {
    const [openedEdit, { open: openEdit, close: closeEdit }] = useDisclosure(false);
    const [editModalData, setEditModalData] = useState<Category | null>(null);
    const { data, error, loading }: QueryResponse<CategoryRes> = useQuery(getAllCategory);
+
+   // REVIEW: DELETE ME
+   useEffect(() => {
+      setToken(
+         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwYjMxNWNhLWFiOWYtNDE5Yi05Njk4LTcyZWJhNzRiYjdkNSIsImVtYWlsIjoic3VtYXpuYUB3d3gueG8iLCJpYXQiOjE2OTUwNTYxNzEsImV4cCI6MTY5NzY0ODE3MX0.lFd2tFxdx_uXQu6rEvAxjyGWnx8IXVkLGLpsdLg7ONQ"
+      );
+   }, []);
 
    function handleOpenEditModal(id: string) {
       const filtered = data?.categories?.find((c) => c.id === id);

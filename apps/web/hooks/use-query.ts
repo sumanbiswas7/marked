@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export function useQuery(callApiFunc: (...args: any) => Promise<HttpResponse>) {
    const [loading, setLoading] = useState(true);
-   const [error, setError] = useState(false);
+   const [error, setError] = useState<null | string>(null);
    const [data, setData] = useState<any>({});
 
    useEffect(() => {
@@ -13,7 +13,7 @@ export function useQuery(callApiFunc: (...args: any) => Promise<HttpResponse>) {
    async function callApiFuncAsync() {
       const res = await callApiFunc();
       setLoading(false);
-      if (res.isError) return setError(true);
+      if (res.isError) return setError(res.message);
       setData(res.data);
    }
 
@@ -22,6 +22,6 @@ export function useQuery(callApiFunc: (...args: any) => Promise<HttpResponse>) {
 
 export type QueryResponse<T> = {
    data: T | null;
-   error: boolean;
+   error: null | string;
    loading: boolean;
 };

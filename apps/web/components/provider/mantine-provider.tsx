@@ -3,6 +3,7 @@
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { useTheme } from "../../hooks/use-theme";
+import { Toaster } from "react-hot-toast";
 
 export function CustomMantineProvider({ children }) {
    const { theme } = useTheme();
@@ -27,6 +28,7 @@ export function CustomMantineProvider({ children }) {
             },
          }}
       >
+         <Toaster />
          <ModalsProvider>{children}</ModalsProvider>
       </MantineProvider>
    );

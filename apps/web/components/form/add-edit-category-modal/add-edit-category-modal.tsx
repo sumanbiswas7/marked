@@ -3,6 +3,8 @@ import { IconUpload } from "@tabler/icons-react";
 import { SelectItem, data as selectData } from "./select-item";
 import { useLayoutEffect, useState } from "react";
 import { Category } from "@marked/types";
+import { updateCategory, validateUpdateCategory } from "../../../api/category/update-category";
+import { successNotification, warnNotification } from "../../../utils/show-notifications";
 
 export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
    const [uploading, setUploading] = useState(false);
@@ -24,11 +26,23 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
     * ----------------------------
     */
    async function handleSubmit() {
+      if (!form.id) return;
+
+      const data = {};
+      if (form.title) data["title"] = form.title;
+      if (form.color) data["color"] = form.color;
+      if (form.image) data["image"] = form.image;
+      if (form.description) data["description"] = form.description;
+      if (form.isImportant) data["isImportant"] = form.isImportant;
+
+      const error = validateUpdateCategory(data);
+      if (error) return warnNotification(error);
       setUploading(true);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const res = await updateCategory(form.id, data);
       setUploading(false);
-      //TODO: Implement submittion logic
-      console.log("SUBMITTING", form);
+      if (res.isError) return warnNotification(res.message!);
+
+      return successNotification(`Category Updated successfully`);
    }
 
    function handleFormChange(key: keyof typeof form, value: string) {
