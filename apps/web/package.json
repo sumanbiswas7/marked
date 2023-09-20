@@ -20,6 +20,7 @@
       "@marked/ui": "*",
       "@marked/utils": "*",
       "@tabler/icons-react": "^2.34.0",
+      "@tanstack/react-query": "^4.35.3",
       "axios": "^1.5.0",
       "framer-motion": "^10.16.4",
       "moment": "^2.29.4",

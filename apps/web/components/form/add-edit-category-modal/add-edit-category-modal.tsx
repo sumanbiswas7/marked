@@ -5,8 +5,10 @@ import { useLayoutEffect, useState } from "react";
 import { Category } from "@marked/types";
 import { updateCategory, validateUpdateCategory } from "../../../api/category/update-category";
 import { successNotification, warnNotification } from "../../../utils/show-notifications";
+import { useMutation } from "@tanstack/react-query";
+import { queryClient } from "../../provider/tanstack-provider";
 
-export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
+export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd }: Props) {
    const [uploading, setUploading] = useState(false);
    const [img, setImg] = useState<ImgState>({ file: null, preview: null });
    const [form, setForm] = useState<Category>({
@@ -19,6 +21,26 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
       title: "",
       links: [],
    });
+
+   const mutation = useMutation({
+      mutationFn: (data: any) => updateCategory(form.id, data),
+      onSuccess: onMutationSuccesss,
+      onError: onMutationError,
+   });
+
+   async function onMutationSuccesss() {
+      queryClient.invalidateQueries({ queryKey: ["categories"] });
+      // wait 500ms for state update
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      setUploading(false);
+      if (onSubmitEnd) onSubmitEnd();
+      successNotification(`Category Updated successfully`);
+   }
+
+   function onMutationError() {
+      if (onSubmitEnd) onSubmitEnd();
+      warnNotification(`Opps! something went wrong`);
+   }
 
    /**
     * ----------------------------
@@ -38,11 +60,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data }: Props) {
       const error = validateUpdateCategory(data);
       if (error) return warnNotification(error);
       setUploading(true);
-      const res = await updateCategory(form.id, data);
-      setUploading(false);
-      if (res.isError) return warnNotification(res.message!);
-
-      return successNotification(`Category Updated successfully`);
+      mutation.mutate(data);
    }
 
    function handleFormChange(key: keyof typeof form, value: string) {
@@ -146,6 +164,7 @@ interface Props {
    close: () => void;
    isEdit?: boolean;
    data?: Category;
+   onSubmitEnd?: () => void;
 }
 
 interface ImgState {
