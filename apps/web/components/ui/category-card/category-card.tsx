@@ -16,6 +16,7 @@ import { useMutation } from "@tanstack/react-query";
 import { deleteCategoryById } from "../../../api/category/delete-category";
 import { queryClient } from "../../provider/tanstack-provider";
 import { successNotification, warnNotification } from "../../../utils/show-notifications";
+import { getFormattedDate } from "../../../utils/format-date";
 
 export function CategoryCard({ category, onEdit }: Props): JSX.Element {
    const [loading, setLoading] = useState(false);
@@ -104,7 +105,7 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
 
                      <div className={styles.date_box} style={{ color: theme.text.shade1 }}>
                         <IconCalendar color={theme.text.shade1} size={15} />
-                        {category.date}
+                        {getFormattedDate(category.updatedAt, "Do MMM")}
                      </div>
                   </div>
                </div>

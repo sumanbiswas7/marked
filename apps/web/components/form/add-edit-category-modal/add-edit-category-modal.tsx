@@ -14,7 +14,9 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
    const [img, setImg] = useState<ImgState>({ file: null, preview: null });
    const [form, setForm] = useState<Category>({
       color: "",
-      date: "",
+      createdAt: "",
+      updatedAt: "",
+      userId: "",
       description: "",
       id: "",
       image: "",
@@ -124,6 +126,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
                />
             </Flex>
             <TextInput
+               withAsterisk
                label="Description"
                placeholder="Links of some of the free ai tools"
                mb={"sm"}

@@ -5,8 +5,10 @@ export interface Category {
    title: string;
    description: string | null;
    isImportant: boolean;
-   date: string;
+   createdAt: string;
+   updatedAt: string;
    image: string | null;
    color: string | null;
    links: Link[];
+   userId: string;
 }
