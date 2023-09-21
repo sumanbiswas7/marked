@@ -1,7 +1,7 @@
 import { Modal, TextInput, LoadingOverlay, Button } from "@mantine/core";
 import { useState } from "react";
 import { Link as LinkType } from "@marked/types";
-import { successNotification, warnNotification } from "../../../utils/show-notifications";
+import { errorNotification, successNotification } from "../../../utils/show-notifications";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { validateLink } from "../../../api/link/validate-link";
 import { addNewLink } from "../../../api/link/create-link";
@@ -39,7 +39,7 @@ export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd
       setUploading(false);
       if (onSubmitEnd) onSubmitEnd();
       const slicedMsg = sliceText(e.message, 45, true);
-      warnNotification(slicedMsg || "Opps! something went wrong");
+      errorNotification(slicedMsg || "Opps! something went wrong");
    }
 
    /**
@@ -59,7 +59,7 @@ export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd
       // Helpers
       async function formCreateSubmit() {
          const error = validateLink(data, "create");
-         if (error) return warnNotification(error);
+         if (error) return errorNotification(error);
          setUploading(true);
          mutation.mutate(data);
       }

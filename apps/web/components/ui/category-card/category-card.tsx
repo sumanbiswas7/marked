@@ -14,7 +14,7 @@ import { useTheme } from "../../../hooks/use-theme";
 import Link from "next/link";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteCategoryById } from "../../../api/category/delete-category";
-import { successNotification, warnNotification } from "../../../utils/show-notifications";
+import { successNotification, errorNotification } from "../../../utils/show-notifications";
 import { getFormattedDate } from "../../../utils/format-date";
 import { HttpResponse } from "@marked/utils";
 
@@ -40,7 +40,7 @@ export function CategoryCard({ category, onEdit }: Props): JSX.Element {
 
    function onMutationError(e: HttpResponse) {
       setLoading(false);
-      warnNotification(e.message || `Opps! something went wrong`);
+      errorNotification(e.message || `Opps! something went wrong`);
    }
 
    const bgColStyle = { backgroundColor: category.color! };

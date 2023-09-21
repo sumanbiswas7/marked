@@ -12,7 +12,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteLinkById } from "../../../api/link/delete-link";
 import { useState } from "react";
 import { HttpResponse } from "@marked/utils";
-import { successNotification, warnNotification } from "../../../utils/show-notifications";
+import { warnNotification, errorNotification } from "../../../utils/show-notifications";
 
 export function CategoryLink({ link }: Props) {
    const queryClient = useQueryClient();
@@ -34,7 +34,7 @@ export function CategoryLink({ link }: Props) {
    }
    function onMutationError(e: HttpResponse) {
       setLoading(false);
-      warnNotification(e.message || "Unable to delete link");
+      errorNotification(e.message || "Unable to delete link");
    }
 
    function handleDelete() {

@@ -1,41 +1,37 @@
 import toast from "react-hot-toast";
 
-export function warnNotification(message: string) {
+export function successNotification(message: string) {
+   toast.dismiss();
+
    toast(message, {
-      duration: 4000,
+      duration: 1500,
       position: "bottom-right",
-
       // Styling
-      style: {},
+      style: { border: `1px solid #71C67F`, borderRadius: "0.5rem", backgroundColor: "#71C67F", color: "#fff" },
       className: "",
-
-      // Custom Icon
-      //   icon: "👏",
-
-      // Change colors of success/error/loading icon
-      //   iconTheme: {
-      //  primary: "#000",
-      //  secondary: "#fff",
-      //   },
    });
 }
 
-export function successNotification(message: string) {
+export function warnNotification(message: string) {
+   toast.dismiss();
+
    toast(message, {
-      duration: 4000,
+      duration: 1500,
       position: "bottom-right",
-
       // Styling
-      style: {},
+      style: { border: `1px solid #C7C473`, borderRadius: "0.5rem", backgroundColor: "#C7C473", color: "#fff" },
       className: "",
+   });
+}
 
-      // Custom Icon
-      //   icon: "👏",
+export function errorNotification(message: string) {
+   toast.dismiss();
 
-      // Change colors of success/error/loading icon
-      //   iconTheme: {
-      //  primary: "#000",
-      //  secondary: "#fff",
-      //   },
+   toast(message, {
+      duration: 1500,
+      position: "bottom-right",
+      // Styling
+      style: { border: `1px solid #C77373`, borderRadius: "0.5rem", backgroundColor: "#C77373", color: "#fff" },
+      className: "",
    });
 }

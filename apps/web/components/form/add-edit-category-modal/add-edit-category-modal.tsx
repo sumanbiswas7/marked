@@ -4,7 +4,7 @@ import { SelectItem, data as selectData } from "./select-item";
 import { useLayoutEffect, useState } from "react";
 import { Category } from "@marked/types";
 import { updateCategory, validateCategory } from "../../../api/category/update-category";
-import { successNotification, warnNotification } from "../../../utils/show-notifications";
+import { errorNotification, successNotification } from "../../../utils/show-notifications";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createCategory } from "../../../api/category/create-category";
 import { HttpResponse } from "@marked/utils";
@@ -49,7 +49,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
 
    function onMutationError(e: HttpResponse) {
       if (onSubmitEnd) onSubmitEnd();
-      warnNotification(e.message || `Opps! something went wrong`);
+      errorNotification(e.message || `Opps! something went wrong`);
    }
 
    /**
@@ -72,7 +72,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
       // Helpers
       async function formCreateSubmit() {
          const error = validateCategory(data, "create");
-         if (error) return warnNotification(error);
+         if (error) return errorNotification(error);
 
          setUploading(true);
          createMutation.mutate(data);
@@ -81,7 +81,7 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
       async function formEditSubmit() {
          if (!form.id) return;
          const error = validateCategory(data, "update");
-         if (error) return warnNotification(error);
+         if (error) return errorNotification(error);
 
          setUploading(true);
          editMutation.mutate(data);
