@@ -8,6 +8,7 @@ import { successNotification, warnNotification } from "../../../utils/show-notif
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../provider/tanstack-provider";
 import { createCategory } from "../../../api/category/create-category";
+import { HttpResponse } from "@marked/utils";
 
 export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd }: Props) {
    const [uploading, setUploading] = useState(false);
@@ -46,9 +47,9 @@ export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd 
       successNotification(`Category ${isEdit ? "Updated" : "Created"} successfully`);
    }
 
-   function onMutationError() {
+   function onMutationError(e: HttpResponse) {
       if (onSubmitEnd) onSubmitEnd();
-      warnNotification(`Opps! something went wrong`);
+      warnNotification(e.message || `Opps! something went wrong`);
    }
 
    /**

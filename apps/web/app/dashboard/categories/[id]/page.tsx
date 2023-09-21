@@ -31,6 +31,7 @@ export default function CategoryLinksPage() {
       queryKey: [`links`, id],
       queryFn: () => getAllLinks(id),
       refetchOnWindowFocus: false,
+      staleTime: 10000,
    });
 
    if (status === "loading") return <span>Loading...</span>;
