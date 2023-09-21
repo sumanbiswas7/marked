@@ -6,7 +6,6 @@ import { useTheme } from "../../../hooks/use-theme";
 import { IconTrash } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { getFormattedDate } from "../../../utils/format-date";
-import { sliceText } from "../../../utils/slice-text";
 
 export function CategoryLink({ link }: Props) {
    const { theme } = useTheme();
@@ -37,8 +36,9 @@ export function CategoryLink({ link }: Props) {
                         color: theme.text.shade2,
                         textDecoration: "underline",
                      }}
+                     className={styles.link_p}
                   >
-                     {sliceText(link.link, 60, true)}
+                     {link.link}
                   </p>
                   <p style={{ color: theme.text.shade2 }}>{getFormattedDate(link.createdAt, "Do MMM")}</p>
                </div>

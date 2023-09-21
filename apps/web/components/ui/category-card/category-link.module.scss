@@ -21,6 +21,10 @@
 
       & > p {
          font-size: 0.7rem;
+         padding-right: 0.5rem;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
       }
    }
 }

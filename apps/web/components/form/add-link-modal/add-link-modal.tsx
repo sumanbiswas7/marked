@@ -7,6 +7,7 @@ import { queryClient } from "../../provider/tanstack-provider";
 import { validateLink } from "../../../api/link/validate-link";
 import { addNewLink } from "../../../api/link/create-link";
 import { sliceText } from "../../../utils/slice-text";
+import { HttpResponse } from "@marked/utils";
 
 export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd }: Props) {
    const [uploading, setUploading] = useState(false);
@@ -31,10 +32,10 @@ export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd
       await new Promise((resolve) => setTimeout(resolve, 500));
       setUploading(false);
       if (onSubmitEnd) onSubmitEnd();
-      successNotification(`Link ${isEdit ? "Updated" : "Created"} successfully`);
+      successNotification(`Link ${isEdit ? "Updated" : "Added"} successfully`);
    }
 
-   function onMutationError(e) {
+   function onMutationError(e: HttpResponse) {
       setUploading(false);
       if (onSubmitEnd) onSubmitEnd();
       const slicedMsg = sliceText(e.message, 45, true);
@@ -51,7 +52,7 @@ export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd
       const data = {};
       if (form.title) data["title"] = form.title;
       if (form.link) data["link"] = form.link;
-      //   data["categoryId"] = categoryId;
+      data["categoryId"] = categoryId;
 
       formCreateSubmit();
 
