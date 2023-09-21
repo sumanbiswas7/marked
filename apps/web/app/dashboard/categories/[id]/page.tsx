@@ -1,52 +1,50 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import styles from "./category-link.module.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DashboardSlotHeader } from "../../../../components/layout/dashboard-header/dashboard-header";
 import { useTheme } from "../../../../hooks/use-theme";
 import { IconArrowLeft, IconPlus } from "@tabler/icons-react";
-import { Category, Link as LinkType } from "@marked/types";
+import { Link as LinkType } from "@marked/types";
 
-import DUMMY_CATEGORY from "../../../../data/dummy-categories.json";
 import { CategoryLink } from "../../../../components/ui/category-card/category-link";
-import { Loader } from "@mantine/core";
 import { NoData } from "../../../../components/ui/empty-state/no-data";
+import { Loader } from "@mantine/core";
 
 import { motion } from "framer-motion";
 import { CircleButton } from "../../../../components/ui/button/circle-button";
+import { useQuery } from "@tanstack/react-query";
+import { getAllLinks } from "../../../../api/link/get-all-links";
 
 export default function CategoryLinksPage() {
    const [loading, setLoading] = useState(true);
-   const [category, setCategory] = useState<Category | null>(null);
    const { theme } = useTheme();
    const router = useRouter();
-   const path = usePathname();
-   const id = extractDashboardId(path);
+   const params = useParams();
+   const id = params.id as string;
+   const { data, status } = useQuery({ queryKey: [`links-${id}`], queryFn: () => getAllLinks(id) });
 
-   useEffect(() => {
-      const categoryById = DUMMY_CATEGORY.find((c) => c.id === id);
-      if (categoryById) setCategory(categoryById);
-      setLoading(false);
-   }, []);
+   if (status === "loading") return <span>Loading...</span>;
+   if (status === "error") return <span>Error: {data?.message}</span>;
+   const links = ((data?.data as any)?.links as LinkType[]) || [];
 
    function handleAddLink() {}
-
-   if (loading) return <Loader />;
 
    return (
       <div>
          <DashboardSlotHeader
-            title={category?.title || "Links"}
+            title={links[0]?.category?.title || "Links"}
+            description={links[0]?.category?.description || "Description..."}
             buttonTitle="Go Back"
             onClick={() => router.back()}
             icon={<IconArrowLeft size={14} color={theme.text.shade3} />}
          />
 
          <div>
-            {category?.links.length! > 0 ? (
-               category?.links.map((link: LinkType) => <CategoryLink link={link} />)
+            {links.length! > 0 ? (
+               links.map((link) => <CategoryLink link={link} />)
             ) : (
                <NoData
                   title="No Links Added"
@@ -61,10 +59,4 @@ export default function CategoryLinksPage() {
          <CircleButton onClick={handleAddLink} icon={<IconPlus size={25} color={theme.text.shade3} />} />
       </div>
    );
-}
-
-function extractDashboardId(path: string): string | null {
-   const regex = /\/dashboard\/categories\/(\d+)/;
-   const match = path.match(regex) || null;
-   return match ? match[1] : null;
 }

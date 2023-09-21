@@ -31,7 +31,7 @@ export default function DashboardLinksPage(): JSX.Element {
 
    if (status === "loading") return <span>Loading...</span>;
    if (status === "error") return <span>Error: {data?.message}</span>;
-   const categories = ((data?.data as any).categories as Category[]) || [];
+   const categories = ((data?.data as any)?.categories as Category[]) || [];
 
    function handleOpenEditModal(id: string) {
       const filtered = categories?.find((c) => c.id === id);

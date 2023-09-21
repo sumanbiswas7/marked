@@ -5,6 +5,7 @@ import styles from "./category-link.module.scss";
 import { useTheme } from "../../../hooks/use-theme";
 import { IconTrash } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import { getFormattedDate } from "../../../utils/format-date";
 
 export function CategoryLink({ link }: Props) {
    const { theme } = useTheme();
@@ -38,7 +39,7 @@ export function CategoryLink({ link }: Props) {
                   >
                      {link.link}
                   </p>
-                  <p style={{ color: theme.text.shade2 }}>{link.createdAt}</p>
+                  <p style={{ color: theme.text.shade2 }}>{getFormattedDate(link.createdAt, "Do MMM")}</p>
                </div>
             </motion.div>
          </a>
