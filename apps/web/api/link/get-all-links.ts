@@ -12,24 +12,26 @@ export async function getAllLinks(categoryId: string | null): Promise<HttpRespon
    if (!categoryId) {
       error.status = HTTP_STATUS.BAD_REQUEST;
       error.message = "No categoryId was given";
-      return error;
+      throw new HttpResponse(error);
    }
 
    if (categoryId?.length < 10) {
       error.status = HTTP_STATUS.BAD_REQUEST;
       error.message = "Given categoryId is not valid";
-      return error;
+      throw new HttpResponse(error);
    }
 
    if (token.error) {
       error.status = HTTP_STATUS.NOT_FOUND;
       error.message = token.message || "No access token found";
-      return error;
+      throw new HttpResponse(error);
    }
 
    const config = { headers: { access_token: token.token } };
    const res = await axios.get(`${BASE_URL}/link/all/${categoryId}`, config);
    const httpRes = res.data as HttpResponse;
+
+   if (httpRes.isError) throw new HttpResponse(httpRes);
 
    success.message = httpRes.message;
    success.data = httpRes.data;

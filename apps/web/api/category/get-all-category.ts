@@ -12,12 +12,13 @@ export async function getAllCategory(): Promise<HttpResponse> {
    if (token.error) {
       error.status = HTTP_STATUS.NOT_FOUND;
       error.message = token.message || "No access token found";
-      return error;
+      throw new HttpResponse(error);
    }
 
    const config = { headers: { access_token: token.token } };
    const res = await axios.get(`${BASE_URL}/category/me/all`, config);
    const httpRes = res.data as HttpResponse;
+   if (httpRes.isError) throw new HttpResponse(httpRes);
 
    success.message = httpRes.message;
    success.data = httpRes.data;

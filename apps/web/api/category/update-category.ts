@@ -17,7 +17,7 @@ export async function updateCategory(categoryId: string, form: Form): Promise<Ht
       error.status = httpRes.status;
       error.message = httpRes.message;
       error.data = httpRes.data;
-      return error;
+      throw new HttpResponse(error);
    }
 
    success.status = httpRes.status;

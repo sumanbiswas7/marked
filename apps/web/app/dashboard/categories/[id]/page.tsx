@@ -27,7 +27,11 @@ export default function CategoryLinksPage() {
    const params = useParams();
    const id = params.id as string;
    const [opened, { open, close }] = useDisclosure(false);
-   const { data, status } = useQuery({ queryKey: [`links`, id], queryFn: () => getAllLinks(id) });
+   const { data, status } = useQuery({
+      queryKey: [`links`, id],
+      queryFn: () => getAllLinks(id),
+      refetchOnWindowFocus: false,
+   });
 
    if (status === "loading") return <span>Loading...</span>;
    if (status === "error") return <span>Error: {data?.message}</span>;

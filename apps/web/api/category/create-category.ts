@@ -12,11 +12,12 @@ export async function createCategory(data: any): Promise<HttpResponse> {
    if (token.error) {
       error.status = HTTP_STATUS.NOT_FOUND;
       error.message = token.message || "No access token found";
-      return error;
+      throw new HttpResponse(error);
    }
 
    const res = await axios.post(`${BASE_URL}/category/create`, data, { headers: { access_token: token.token } });
    const httpRes = res.data as HttpResponse;
+   if (httpRes.isError) throw new HttpResponse(httpRes);
 
    success.message = httpRes.message;
    success.data = httpRes.data;

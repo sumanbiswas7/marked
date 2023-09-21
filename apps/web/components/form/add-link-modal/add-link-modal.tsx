@@ -1,12 +1,12 @@
 import { Modal, TextInput, LoadingOverlay, Button } from "@mantine/core";
 import { useState } from "react";
-import { Category, Link as LinkType } from "@marked/types";
+import { Link as LinkType } from "@marked/types";
 import { successNotification, warnNotification } from "../../../utils/show-notifications";
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../../provider/tanstack-provider";
-import { createCategory } from "../../../api/category/create-category";
 import { validateLink } from "../../../api/link/validate-link";
 import { addNewLink } from "../../../api/link/create-link";
+import { sliceText } from "../../../utils/slice-text";
 
 export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd }: Props) {
    const [uploading, setUploading] = useState(false);
@@ -27,16 +27,18 @@ export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd
 
    async function onMutationSuccesss() {
       queryClient.invalidateQueries({ queryKey: [`links`, categoryId] });
-      // wait 500ms for state update
+      //   wait 500ms for state update
       await new Promise((resolve) => setTimeout(resolve, 500));
       setUploading(false);
       if (onSubmitEnd) onSubmitEnd();
       successNotification(`Link ${isEdit ? "Updated" : "Created"} successfully`);
    }
 
-   function onMutationError() {
+   function onMutationError(e) {
+      setUploading(false);
       if (onSubmitEnd) onSubmitEnd();
-      warnNotification(`Opps! something went wrong`);
+      const slicedMsg = sliceText(e.message, 45, true);
+      warnNotification(slicedMsg || "Opps! something went wrong");
    }
 
    /**
@@ -49,7 +51,7 @@ export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd
       const data = {};
       if (form.title) data["title"] = form.title;
       if (form.link) data["link"] = form.link;
-      if (form.categoryId) data["categoryId"] = categoryId;
+      //   data["categoryId"] = categoryId;
 
       formCreateSubmit();
 
