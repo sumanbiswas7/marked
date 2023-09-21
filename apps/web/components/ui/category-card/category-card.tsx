@@ -12,9 +12,8 @@ import { Category } from "@marked/types";
 import { IconCalendar } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
 import Link from "next/link";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteCategoryById } from "../../../api/category/delete-category";
-import { queryClient } from "../../provider/tanstack-provider";
 import { successNotification, warnNotification } from "../../../utils/show-notifications";
 import { getFormattedDate } from "../../../utils/format-date";
 import { HttpResponse } from "@marked/utils";
@@ -22,6 +21,7 @@ import { HttpResponse } from "@marked/utils";
 export function CategoryCard({ category, onEdit }: Props): JSX.Element {
    const [loading, setLoading] = useState(false);
    const [menu, setMenu] = useState(false);
+   const queryClient = useQueryClient();
    const { theme } = useTheme();
 
    const mutation = useMutation({

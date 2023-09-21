@@ -20,12 +20,7 @@ export default function DashboardLinksPage(): JSX.Element {
    const [openedAdd, { open: openAdd, close: closeAdd }] = useDisclosure(false);
    const [openedEdit, { open: openEdit, close: closeEdit }] = useDisclosure(false);
    const [editModalData, setEditModalData] = useState<Category | null>(null);
-   const { data, status } = useQuery({
-      queryKey: ["categories"],
-      queryFn: getAllCategory,
-      refetchOnWindowFocus: false,
-      staleTime: 10000,
-   });
+   const { data, status } = useQuery({ queryKey: ["categories"], queryFn: getAllCategory });
 
    // REVIEW: DELETE ME
    useEffect(() => {

@@ -5,14 +5,14 @@ import { useLayoutEffect, useState } from "react";
 import { Category } from "@marked/types";
 import { updateCategory, validateCategory } from "../../../api/category/update-category";
 import { successNotification, warnNotification } from "../../../utils/show-notifications";
-import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "../../provider/tanstack-provider";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createCategory } from "../../../api/category/create-category";
 import { HttpResponse } from "@marked/utils";
 
 export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd }: Props) {
    const [uploading, setUploading] = useState(false);
    const [img, setImg] = useState<ImgState>({ file: null, preview: null });
+   const queryClient = useQueryClient();
    const [form, setForm] = useState<Category>({
       color: "",
       createdAt: "",

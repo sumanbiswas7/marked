@@ -2,8 +2,7 @@ import { Modal, TextInput, LoadingOverlay, Button } from "@mantine/core";
 import { useState } from "react";
 import { Link as LinkType } from "@marked/types";
 import { successNotification, warnNotification } from "../../../utils/show-notifications";
-import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "../../provider/tanstack-provider";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { validateLink } from "../../../api/link/validate-link";
 import { addNewLink } from "../../../api/link/create-link";
 import { sliceText } from "../../../utils/slice-text";
@@ -11,6 +10,7 @@ import { HttpResponse } from "@marked/utils";
 
 export function AddNewLinkModal({ opened, isEdit, close, categoryId, onSubmitEnd }: Props) {
    const [uploading, setUploading] = useState(false);
+   const queryClient = useQueryClient();
    const [form, setForm] = useState<LinkType>({
       createdAt: "",
       link: "",
