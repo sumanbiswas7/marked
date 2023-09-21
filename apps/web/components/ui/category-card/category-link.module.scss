@@ -1,7 +1,5 @@
 .container {
    padding: 0.5rem;
-   margin-bottom: 0.5rem;
-   border-radius: 0.25rem;
    position: relative;
 
    & > .top_box {
@@ -28,9 +26,28 @@
       }
    }
 }
-.icon {
-   position: absolute;
-   top: 0.5rem;
-   right: 0.5rem;
-   z-index: 3;
+
+.main_cont {
+   display: flex;
+
+   border-radius: 0.25rem;
+   overflow: hidden;
+
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 0.5rem;
+
+   .link_cont {
+      width: 100%;
+   }
+}
+.icon_cont {
+   min-width: 3.5rem;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   .icon {
+   }
 }
