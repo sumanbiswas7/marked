@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useTheme } from "../../../hooks/use-theme";
 import styles from "./auth-form.module.scss";
+import { motion } from "framer-motion";
 
 export function AuthForm({ type }: Props) {
    const { theme } = useTheme();
@@ -16,12 +17,12 @@ export function AuthForm({ type }: Props) {
 
          {/* Provider buttons */}
          <div className={styles.provider_btn_cont}>
-            <button style={{ borderColor: theme.border.shade1 }}>
+            <motion.button whileHover={{ x: 5 }} whileTap={{ x: 0 }} style={{ borderColor: theme.border.shade1 }}>
                <img src="/auth/google.svg" /> <span style={{ color: theme.text.shade1 }}>Continue with Google</span>
-            </button>
-            <button style={{ borderColor: theme.border.shade1 }}>
+            </motion.button>
+            <motion.button whileHover={{ x: 5 }} whileTap={{ x: 0 }} style={{ borderColor: theme.border.shade1 }}>
                <img src="/auth/github.svg" /> <span style={{ color: theme.text.shade1 }}>Continue with Github</span>
-            </button>
+            </motion.button>
          </div>
 
          <p style={{ color: theme.text.shade2 }} className={styles.bottom_txt}>
