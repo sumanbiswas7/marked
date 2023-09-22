@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useTheme } from "../../../hooks/use-theme";
 import styles from "./auth-form.module.scss";
 
@@ -27,13 +28,13 @@ export function AuthForm({ type }: Props) {
             {type === "login" ? "No account? " : "Have an account? "}
             <span>
                {type === "signup" ? (
-                  <a style={{ color: theme.text.shade1 }} href="/auth/login">
+                  <Link style={{ color: theme.text.shade1 }} href="/auth/login">
                      Sign in
-                  </a>
+                  </Link>
                ) : (
-                  <a style={{ color: theme.text.shade1 }} href="/auth/signup">
+                  <Link style={{ color: theme.text.shade1 }} href="/auth/signup">
                      Sign up
-                  </a>
+                  </Link>
                )}
             </span>
          </p>
