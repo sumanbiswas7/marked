@@ -8,6 +8,7 @@ import { allController } from "../controllers/user/all.controller";
 import { deleteAllExceptController } from "../controllers/user/all.controller";
 import { meController } from "../controllers/user/me.controller";
 import { updateController } from "../controllers/user/update.controller";
+import { oauthRegisterController } from "../controllers/user/oauth-reg.controller";
 
 const route = Router();
 
@@ -24,6 +25,7 @@ route.get("/all", allController);
 route.post("/update/me", updateController);
 route.post("/login", loginController);
 route.post("/signup", signupController);
+route.post("/oauth/register", oauthRegisterController);
 
 route.delete("/delete_all", deleteAllExceptController);
 
