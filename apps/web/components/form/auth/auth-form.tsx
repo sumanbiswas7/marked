@@ -12,7 +12,7 @@ import { oauthRegister } from "../../../api/auth/oauth-register";
 import { setToken } from "../../../utils/get-token";
 import { useRouter } from "next/navigation";
 
-export function AuthForm({ type }: Props) {
+export default function AuthForm({ type }: Props) {
    const [loading, setLoading] = useState(false);
    const { theme } = useTheme();
    const route = useRouter();
