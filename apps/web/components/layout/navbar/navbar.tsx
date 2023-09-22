@@ -24,8 +24,8 @@ export function NavBar(): JSX.Element {
             >
                <IconBrandGithub color={theme.text.shade1} size={20} />
             </a>
-            <Button title="Login" type="outlined" link="/login" />
-            <Button title="Sign up" type="filled" link="/signup" />
+            <Button title="Login" type="outlined" link="/auth/login" />
+            <Button title="Sign up" type="filled" link="/auth/signup" />
          </div>
       </div>
    );

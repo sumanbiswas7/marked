@@ -1,11 +1,11 @@
 import { AuthForm } from "../../../components/form/auth/auth-form";
-import styles from "./signup.module.scss";
+import styles from "./login.module.scss";
 
-export default function SignupPage() {
+export default function LoginPage() {
    return (
       <div className={styles.main_container}>
-         {/* Sign up box */}
-         <AuthForm type="signup" />
+         {/* Log in box */}
+         <AuthForm type="login" />
       </div>
    );
 }
