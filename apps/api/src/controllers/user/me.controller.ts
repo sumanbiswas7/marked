@@ -19,7 +19,7 @@ export async function meController(req: Request, res: Response, next: NextFuncti
 
       const userById = await prisma.user.findUnique({
          where: { id: userId! },
-         include: { categories: true, notifications: true, social: true },
+         include: { notifications: true, social: true },
       });
 
       if (!userById) {

@@ -66,7 +66,7 @@ export default function AuthForm({ type }: Props) {
          <div className={styles.provider_btn_cont}>
             <LoginSocialGoogle
                onLoginStart={() => setLoading(true)}
-               client_id="695710522856-md3eud1moe8l94qh1ek28ksgf2dl3ds3.apps.googleusercontent.com"
+               client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "n/a"}
                onReject={handleReject}
                onResolve={handleResolve}
                scope="https://www.googleapis.com/auth/userinfo.email"
