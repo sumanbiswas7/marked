@@ -1,4 +1,4 @@
-# Node Express API Template for AWS Lambda
+# Marked backend
 
 This template is designed to help you quickly set up and deploy a Node Express API on AWS Lambda. It includes all the necessary dependencies and configurations to get you started.
 
