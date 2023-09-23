@@ -1,14 +1,30 @@
-# Turborepo starter
+<p style="margin-top: 120px display:flex gap:10px">
+   <a href="/github">
+     <img width="400" alt="hero-image-800px" src="https://github.com/sumanbiswas7/marked/assets/89641167/dca932f5-a628-40fd-bd9e-88aa8fe44ae1" style="border-radius: 10px">
+   </a>
+</p>
 
-This is an official starter Turborepo.
+# Marked
 
-## Using this example
+[![License](https://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE)
 
-Run the following command:
+## Overview
 
-```sh
-npx create-turbo@latest
-```
+**Marked** is a versatile solution designed for students and everyday users. It combines Link in Bio, Link Organiser, Task Manager, Note Taker and Expense Tracker features with reminders, all within a lightweight website.
+
+## Features
+
+-  **Link in Bio**: Create a comprehensive link portfolio with customizable profiles and link previews.
+
+-  **Link Organiser**: Save and organize website links intuitively, with reminders, image customization, and titles.
+
+-  **Task Manager**: Stay organized with a visual timeline, task insights, reminders, and priority labels.
+
+-  **Note Taker**: Keep notes and reminders organized with sticky notes, integrated reminders, and priority labels.
+
+-  **Reminders**: Stay on top of everything with our comprehensive reminder system. Never forget a thing again.
+
+Explore the simplicity and efficiency of our lightweight app, available as a website for all users.
 
 ## What's inside?
 
@@ -16,29 +32,22 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
--  `docs`: a [Next.js](https://nextjs.org/) app
--  `web`: another [Next.js](https://nextjs.org/) app
--  `ui`: a stub React component library shared by both `web` and `docs` applications
--  `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+-  `web`: frontend built with [Next.js](https://nextjs.org/)
+-  `api`: backend built with [Express](https://expressjs.com/)
+-  `@types`: typescript types shared by both `web` and `api`
+-  `@ui`: a stub React component library used by `web`
+-  `@utils`: util functions library shared by both `web` and `api`
 -  `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
--  [TypeScript](https://www.typescriptlang.org/) for static type checking
--  [ESLint](https://eslint.org/) for code linting
--  [Prettier](https://prettier.io) for code formatting
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-pnpm build
+cd marked
+yarn run build
 ```
 
 ### Develop
@@ -46,27 +55,8 @@ pnpm build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
+cd marked
+yarn run dev
 ```
 
 ## Useful Links
