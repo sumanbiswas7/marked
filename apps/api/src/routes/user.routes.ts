@@ -27,6 +27,7 @@ route.post("/login", loginController);
 route.post("/signup", signupController);
 route.post("/oauth/register", oauthRegisterController);
 
+// REVIEW: for Dev delete later
 route.delete("/delete_all", deleteAllExceptController);
 
 export default route;

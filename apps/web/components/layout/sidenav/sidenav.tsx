@@ -7,9 +7,11 @@ import { truncateEmail } from "../../../utils/slice-email";
 
 import { IconLayoutDashboard, IconLink, IconList, IconNotes, IconCreditCard, IconSettings } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
+import { useAuthUser } from "../../../hooks/use-auth-user";
 
 export function SideNav(): JSX.Element {
    const { theme } = useTheme();
+   const { error, loading, user } = useAuthUser();
 
    const customContStyles = {
       borderColor: theme.border.shade1,
@@ -38,18 +40,28 @@ export function SideNav(): JSX.Element {
          </div>
 
          {/* Logged User */}
-         <div
-            className={styles.logged_user_cont}
-            style={{
-               borderColor: theme.colorScheme === "dark" ? theme.border.shade1 : theme.text.shade1,
-            }}
-         >
-            <img src="/sidenav/logged_user.png" />
-            <div className={styles.logged_user_cont__user_cont}>
-               <h4 style={{ color: theme.text.shade1 }}>Suman Biswas</h4>
-               <p style={{ color: theme.text.shade2 }}>{truncateEmail("sumanbiswas842001@gmail.com", 25)}</p>
-            </div>
-         </div>
+         {loading ? (
+            <p>Loading Auth User...</p>
+         ) : (
+            <>
+               {error ? (
+                  <p>Err: {error.message}</p>
+               ) : (
+                  <div
+                     className={styles.logged_user_cont}
+                     style={{
+                        borderColor: theme.colorScheme === "dark" ? theme.border.shade1 : theme.text.shade1,
+                     }}
+                  >
+                     <img src={user?.image || ""} />
+                     <div className={styles.logged_user_cont__user_cont}>
+                        <h4 style={{ color: theme.text.shade1 }}>{user?.name}</h4>
+                        <p style={{ color: theme.text.shade2 }}>{truncateEmail(user?.email || "n/a", 25)}</p>
+                     </div>
+                  </div>
+               )}
+            </>
+         )}
 
          {/* Sidenav links */}
          <div className={styles.links_scroll_cont}>
