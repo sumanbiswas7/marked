@@ -9,7 +9,7 @@ export async function allController(req: Request, res: Response, next: NextFunct
    const success = new HttpResponse({});
 
    try {
-      const allUsers = await prisma.user.findMany();
+      const allUsers = await prisma.user.findMany({ include: { categories: true } });
       success.status = HTTP_STATUS.OK;
       success.message = `All users`;
       const userArr = Object.values(allUsers);
@@ -24,6 +24,9 @@ export async function allController(req: Request, res: Response, next: NextFunct
 export async function deleteAllExceptController(req: Request, res: Response, next: NextFunction) {
    const prisma = new PrismaClient();
    try {
+      await prisma.social.deleteMany();
+      await prisma.link.deleteMany();
+      await prisma.category.deleteMany();
       const resp = await prisma.user.deleteMany();
       res.json(resp);
    } catch (error) {

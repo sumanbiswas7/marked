@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import { CustomMantineProvider } from "../components/provider/mantine-provider";
 import { ThemeContextProvider } from "../components/provider/theme-provider";
 import { TanstackQueryProvider } from "../components/provider/tanstack-provider";
+import { AuthContextProvider } from "../components/provider/auth-provider";
 
 const poppins = Poppins({
    weight: ["200", "300", "400", "500", "600"],
@@ -18,13 +19,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
    return (
       <html lang="en">
-         <ThemeContextProvider>
-            <TanstackQueryProvider>
-               <CustomMantineProvider>
-                  <body className={poppins.className}>{children}</body>
-               </CustomMantineProvider>
-            </TanstackQueryProvider>
-         </ThemeContextProvider>
+         <AuthContextProvider>
+            <ThemeContextProvider>
+               <TanstackQueryProvider>
+                  <CustomMantineProvider>
+                     <body className={poppins.className}>{children}</body>
+                  </CustomMantineProvider>
+               </TanstackQueryProvider>
+            </ThemeContextProvider>
+         </AuthContextProvider>
       </html>
    );
 }

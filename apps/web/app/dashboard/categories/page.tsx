@@ -22,13 +22,6 @@ export default function DashboardLinksPage(): JSX.Element {
    const [editModalData, setEditModalData] = useState<Category | null>(null);
    const { data, status } = useQuery({ queryKey: ["categories"], queryFn: getAllCategory });
 
-   // REVIEW: DELETE ME
-   useEffect(() => {
-      setToken(
-         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwYjMxNWNhLWFiOWYtNDE5Yi05Njk4LTcyZWJhNzRiYjdkNSIsImVtYWlsIjoic3VtYXpuYUB3d3gueG8iLCJpYXQiOjE2OTUwNTYxNzEsImV4cCI6MTY5NzY0ODE3MX0.lFd2tFxdx_uXQu6rEvAxjyGWnx8IXVkLGLpsdLg7ONQ"
-      );
-   }, []);
-
    if (status === "loading") return <span>Loading...</span>;
    if (status === "error") return <span>Error: {data?.message}</span>;
    const categories = ((data?.data as any)?.categories as Category[]) || [];

@@ -21,3 +21,10 @@ export async function getAllCategory(req: Request, res: Response, next: NextFunc
       handleError(error)(req, res, next);
    }
 }
+
+// REVIEW: Delete later for dev
+export async function getAllCategoriesDev(req: Request, res: Response, next: NextFunction) {
+   const prisma = new PrismaClient();
+   const resp = await prisma.category.findMany();
+   res.json(resp);
+}

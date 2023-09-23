@@ -9,7 +9,7 @@ import { useState } from "react";
 import { errorNotification, successNotification } from "../../../utils/show-notifications";
 import { LoadingOverlay } from "@mantine/core";
 import { oauthRegister } from "../../../api/auth/oauth-register";
-import { setToken } from "../../../utils/get-token";
+import { setCache, setToken } from "../../../utils/get-token";
 import { useRouter } from "next/navigation";
 
 export default function AuthForm({ type }: Props) {
@@ -23,7 +23,7 @@ export default function AuthForm({ type }: Props) {
       else errorNotification(`Opps! ${type} cancelled`);
    }
 
-   async function handleResolve({ provider, data }: IResolveParams) {
+   async function handleResolve({ data }: IResolveParams) {
       const res = data as any;
       const email = res?.email;
       const name = res?.name;
@@ -31,17 +31,26 @@ export default function AuthForm({ type }: Props) {
       if (!email || !name) return errorNotification(`Opps! Something went wrong`);
 
       const httpRes = await oauthRegister({ email, name, image });
+
       if (httpRes.isError) {
          setLoading(false);
          return errorNotification(httpRes.message || `Unable to perform ${type}`);
-      } else {
-         const token = (httpRes.data as any).token;
-         console.log("TOKEN", token);
-         if (!token) errorNotification(`Unable to perform ${type} no token found from server`);
-         if (token) setToken(token);
-         setLoading(false);
+      }
+
+      const token = (httpRes.data as any).token;
+      const user = (httpRes.data as any).user;
+      localStorage.clear();
+
+      if (token && user) {
+         // Success case: Both token and user exist
+         setToken(token);
          successNotification(`${type} successfull`);
+         setLoading(false);
          route.push("/dashboard");
+      } else {
+         // Error case: Either token or user is missing
+         setLoading(false);
+         return errorNotification(`Unable to perform ${type}`);
       }
    }
 
