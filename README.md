@@ -36,7 +36,7 @@ This Turborepo includes the following packages/apps:
 -  `api`: backend built with [Express](https://expressjs.com/)
 -  `@types`: typescript types shared by both `web` and `api`
 -  `@ui`: a stub React component library used by `web`
--  `@utils`: util functions library shared by both `web` and `api`
+-  `@utils`: library that has util functions, constants and classes shared by both `web` and `api`
 -  `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
