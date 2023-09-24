@@ -6,6 +6,7 @@ export default function DashboardTasksPage(): JSX.Element {
    return (
       <div>
          <h1>Tasks</h1>
+         <p>Conming Soon...</p>
       </div>
    );
 }

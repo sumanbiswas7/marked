@@ -8,7 +8,8 @@ import { useAuth } from "../../hooks/use-auth";
 export default function DashboardPage(): JSX.Element {
    return (
       <div>
-         <h1>Protected Route</h1>
+         <h1>Dashboard</h1>
+         <p>Conming Soon...</p>
       </div>
    );
 }
