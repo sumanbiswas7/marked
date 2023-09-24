@@ -17,7 +17,7 @@ export function NavBar(): JSX.Element {
 
          <div className={styles.links_container}>
             <a
-               href="https://github.com/sumanbiswas7"
+               href="https://github.com/sumanbiswas7/marked"
                target="_blank"
                className={styles.github_btn}
                style={{ backgroundColor: theme.card.shade1 }}
