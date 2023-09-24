@@ -1,0 +1,45 @@
+@import "../../../theme/constants.scss";
+
+.container {
+   width: 100%;
+   padding-block: 1rem;
+   padding-left: 2rem;
+
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+
+   font-size: 0.85rem;
+   text-decoration: none;
+   font-weight: 500;
+
+   @media only screen and (max-width: $breakpoint-sm) {
+      padding: 1rem;
+      justify-content: center;
+   }
+}
+
+.bottom_link {
+   position: absolute;
+   bottom: 0;
+}
+
+.icon_title_cont {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.icon_cont {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-bottom: 1px;
+}
+
+.title {
+   @media only screen and (max-width: $breakpoint-sm) {
+      display: none;
+   }
+}

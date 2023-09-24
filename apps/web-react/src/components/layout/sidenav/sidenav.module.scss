@@ -1,0 +1,113 @@
+@import "../../../theme/constants.scss";
+
+.main_container {
+   height: 100dvh;
+   width: $dashboard-sidenav_width;
+
+   @media only screen and (max-width: $breakpoint-dashboard-shift) {
+      width: $dashboard-sidenav_width-md;
+   }
+
+   @media only screen and (max-width: $breakpoint-sm) {
+      width: $dashboard-sidenav_width-sm;
+   }
+
+   display: flex;
+   flex-direction: column;
+
+   border: 1px solid;
+   border-top: none;
+   border-left: none;
+   border-bottom: none;
+   background-color: #fff;
+
+   position: relative;
+}
+
+// Bg texture Logo header
+.header_top_cont {
+   width: 100%;
+   height: $dashboard-header-height;
+   background-image: url("../../../public/sidenav/bg_texture.webp");
+   background-size: cover;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   &__logo_cont {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      max-width: fit-content;
+      width: 60%;
+      padding-inline: 1rem;
+
+      & > img {
+         width: 100%;
+      }
+
+      @media only screen and (max-width: $breakpoint-sm) {
+         display: none;
+      }
+   }
+
+   .logo_small_screen {
+      @media only screen and (min-width: $breakpoint-sm) {
+         display: none;
+      }
+   }
+}
+
+// Logged User
+.logged_user_cont {
+   padding-block: 2rem;
+   padding-inline: 0.85rem;
+   border-bottom: 1px solid;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   @media only screen and (max-width: $breakpoint-md) {
+      flex-direction: column;
+   }
+
+   gap: 0.5rem;
+
+   & > img {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.05);
+   }
+
+   &__user_cont {
+      & > h4 {
+         font-size: 0.85rem;
+         font-weight: 500;
+         @media only screen and (max-width: $breakpoint-md) {
+            text-align: center;
+         }
+
+         @media only screen and (max-width: $breakpoint-sm) {
+            display: none;
+         }
+      }
+
+      & > p {
+         font-size: 0.65rem;
+         @media only screen and (max-width: $breakpoint-sm) {
+            display: none;
+         }
+      }
+   }
+}
+
+.links_scroll_cont {
+   max-height: 60%;
+   overflow-y: scroll;
+   width: 100%;
+   padding: 0;
+}
+.links_scroll_cont::-webkit-scrollbar {
+   width: 0;
+}

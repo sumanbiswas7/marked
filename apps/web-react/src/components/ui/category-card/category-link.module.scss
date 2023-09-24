@@ -1,0 +1,53 @@
+.container {
+   padding: 0.5rem;
+   position: relative;
+
+   & > .top_box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & > p {
+         font-size: 0.85rem;
+      }
+   }
+
+   & > .bottom_box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & > p {
+         font-size: 0.7rem;
+         padding-right: 0.5rem;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+      }
+   }
+}
+
+.main_cont {
+   display: flex;
+
+   border-radius: 0.25rem;
+   overflow: hidden;
+
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 0.5rem;
+
+   .link_cont {
+      width: 100%;
+   }
+}
+.icon_cont {
+   min-width: 3.5rem;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   .icon {
+   }
+}
