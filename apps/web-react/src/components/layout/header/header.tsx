@@ -1,5 +1,3 @@
-"use client";
-
 import { useTheme } from "../../../hooks/use-theme";
 import { getGreeting } from "../../../utils/greet";
 import { NotificationButton } from "../../ui/notification-button/notification-button";

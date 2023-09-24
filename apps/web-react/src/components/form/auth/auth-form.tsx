@@ -1,6 +1,5 @@
-"use client";
-
-import Link from "next/link";
+import * as React from "react";
+import { Link } from "react-router-dom";
 import { useTheme } from "../../../hooks/use-theme";
 import styles from "./auth-form.module.scss";
 import { motion } from "framer-motion";
@@ -10,12 +9,12 @@ import { errorNotification, successNotification } from "../../../utils/show-noti
 import { LoadingOverlay } from "@mantine/core";
 import { oauthRegister } from "../../../api/auth/oauth-register";
 import { setCache, setToken } from "../../../utils/get-token";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 
 export default function AuthForm({ type }: Props) {
    const [loading, setLoading] = useState(false);
    const { theme } = useTheme();
-   const route = useRouter();
+   const navigate = useNavigate();
 
    function handleReject(reject: string | objectType) {
       setLoading(false);
@@ -30,28 +29,30 @@ export default function AuthForm({ type }: Props) {
       const image = res?.picture;
       if (!email || !name) return errorNotification(`Opps! Something went wrong`);
 
-      const httpRes = await oauthRegister({ email, name, image });
+      return;
+      // FIXME: getting error in oauth-register imports from @marked/utils
+      // const httpRes = await oauthRegister({ email, name, image });
 
-      if (httpRes.isError) {
-         setLoading(false);
-         return errorNotification(httpRes.message || `Unable to perform ${type}`);
-      }
+      // if (httpRes.isError) {
+      //    setLoading(false);
+      //    return errorNotification(httpRes.message || `Unable to perform ${type}`);
+      // }
 
-      const token = (httpRes.data as any).token;
-      const user = (httpRes.data as any).user;
-      localStorage.clear();
+      // const token = (httpRes.data as any).token;
+      // const user = (httpRes.data as any).user;
+      // localStorage.clear();
 
-      if (token && user) {
-         // Success case: Both token and user exist
-         setToken(token);
-         successNotification(`${type} successfull`);
-         setLoading(false);
-         route.push("/dashboard");
-      } else {
-         // Error case: Either token or user is missing
-         setLoading(false);
-         return errorNotification(`Unable to perform ${type}`);
-      }
+      // if (token && user) {
+      //    // Success case: Both token and user exist
+      //    setToken(token);
+      //    successNotification(`${type} successfull`);
+      //    setLoading(false);
+      //    navigate("/dashboard");
+      // } else {
+      //    // Error case: Either token or user is missing
+      //    setLoading(false);
+      //    return errorNotification(`Unable to perform ${type}`);
+      // }
    }
 
    return (
@@ -66,7 +67,7 @@ export default function AuthForm({ type }: Props) {
          <div className={styles.provider_btn_cont}>
             <LoginSocialGoogle
                onLoginStart={() => setLoading(true)}
-               client_id={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "n/a"}
+               client_id={"695710522856-md3eud1moe8l94qh1ek28ksgf2dl3ds3.apps.googleusercontent.com"}
                onReject={handleReject}
                onResolve={handleResolve}
                scope="https://www.googleapis.com/auth/userinfo.email"
@@ -96,11 +97,11 @@ export default function AuthForm({ type }: Props) {
             {type === "login" ? "No account? " : "Have an account? "}
             <span>
                {type === "signup" ? (
-                  <Link style={{ color: theme.text.shade1 }} href="/auth/login">
+                  <Link style={{ color: theme.text.shade1 }} to="/auth/login">
                      Sign in
                   </Link>
                ) : (
-                  <Link style={{ color: theme.text.shade1 }} href="/auth/signup">
+                  <Link style={{ color: theme.text.shade1 }} to="/auth/signup">
                      Sign up
                   </Link>
                )}

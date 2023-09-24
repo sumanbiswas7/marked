@@ -1,6 +1,4 @@
-"use client";
-
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import styles from "./link.module.scss";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -28,7 +26,7 @@ export function SideNavLink({ to, title, icons, bottom }: Props): JSX.Element {
    return (
       <motion.div whileHover="animate">
          <Link
-            href={to}
+            to={to}
             className={bottom ? `${styles.container} ${styles.bottom_link}` : styles.container}
             style={bottom ? bottomStyle : style}
          >

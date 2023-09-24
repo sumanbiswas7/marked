@@ -1,13 +1,12 @@
-"use client";
-
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
+
 import { errorNotification, successNotification } from "../utils/show-notifications";
 
 export function useAuth() {
    const [authLoad, setAuthLoad] = useState(true);
    const [authErr, setAuthErr] = useState(false);
-   const route = useRouter();
+   const navigate = useNavigate();
 
    useEffect(() => {
       const cached = localStorage.getItem("access_token");
@@ -15,7 +14,7 @@ export function useAuth() {
       if (!cached) {
          setAuthErr(true);
          errorNotification("User not Authenticated");
-         route.replace("/auth/login");
+         navigate("/auth/login");
       } else {
          successNotification("User Authenticated");
       }

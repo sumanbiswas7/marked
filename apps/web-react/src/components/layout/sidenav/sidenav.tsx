@@ -1,6 +1,4 @@
-"use client";
-
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { SideNavLink } from "./link";
 import styles from "./sidenav.module.scss";
 import { truncateEmail } from "../../../utils/slice-email";
@@ -33,7 +31,7 @@ export function SideNav(): JSX.Element {
                   theme.colorScheme === "dark" ? `url("/sidenav/bg_texture.webp")` : `url("/sidenav/bg_texture.webp")`,
             }}
          >
-            <Link href="/" className={styles.header_top_cont__logo_cont}>
+            <Link to="/" className={styles.header_top_cont__logo_cont}>
                <img src="/text-logo.svg" className={styles.logo_big_screen} />
             </Link>
 
