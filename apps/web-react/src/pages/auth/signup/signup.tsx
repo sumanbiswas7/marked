@@ -1,3 +1,4 @@
+import * as React from "react";
 import styles from "./signup.module.scss";
 import AuthForm from "../../../components/form/auth/auth-form";
 import { AuthLayout } from "../../../components/layout/auth-layout/auth-layout";

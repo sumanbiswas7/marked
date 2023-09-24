@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Link } from "react-router-dom";
 import { SideNavLink } from "./link";
 import styles from "./sidenav.module.scss";

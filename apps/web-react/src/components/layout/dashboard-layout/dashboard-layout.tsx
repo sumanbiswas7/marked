@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Header } from "../../../components/layout/header/header";
 import { SideNav } from "../../../components/layout/sidenav/sidenav";
 import { useAuth } from "../../../hooks/use-auth";

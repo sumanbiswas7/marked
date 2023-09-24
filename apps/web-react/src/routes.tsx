@@ -1,3 +1,4 @@
+import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/home/home";
 import DashboardHomePage from "./pages/dashboard/home/home";

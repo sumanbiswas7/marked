@@ -1,8 +1,8 @@
+import * as React from "react";
 import { Link } from "react-router-dom";
 import styles from "./link.module.scss";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import React from "react";
 import { useTheme } from "../../../hooks/use-theme";
 
 export function SideNavLink({ to, title, icons, bottom }: Props): JSX.Element {
