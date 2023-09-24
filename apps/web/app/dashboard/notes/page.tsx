@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./notes.module.scss";
 
 export default function DashboardNotesPage(): JSX.Element {
