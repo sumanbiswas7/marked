@@ -8,6 +8,7 @@ import { truncateEmail } from "../../../utils/slice-email";
 import { IconLayoutDashboard, IconLink, IconList, IconNotes, IconCreditCard, IconSettings } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
 import { useAuthUser } from "../../../hooks/use-auth-user";
+import { AuthUserSkeleton } from "../../skeleton/auth-user-skeleton";
 
 export function SideNav(): JSX.Element {
    const { theme } = useTheme();
@@ -41,7 +42,7 @@ export function SideNav(): JSX.Element {
 
          {/* Logged User */}
          {loading ? (
-            <p>Loading Auth User...</p>
+            <AuthUserSkeleton />
          ) : (
             <>
                {error ? (
