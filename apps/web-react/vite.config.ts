@@ -1,11 +1,9 @@
-import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { defineConfig } from "vitest/config";
 import commonjs from "vite-plugin-commonjs";
 
-// https://vitejs.dev/config/
 export default defineConfig({
    plugins: [
       react({
@@ -24,14 +22,10 @@ export default defineConfig({
       }),
       commonjs(),
    ],
-   optimizeDeps: {
-      include: ["@marked/utils", "@marked/*"],
-   },
+
    build: {
       commonjsOptions: {
          include: [],
-         exclude: ["@marked/*"],
       },
-      rollupOptions: { external: ["react", "react/jsx-runtime", "react-router"] },
    },
 });

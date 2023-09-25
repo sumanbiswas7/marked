@@ -29,30 +29,29 @@ export default function AuthForm({ type }: Props) {
       const image = res?.picture;
       if (!email || !name) return errorNotification(`Opps! Something went wrong`);
 
-      return;
       // FIXME: getting error in oauth-register imports from @marked/utils
-      // const httpRes = await oauthRegister({ email, name, image });
+      const httpRes = await oauthRegister({ email, name, image });
 
-      // if (httpRes.isError) {
-      //    setLoading(false);
-      //    return errorNotification(httpRes.message || `Unable to perform ${type}`);
-      // }
+      if (httpRes.isError) {
+         setLoading(false);
+         return errorNotification(httpRes.message || `Unable to perform ${type}`);
+      }
 
-      // const token = (httpRes.data as any).token;
-      // const user = (httpRes.data as any).user;
-      // localStorage.clear();
+      const token = (httpRes.data as any).token;
+      const user = (httpRes.data as any).user;
+      localStorage.clear();
 
-      // if (token && user) {
-      //    // Success case: Both token and user exist
-      //    setToken(token);
-      //    successNotification(`${type} successfull`);
-      //    setLoading(false);
-      //    navigate("/dashboard");
-      // } else {
-      //    // Error case: Either token or user is missing
-      //    setLoading(false);
-      //    return errorNotification(`Unable to perform ${type}`);
-      // }
+      if (token && user) {
+         // Success case: Both token and user exist
+         setToken(token);
+         successNotification(`${type} successfull`);
+         setLoading(false);
+         navigate("/dashboard");
+      } else {
+         // Error case: Either token or user is missing
+         setLoading(false);
+         return errorNotification(`Unable to perform ${type}`);
+      }
    }
 
    return (
