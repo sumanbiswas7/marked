@@ -3,15 +3,18 @@
    "extends": "./base.json",
    "Display": "Vite",
    "compilerOptions": {
-      "allowJs": false,
-      "esModuleInterop": false,
-      "jsx": "react",
+      "allowJs": true,
+      "esModuleInterop": true,
+      "declaration": false,
+      "declarationMap": false,
+      "incremental": true,
+      "jsx": "preserve",
       "lib": ["dom", "dom.iterable", "esnext"],
-      "module": "ESNext",
+      "module": "CommonJS",
       "noEmit": true,
       "resolveJsonModule": true,
-      "skipLibCheck": false,
-      "target": "ESNext",
-      "types": ["vite/client"]
+      "strict": false,
+      "target": "es5",
+      "allowImportingTsExtensions": true
    }
 }

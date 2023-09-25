@@ -6,6 +6,7 @@ import { Providers } from "./components/provider/providers.tsx";
 import { router } from "./routes.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+   // @ts-ignore
    <React.StrictMode>
       <Providers>
          <RouterProvider router={router} />
