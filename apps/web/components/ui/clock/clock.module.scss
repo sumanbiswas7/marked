@@ -1,0 +1,25 @@
+.container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 0.75rem;
+   font-weight: 300;
+
+   .icon_box {
+      border-radius: 0.65rem;
+      width: 2.5rem;
+      height: 2rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .icon_sun {
+      background: linear-gradient(120deg, #f7a577 10%, #fff177 90%);
+   }
+
+   .icon_moon {
+      background: linear-gradient(120deg, #779bf7 10%, #2e68ff 90%);
+   }
+}
