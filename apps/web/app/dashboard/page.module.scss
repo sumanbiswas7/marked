@@ -1,11 +1,17 @@
+@import "../../theme/constants.scss";
+
 .main_container {
    height: 100%;
    display: flex;
 
+   @media only screen and (max-width: $breakpoint-md) {
+      flex-direction: column;
+   }
+
    & > .left_container {
       height: 100%;
       width: 55%;
-    //   background-color: blue;
+      //   background-color: blue;
 
       display: flex;
       justify-content: center;
@@ -13,6 +19,14 @@
       align-items: center;
       gap: 1rem;
       padding: 1rem;
+
+      @media only screen and (max-width: $breakpoint-md) {
+         width: 100%;
+      }
+
+      @media only screen and (max-width: $breakpoint-sm) {
+         padding: 0;
+      }
    }
 
    & > .right_container {
@@ -25,6 +39,14 @@
       align-items: center;
       gap: 1rem;
       padding: 1rem;
+
+      @media only screen and (max-width: $breakpoint-md) {
+         width: 100%;
+      }
+
+      @media only screen and (max-width: $breakpoint-sm) {
+         padding: 0;
+      }
    }
 
    .top_row {

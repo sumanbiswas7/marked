@@ -4,7 +4,28 @@ import styles from "./daily-tasks-stat.module.scss";
 import { StatsWrapper } from "../stats-wrapper/stats-wrapper";
 import { useTheme } from "../../../../hooks/use-theme";
 
+const DUMMY_TASKS = [
+   {
+      title: "Go to Shopping",
+      completed: true,
+   },
+   {
+      title: "Watch Barbie",
+      completed: true,
+   },
+   {
+      title: "Read bun.sh docs",
+      completed: false,
+   },
+   {
+      title: "Go shopping",
+      completed: false,
+   },
+];
+
 export function DailyTasks() {
+   const { theme } = useTheme();
+
    return (
       <StatsWrapper
          title="Daily Tasks"
@@ -13,6 +34,17 @@ export function DailyTasks() {
       >
          <div className={styles.container}>
             <DonutChart value={78.63} />
+            <div className={styles.task_table} style={{ borderColor: theme.border.shade1 }}>
+               {DUMMY_TASKS.slice(0, 4).map((task) => (
+                  <div className={styles.task} style={{ borderColor: theme.border.shade1 }}>
+                     <p className={styles.task_title}>{task.title}</p>
+                     <div
+                        className={styles.dot}
+                        style={{ backgroundColor: task.completed ? theme.green : theme.red }}
+                     />
+                  </div>
+               ))}
+            </div>
          </div>
       </StatsWrapper>
    );

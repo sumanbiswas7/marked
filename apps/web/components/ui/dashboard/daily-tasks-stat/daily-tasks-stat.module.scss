@@ -1,5 +1,11 @@
+@import "../../../../theme/constants.scss";
+
 .container {
    margin-top: 1rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 10%;
 }
 
 // Donut chart
@@ -13,5 +19,36 @@
 
    .number {
       font-size: 1.2rem;
+   }
+}
+
+.task_table {
+   display: flex;
+   flex-direction: column;
+   border: 1px solid;
+   border-radius: 0.5rem;
+   overflow: hidden;
+
+   @media only screen and (max-width: $breakpoint-sm) {
+      display: none;
+   }
+}
+
+.task {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0.25rem 0.85rem;
+   border-bottom: 1px solid;
+   gap: 1rem;
+
+   .task_title {
+      font-size: 0.8rem;
+   }
+
+   .dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
    }
 }
