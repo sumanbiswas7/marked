@@ -15,10 +15,12 @@ export interface MyTheme {
    border: {
       shade1: string;
       shade2: string;
+      shade3: string;
    };
    card: {
       shade1: string;
       shade2: string;
+      shade3: string;
    };
    green: string;
    red: string;

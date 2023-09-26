@@ -1,0 +1,17 @@
+.container {
+   margin-top: 1rem;
+}
+
+// Donut chart
+.progress {
+   width: 7rem;
+   height: 7rem;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   .number {
+      font-size: 1.2rem;
+   }
+}

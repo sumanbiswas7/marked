@@ -12,10 +12,12 @@ export const DARK_THEME: MyTheme = {
    border: {
       shade1: "#313131",
       shade2: "#3B3B3B",
+      shade3: "#3B3B3B",
    },
    card: {
       shade1: "#313131",
       shade2: "#3B3B3B",
+      shade3: "#3B3B3B",
    },
    green: "#89DC7C",
    red: "#F36C6C",

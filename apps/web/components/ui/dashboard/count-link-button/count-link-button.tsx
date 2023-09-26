@@ -1,10 +1,10 @@
 "use client";
 
-import { useTheme } from "../../../hooks/use-theme";
-import styles from "./dashboard-count-link-button.module.scss";
+import { useTheme } from "../../../../hooks/use-theme";
+import styles from "./count-link-button.module.scss";
 import Link from "next/link";
 
-export function DashboardCountLinkButton({ href, count, description, title }: Props) {
+export function CountLinkButton({ href, count, description, title }: Props) {
    const { theme } = useTheme();
 
    return (

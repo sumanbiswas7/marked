@@ -20,7 +20,9 @@
    }
 }
 .child_container {
-   padding: 0.85rem 1.5rem;
+   // padding: 0.85rem 1.5rem;
+   padding: 1rem;
+
    height: $dashboard-child-height;
    width: $dashboard-children_width;
    overflow-y: scroll;

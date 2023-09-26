@@ -1,0 +1,30 @@
+.container {
+   padding: 1rem;
+   border: 1px solid;
+   border-radius: 0.85rem;
+   width: 100%;
+
+   & > .top_row {
+      display: flex;
+      justify-content: space-between;
+      background-color: transparent;
+      gap: 1rem;
+
+      p {
+         font-size: 0.8rem;
+      }
+
+      .title {
+         font-weight: 500;
+      }
+
+      .impression {
+         width: 1.5rem;
+         height: 1.5rem;
+         border-radius: 50%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+   }
+}
