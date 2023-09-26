@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
-import { useRouter } from "next/navigation";
-import { useAuth } from "../../hooks/use-auth";
 import { Clock } from "../../components/ui/clock/clock";
 import { CountLinkButton } from "../../components/ui/dashboard/count-link-button/count-link-button";
 import { DailyTasks } from "../../components/ui/dashboard/daily-tasks-stat/daily-tasks-stat";
 import { ExpenseStats } from "../../components/ui/dashboard/expense-stat/expense-stat";
 import { NotificationStats } from "../../components/ui/dashboard/notification-stats/notification-stats";
+import { LinkInBio } from "../../components/ui/dashboard/link-in-bio/link-in-bio";
 
 export default function DashboardPage(): JSX.Element {
    return (
@@ -33,6 +31,16 @@ export default function DashboardPage(): JSX.Element {
                <Clock />
             </div>
             <NotificationStats />
+            <LinkInBio />
+            <div className={styles.top_row}>
+               <CountLinkButton count={12} title="Notes" description="View your notes" href="/dashboard/notes" />
+               <CountLinkButton
+                  count={4}
+                  title="Saved Links"
+                  description="View saved links"
+                  href="/dashboard/categories"
+               />
+            </div>
          </div>
       </div>
    );

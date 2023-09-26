@@ -1,0 +1,35 @@
+.buttons {
+   margin-top: 1rem;
+   display: flex;
+   background-color: red;
+   justify-content: center;
+   align-items: center;
+   padding: 0.75rem 1rem;
+   gap: 0.5rem;
+   border-radius: 0.5rem;
+   font-size: 0.8rem;
+
+   .btn {
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      outline: none;
+      font-family: inherit;
+      border: none;
+      background-color: transparent;
+
+      & > span {
+         margin-left: 2px;
+         margin-top: 2px;
+      }
+   }
+
+   .divider {
+      height: 1.5rem;
+      width: 1px;
+      background-color: #1d1d1d;
+   }
+}
