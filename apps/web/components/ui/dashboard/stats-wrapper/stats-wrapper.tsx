@@ -20,15 +20,17 @@ export function StatsWrapper({ children, description, title, impression }: Props
                </p>
                <p style={{ color: theme.text.shade2 }}>{description}</p>
             </div>
-            {impression && impression === "good" ? (
-               <div className={styles.impression} style={{ backgroundColor: theme.green }}>
-                  <IconThumbUpFilled color={theme.text.shade3} size={15} />
-               </div>
-            ) : (
-               <div className={styles.impression} style={{ backgroundColor: theme.green }}>
-                  <IconThumbDownFilled color={theme.text.shade3} size={15} />
-               </div>
-            )}
+            {impression ? (
+               impression === "good" ? (
+                  <div className={styles.impression} style={{ backgroundColor: theme.green }}>
+                     <IconThumbUpFilled color={theme.text.shade3} size={15} />
+                  </div>
+               ) : (
+                  <div className={styles.impression} style={{ backgroundColor: theme.red }}>
+                     <IconThumbDownFilled color={theme.text.shade3} size={15} />
+                  </div>
+               )
+            ) : null}
          </div>
          {children}
       </div>
@@ -39,5 +41,5 @@ interface Props {
    children: React.ReactNode;
    title: string;
    description: string;
-   impression: "good" | "bad";
+   impression?: "good" | "bad";
 }
