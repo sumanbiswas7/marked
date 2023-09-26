@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter, useParams } from "next/navigation";
 import styles from "./category-link.module.scss";
+import { useRouter, useParams } from "next/navigation";
 import { useState } from "react";
 import { DashboardSlotHeader } from "../../../../components/layout/dashboard-header/dashboard-header";
 import { useTheme } from "../../../../hooks/use-theme";

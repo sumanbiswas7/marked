@@ -1,8 +1,8 @@
 "use client";
 
 import styles from "./links.module.scss";
-import { useEffect, useState } from "react";
-import { Grid, Loader } from "@mantine/core";
+import { useState } from "react";
+import { Grid } from "@mantine/core";
 import { CategoryCard } from "../../../components/ui/category-card/category-card";
 import { DashboardSlotHeader } from "../../../components/layout/dashboard-header/dashboard-header";
 import { Category } from "@marked/types";
@@ -12,7 +12,6 @@ import { IconPlus } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
 import { NoData } from "../../../components/ui/empty-state/no-data";
 import { getAllCategory } from "../../../api/category/get-all-category";
-import { setToken } from "../../../utils/get-token";
 import { useQuery } from "@tanstack/react-query";
 
 export default function DashboardLinksPage(): JSX.Element {
