@@ -1,0 +1,31 @@
+.container {
+   width: 13vmax;
+   padding: 0.5rem;
+   border-radius: 0.5rem;
+   text-decoration: none;
+   position: relative;
+
+   & > p {
+      font-size: 0.8rem;
+   }
+
+   & > p:nth-child(1) {
+      // Title
+   }
+   & > p:nth-child(2) {
+      // Description
+   }
+
+   .count {
+      position: absolute;
+      top: -0.4rem;
+      right: -0.4rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 0.9rem;
+   }
+}

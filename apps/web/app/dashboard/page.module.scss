@@ -1,0 +1,34 @@
+.main_container {
+   height: 100%;
+   background-color: red;
+   display: flex;
+
+   & > .left_container {
+      height: 100%;
+      width: 55%;
+      background-color: blue;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+   }
+
+   & > .right_container {
+      height: 100%;
+      width: 45%;
+      background-color: green;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+   }
+
+   .top_row {
+      display: flex;
+      gap: 1rem;
+   }
+}
