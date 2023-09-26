@@ -40,6 +40,6 @@ export function StatsWrapper({ children, description, title, impression }: Props
 interface Props {
    children: React.ReactNode;
    title: string;
-   description: string;
+   description?: string;
    impression?: "good" | "bad";
 }

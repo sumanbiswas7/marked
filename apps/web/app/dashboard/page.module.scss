@@ -32,10 +32,11 @@
    & > .right_container {
       height: 100%;
       width: 45%;
-      background-color: green;
+      // background-color: green;
 
       display: flex;
       justify-content: center;
+      flex-direction: column;
       align-items: center;
       gap: 1rem;
 
@@ -52,5 +53,8 @@
       display: flex;
       gap: 1rem;
       width: 100%;
+   }
+   .top_row_right {
+      justify-content: center;
    }
 }

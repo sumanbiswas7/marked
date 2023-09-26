@@ -8,6 +8,7 @@ import { Clock } from "../../components/ui/clock/clock";
 import { CountLinkButton } from "../../components/ui/dashboard/count-link-button/count-link-button";
 import { DailyTasks } from "../../components/ui/dashboard/daily-tasks-stat/daily-tasks-stat";
 import { ExpenseStats } from "../../components/ui/dashboard/expense-stat/expense-stat";
+import { NotificationStats } from "../../components/ui/dashboard/notification-stats/notification-stats";
 
 export default function DashboardPage(): JSX.Element {
    return (
@@ -28,7 +29,10 @@ export default function DashboardPage(): JSX.Element {
             <ExpenseStats impression="bad" />
          </div>
          <div className={styles.right_container}>
-            <Clock />
+            <div className={`${styles.top_row} ${styles.top_row_right}`}>
+               <Clock />
+            </div>
+            <NotificationStats />
          </div>
       </div>
    );
