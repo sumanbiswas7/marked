@@ -1,9 +1,15 @@
+@import "../../../theme/constants.scss";
+
 .container {
    display: flex;
    justify-content: center;
    align-items: center;
    gap: 0.75rem;
    font-weight: 300;
+
+   @media only screen and (max-width: $breakpoint-md) {
+      display: none;
+   }
 
    .icon_box {
       border-radius: 0.65rem;
