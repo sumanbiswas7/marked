@@ -5,6 +5,7 @@ import { CustomMantineProvider } from "../components/provider/mantine-provider";
 import { ThemeContextProvider } from "../components/provider/theme-provider";
 import { TanstackQueryProvider } from "../components/provider/tanstack-provider";
 import { AuthUserContextProvider } from "../components/provider/auth-user-provider";
+import NextTopLoader from "nextjs-toploader";
 
 const poppins = Poppins({
    weight: ["200", "300", "400", "500", "600"],
@@ -23,7 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
             <ThemeContextProvider>
                <TanstackQueryProvider>
                   <CustomMantineProvider>
-                     <body className={poppins.className}>{children}</body>
+                     <body className={poppins.className}>
+                        <NextTopLoader color="#2E2E2E" showSpinner={false} shadow={false} />
+                        {children}
+                     </body>
                   </CustomMantineProvider>
                </TanstackQueryProvider>
             </ThemeContextProvider>
