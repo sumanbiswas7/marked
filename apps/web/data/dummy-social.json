@@ -1,0 +1,9 @@
+{
+   "facebook": "https://www.youtube.com/",
+   "tiktok": "https://www.youtube.com/",
+   "twitter": "https://www.youtube.com/",
+   "other": [
+      { "title": "My Project 1", "link": "https://www.youtube.com/" },
+      { "title": "My Project 2", "link": "https://www.youtube.com/" }
+   ]
+}

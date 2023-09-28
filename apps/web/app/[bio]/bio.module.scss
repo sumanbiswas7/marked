@@ -1,0 +1,162 @@
+/* 
+  Author's note: The styles for this gradient grid background is heavily inspired by
+  Paco & Rauno's amazing CMDK site (https://cmdk.paco.me) – all credits go to them! 
+*/
+
+.main {
+   width: 100vw;
+   min-height: 100vh;
+   position: fixed;
+   z-index: -1;
+   display: flex;
+   justify-content: center;
+   padding: 120px 24px 160px 24px;
+   pointer-events: none;
+}
+
+.main:before {
+   background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #1d1d1d 500%);
+   position: absolute;
+   content: "";
+   z-index: 2;
+   width: 100%;
+   height: 100%;
+   top: 0;
+}
+
+.main:after {
+   content: "";
+   //    background-image: url("/profile/texture-3.webp");
+   background-image: url("/profile/texture-4.png");
+   background-size: contain;
+
+   z-index: 1;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   opacity: 0.3;
+   filter: invert(1);
+}
+
+.content {
+   height: 100%;
+   width: 100%;
+   //    background: linear-gradient(117deg, red 0%, black 100%);
+   background: linear-gradient(117deg, rgb(215, 215, 215) 0%, #f5f5f5 100%);
+   position: absolute;
+   top: 0;
+   content: "";
+}
+
+// Main Content
+.content_center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.content_container {
+   margin-top: 2rem;
+   padding: 1rem;
+
+   @media only screen and (max-width: 400px) {
+      margin-top: 3rem;
+      padding: 0;
+   }
+
+   .top_container {
+      @media only screen and (max-width: 400px) {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+      }
+
+      & > img {
+         width: 8rem;
+         height: 8rem;
+         border-radius: 50%;
+
+         @media only screen and (max-width: 400px) {
+            width: 5rem;
+            height: 5rem;
+         }
+      }
+      & > h1 {
+         font-size: 2.65rem;
+         @media only screen and (max-width: 400px) {
+            font-size: 2rem;
+         }
+      }
+   }
+
+   .other_links_cont {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      & > .link {
+         width: 70vw;
+         padding-block: 0.85rem;
+         padding-inline: 1rem;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         text-decoration: none;
+         border-radius: 0.5rem;
+         border: 1px solid;
+         // box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.25);
+
+         @media only screen and (max-width: 600px) {
+            width: 90vw;
+         }
+         @media only screen and (max-width: 400px) {
+            width: 95vw;
+            padding-block: 0.75rem;
+         }
+      }
+   }
+
+   .bottom_powered_by_cont {
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+
+      a {
+         color: inherit;
+      }
+
+      .eye_icon_cont {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 0.25rem;
+      }
+   }
+}
+
+.social_cont {
+   margin-top: 0.5rem;
+   display: flex;
+   gap: 0.5rem;
+
+   & > a {
+      text-decoration: none;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: red;
+      color: black;
+
+      @media only screen and (max-width: 400px) {
+         width: 2rem;
+         height: 2rem;
+      }
+   }
+}
