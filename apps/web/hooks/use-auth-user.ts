@@ -33,5 +33,9 @@ export function useAuthUser() {
       setLoading(false);
    }
 
-   return { user, error, loading };
+   async function revalidate() {
+      await getAuthUserFromApi();
+   }
+
+   return { user, error, loading, revalidate };
 }

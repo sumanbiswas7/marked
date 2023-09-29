@@ -25,7 +25,9 @@ export default function BioPage() {
    // Change theme here
    const theme: SocialTheme = socialThemes["milk"];
    const user = (data?.data as any).user as User;
-   const otherLinksArr = user.social?.other || [{ name: "Marked", link: "/" }];
+
+   const other = user.social?.other;
+   const otherLinksArr = other && other.length ? other : [{ name: "Marked", link: "/" }];
 
    return (
       <>
