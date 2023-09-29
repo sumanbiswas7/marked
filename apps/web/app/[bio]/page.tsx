@@ -8,6 +8,7 @@ import { errorNotification } from "../../utils/show-notifications";
 import DUMMY_SOCIAL from "../../data/dummy-social.json";
 import { IconBrandFacebook, IconBrandTiktok, IconBrandTwitter, IconEye } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import { SocialTheme, socialThemes } from "../../constants/social-themes";
 
 export default function BioPage() {
    const params = useParams();
@@ -21,10 +22,18 @@ export default function BioPage() {
       if (isValidEmail(email) === false) return errorNotification(`Given user "${email}" is not valid`);
    }
 
+   // Change theme here
+   const theme: SocialTheme = socialThemes["ocean"];
+
    return (
       <>
          <div className={styles.main}>
-            <div className={styles.content} />
+            <div
+               className={styles.content}
+               style={{
+                  background: `linear-gradient(117deg, ${theme.background.gradient[0]} 0%, ${theme.background.gradient[1]} 100%)`,
+               }}
+            />
          </div>
 
          <div className={styles.content_center}>
@@ -32,9 +41,9 @@ export default function BioPage() {
                {/* Profile and Social Media */}
                <div className={styles.top_container}>
                   <img src="/bio/me.png" alt="Suman Biswas.png" />
-                  <h1 style={{ color: "#000000" }}>Suman Biswas</h1>
-                  <p style={{ color: "#9F9F9F" }}>FullStack App and Web Developer</p>
-                  <SocialLinks />
+                  <h1 style={{ color: theme.text }}>Suman Biswas</h1>
+                  <p style={{ color: theme.description }}>FullStack App and Web Developer</p>
+                  <SocialLinks theme={theme} />
                </div>
                {/* Other Links */}
                <div className={styles.other_links_cont}>
@@ -45,14 +54,18 @@ export default function BioPage() {
                         className={styles.link}
                         href={link.link}
                         target="_blank"
-                        style={{ backgroundColor: "#fff", color: "#000", borderColor: "#DBDBDB" }}
+                        style={{
+                           backgroundColor: theme.card.background,
+                           color: theme.text,
+                           borderColor: theme.card.border,
+                        }}
                      >
                         {link.title}
                      </motion.a>
                   ))}
                </div>
                {/* Powered by */}
-               <div className={styles.bottom_powered_by_cont}>
+               <div className={styles.bottom_powered_by_cont} style={{ color: theme.copyright }}>
                   <p>
                      Powered by{" "}
                      <a href="https://marked-web.vercel.app" target="_blank">
@@ -60,7 +73,7 @@ export default function BioPage() {
                      </a>
                   </p>
 
-                  <div className={styles.eye_icon_cont} style={{ color: "#000" }}>
+                  <div className={styles.eye_icon_cont}>
                      <IconEye size={17} />
                      <span>101</span>
                   </div>
@@ -71,9 +84,9 @@ export default function BioPage() {
    );
 }
 
-function SocialLinks() {
-   const iconColor = "#FFF";
-   const iconBgColor = "#616161";
+function SocialLinks({ theme }: SocialLinksProps) {
+   const iconColor = theme.icon.fill;
+   const iconBgColor = theme.icon.backgdound;
 
    const data = DUMMY_SOCIAL;
 
@@ -117,17 +130,17 @@ function SocialLinks() {
 }
 
 interface SocialLinksProps {
-   links: {
-      instagram: string;
-      github?: string;
-      facebook?: string;
-      tiktok?: string;
-      twitter?: string;
-      snapchat?: string;
-      leetcode?: string;
-      youtube?: string;
-      other?: string;
-      portfolio?: string;
-      linkedin?: string;
-   };
+   theme: SocialTheme;
 }
+
+// instagram: string;
+// github?: string;
+// facebook?: string;
+// tiktok?: string;
+// twitter?: string;
+// snapchat?: string;
+// leetcode?: string;
+// youtube?: string;
+// other?: string;
+// portfolio?: string;
+// linkedin?: string;
