@@ -7,8 +7,16 @@ import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 import { socialMediaKeys } from "../../data/social-media-keys";
 
 /**
- * Extracts userId from access_token and finds the social media and deletes the key
+ * Delete Social Link Controller Middleware
+ *
+ * This middleware extracts the user's ID from an access_token, receives a id key in the
+ * request param, and deletes the user's social media link based on the provided id.
+ *
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
  */
+
 export async function deleteController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();

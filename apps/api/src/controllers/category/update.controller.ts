@@ -6,6 +6,16 @@ import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 import { validateUpdateCatagory } from "../../utils/validators/category-validate";
 
+/**
+ * Update Category Middleware
+ *
+ * This middleware extracts the user's ID from an access_token, and receives a Category id in
+ * request params and Category object in req.body and updates the keys present in req.body.
+ *
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
 export async function updateController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();

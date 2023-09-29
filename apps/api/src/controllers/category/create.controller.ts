@@ -6,6 +6,16 @@ import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 import { validateCreateCatagory } from "../../utils/validators/category-validate";
 
+/**
+ * Create new Category Middleware
+ *
+ * This middleware extracts the user's ID from an access_token, and receives a
+ * Category object in request body and creates a new category for the user.
+ *
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
 export async function createController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();
@@ -13,11 +23,11 @@ export async function createController(req: Request, res: Response, next: NextFu
 
       const userId = getIdFromAccessToken()(req, res, next);
 
-      const modifiedCategory = validateCreateCatagory(req.body)(req, res, next);
-      if (!modifiedCategory.isImportant) modifiedCategory.isImportant = false;
-      if (!modifiedCategory.color) modifiedCategory.color = pickRandmonColor();
+      const validCategory = validateCreateCatagory(req.body)(req, res, next);
+      if (!validCategory.isImportant) validCategory.isImportant = false;
+      if (!validCategory.color) validCategory.color = pickRandmonColor();
 
-      const created = await prisma.category.create({ data: { userId: userId!, ...modifiedCategory } });
+      const created = await prisma.category.create({ data: { userId: userId!, ...validCategory } });
 
       success.status = HTTP_STATUS.OK;
       success.message = `Category - ${created.id} created successfully`;

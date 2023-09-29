@@ -5,6 +5,16 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 
+/**
+ * Delete Category Middleware
+ *
+ * This middleware extracts the user's ID from an access_token, and receives a Category id from request params.
+ *  checks if the access_token owner is the category owner and deletes the category.
+ *
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
 export async function deleteController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();

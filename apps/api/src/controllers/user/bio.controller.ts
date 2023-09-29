@@ -4,6 +4,18 @@ import { HTTP_STATUS, isValidEmail } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 
+/**
+ * User Bio Controller Middleware
+ *
+ * This middleware retrieves user information based on their email, increments the view count
+ * for that user's profile, and responds with the user's details. It also handles various validation
+ * checks and error scenarios gracefully.
+ *
+ * @param {Request} req - The Express request object containing the user's email as a parameter.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
+
 export async function bioController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();

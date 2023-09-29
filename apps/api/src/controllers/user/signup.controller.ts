@@ -5,6 +5,19 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { signJwtToken } from "../../lib/jwt";
 
+/**
+ * User Signup Controller Middleware
+ *
+ * This middleware handles user signup by validating and creating a new user based on the provided
+ * email, name, age, and image. It checks for email uniqueness, generates a JWT token upon successful
+ * signup, and responds with the token and user details. Various validation checks and error handling
+ * are in place to ensure a smooth signup process.
+ *
+ * @param {Request} req - The Express request object containing user registration data in the request body.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
+
 export async function signupController(req: Request, res: Response, next: NextFunction) {
    const prisma = new PrismaClient();
 

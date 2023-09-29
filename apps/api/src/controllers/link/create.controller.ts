@@ -5,6 +5,18 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 
+/**
+ * Create Link Middleware
+ *
+ * This middleware extracts the user's ID from an access_token, receives a Category ID, link,
+ * and title in the request body, and creates a new link associated with the specified Category.
+ * It performs validation checks on the input data and handles errors accordingly.
+ *
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
+
 export async function createLink(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();

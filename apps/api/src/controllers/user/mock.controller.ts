@@ -4,6 +4,7 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import DUMMY_USER from "../../data/mock-user";
 
+// REVIEW: DELETE ME
 export async function mockUserController(req: Request, res: Response, next: NextFunction) {
    try {
       const success = new HttpResponse({});

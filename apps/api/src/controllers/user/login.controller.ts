@@ -5,6 +5,18 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { signJwtToken } from "../../lib/jwt";
 
+/**
+ * Login Controller Middleware
+ *
+ * This middleware handles user login by verifying the provided email and user ID,
+ * generating a JWT token upon successful login, and responding with the token.
+ * It performs validation checks on the input data and handles errors gracefully.
+ *
+ * @param {Request} req - The Express request object containing the user's email and ID in the request body.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
+
 export async function loginController(req: Request, res: Response, next: NextFunction) {
    const prisma = new PrismaClient();
 

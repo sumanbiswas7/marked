@@ -5,6 +5,19 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { signJwtToken } from "../../lib/jwt";
 
+/**
+ * OAuth Registration Controller Middleware
+ *
+ * This middleware handles user registration and login through OAuth. It validates and processes
+ * user information such as email, name, age, and image. It checks if the user already exists
+ * and either logs in or signs up accordingly. It also generates and responds with a JWT token
+ * upon successful registration or login. Various validation checks and error handling are in place.
+ *
+ * @param {Request} req - The Express request object containing user registration data in the request body.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
+
 export async function oauthRegisterController(req: Request, res: Response, next: NextFunction) {
    const prisma = new PrismaClient();
 

@@ -1,8 +1,20 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response, NextFunction } from "express";
-import { HTTP_STATUS, isValidEmail } from "@marked/utils";
+import { HTTP_STATUS } from "@marked/utils";
 import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
+
+/**
+ * All Users Controller Middleware
+ *
+ * This middleware retrieves all users from the database, including their associated categories.
+ * It sets an HTTP OK status code and responds with a list of all users. Any errors during this
+ * process are gracefully handled.
+ *
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
 
 export async function allController(req: Request, res: Response, next: NextFunction) {
    const prisma = new PrismaClient();

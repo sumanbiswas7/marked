@@ -5,6 +5,16 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 
+/**
+ * Get all Category Middleware
+ *
+ * This middleware extracts the user's ID from an access_token, and based on the
+ * Id returns all the categories the user has.
+ *
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
 export async function getAllCategory(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();

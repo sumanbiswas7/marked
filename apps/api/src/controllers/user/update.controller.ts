@@ -7,8 +7,17 @@ import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 import { validateUpdateUser } from "../../utils/validators/update-user-validate";
 
 /**
- * Extracts email from access_token and updates the user
+ * User Update Controller Middleware
+ *
+ * This middleware extracts the user's ID from an access_token, validates and updates the user's
+ * information based on the provided data. It responds with a success message upon successful update.
+ * Various validation checks and error handling are in place to ensure a smooth update process.
+ *
+ * @param {Request} req - The Express request object containing user update data in the request body.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
  */
+
 export async function updateController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();

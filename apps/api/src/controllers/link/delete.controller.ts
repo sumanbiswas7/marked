@@ -5,6 +5,18 @@ import { HttpResponse } from "../../models/response";
 import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 
+/**
+ * Delete Link Middleware
+ *
+ * This middleware extracts the user's ID from an access_token, checks if the user owns the
+ * category associated with the link to be deleted, and then proceeds to delete the specified link.
+ * It handles various validation checks and error scenarios.
+ *
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ */
+
 export async function deleteLink(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();
