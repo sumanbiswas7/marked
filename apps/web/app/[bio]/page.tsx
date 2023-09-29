@@ -40,9 +40,9 @@ export default function BioPage() {
             <div className={styles.content_container}>
                {/* Profile and Social Media */}
                <div className={styles.top_container}>
-                  <img src="/bio/me.png" alt="Suman Biswas.png" />
-                  <h1 style={{ color: theme.text }}>Suman Biswas</h1>
-                  <p style={{ color: theme.description }}>FullStack App and Web Developer</p>
+                  <img src={DUMMY_SOCIAL.img} alt={`${DUMMY_SOCIAL.name}.png`} />
+                  <h1 style={{ color: theme.text }}>{DUMMY_SOCIAL.name}</h1>
+                  <p style={{ color: theme.description }}>{DUMMY_SOCIAL.description}</p>
                   <SocialLinks theme={theme} />
                </div>
                {/* Other Links */}
@@ -75,7 +75,7 @@ export default function BioPage() {
 
                   <div className={styles.eye_icon_cont}>
                      <IconEye size={17} />
-                     <span>101</span>
+                     <span>{DUMMY_SOCIAL.views}</span>
                   </div>
                </div>
             </div>

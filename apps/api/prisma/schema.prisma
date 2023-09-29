@@ -18,6 +18,8 @@ model User {
   updatedAt     DateTime       @updatedAt
   name          String
   email         String         @unique
+  username      String?        @unique
+  about         String?
   age           Int?
   image         String?
   views         Int
