@@ -34,6 +34,8 @@ export interface UserMe {
    age: number | null;
    image: string | null;
    views: number;
+   about: string | null;
+   username: string | null;
    social: Social | null;
    notifications: Notification;
 }
