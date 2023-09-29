@@ -31,7 +31,11 @@ export async function bioController(req: Request, res: Response, next: NextFunct
 
       const user = await prisma.user.findUnique({
          where: { email: email },
-         include: { social: true },
+         include: {
+            social: {
+               include: { other: true },
+            },
+         },
       });
 
       if (!user) {
