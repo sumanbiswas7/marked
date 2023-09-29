@@ -2,28 +2,32 @@
 
 import { useParams } from "next/navigation";
 import styles from "./bio.module.scss";
-import { useEffect } from "react";
-import { isValidEmail } from "@marked/utils";
-import { errorNotification } from "../../utils/show-notifications";
-import DUMMY_SOCIAL from "../../data/dummy-social.json";
-import { IconBrandFacebook, IconBrandTiktok, IconBrandTwitter, IconEye } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { SocialTheme, socialThemes } from "../../constants/social-themes";
+import { PoweredBy } from "../../components/ui/bio/powered-by/powered-by";
+import { SocialLinks } from "../../components/ui/bio/social-links/social-links";
+import { useTheme } from "../../hooks/use-theme";
+import { useQuery } from "@tanstack/react-query";
+import { getBioFromEmail } from "../../api/user/get-bio";
+import { User } from "@marked/types";
 
-export default function BioPage() {
+export default function BioPage({ isEdit }: Props) {
    const params = useParams();
    const email = params.bio as string;
+   const { theme: webTheme } = useTheme();
+   const { data, status } = useQuery({
+      queryKey: ["bio"],
+      queryFn: () => getBioFromEmail(email),
+      enabled: email ? true : false,
+   });
 
-   useEffect(() => {
-      getBioFromEmail();
-   }, []);
-
-   function getBioFromEmail() {
-      if (isValidEmail(email) === false) return errorNotification(`Given user "${email}" is not valid`);
-   }
+   if (!isEdit && status === "loading") return <p>Loading...</p>;
+   if (!isEdit && status === "error") return <p>Error </p>;
 
    // Change theme here
-   const theme: SocialTheme = socialThemes["ocean"];
+   const theme: SocialTheme = socialThemes["milk"];
+   const user = (data?.data as any).user as User;
+   const otherLinksArr = user.social?.other || [{ name: "Marked", link: "/" }];
 
    return (
       <>
@@ -40,14 +44,26 @@ export default function BioPage() {
             <div className={styles.content_container}>
                {/* Profile and Social Media */}
                <div className={styles.top_container}>
-                  <img src={DUMMY_SOCIAL.img} alt={`${DUMMY_SOCIAL.name}.png`} />
-                  <h1 style={{ color: theme.text }}>{DUMMY_SOCIAL.name}</h1>
-                  <p style={{ color: theme.description }}>{DUMMY_SOCIAL.description}</p>
-                  <SocialLinks theme={theme} />
+                  <img src={user.image || "/sidenav/no-profile.jpg"} alt={`${user.name}.png`} />
+                  <h1 style={{ color: theme.text }}>{user.name}</h1>
+                  {user.about && <p style={{ color: theme.description }}>{user.about}</p>}
+
+                  <SocialLinks theme={theme} editButton={isEdit} data={user.social} />
                </div>
                {/* Other Links */}
                <div className={styles.other_links_cont}>
-                  {DUMMY_SOCIAL.other.map((link) => (
+                  {/* Add new Link Button*/}
+                  {isEdit && (
+                     <motion.button
+                        whileHover={{ x: 5 }}
+                        whileTap={{ scale: 0.9 }}
+                        className={styles.link}
+                        style={{ backgroundColor: webTheme.accent, color: webTheme.text.shade3 }}
+                     >
+                        Add New Link
+                     </motion.button>
+                  )}
+                  {otherLinksArr.map((link) => (
                      <motion.a
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.9 }}
@@ -60,87 +76,17 @@ export default function BioPage() {
                            borderColor: theme.card.border,
                         }}
                      >
-                        {link.title}
+                        {link.name}
                      </motion.a>
                   ))}
                </div>
-               {/* Powered by */}
-               <div className={styles.bottom_powered_by_cont} style={{ color: theme.copyright }}>
-                  <p>
-                     Powered by{" "}
-                     <a href="https://marked-web.vercel.app" target="_blank">
-                        marked
-                     </a>
-                  </p>
-
-                  <div className={styles.eye_icon_cont}>
-                     <IconEye size={17} />
-                     <span>{DUMMY_SOCIAL.views}</span>
-                  </div>
-               </div>
+               {!isEdit && <PoweredBy theme={theme} views={user.views} />}
             </div>
          </div>
       </>
    );
 }
 
-function SocialLinks({ theme }: SocialLinksProps) {
-   const iconColor = theme.icon.fill;
-   const iconBgColor = theme.icon.backgdound;
-
-   const data = DUMMY_SOCIAL;
-
-   return (
-      <div className={styles.social_cont}>
-         {data.facebook && (
-            <motion.a
-               target="_blank"
-               href={data.facebook}
-               style={{ backgroundColor: iconBgColor }}
-               whileHover={{ rotate: 25 }}
-               whileTap={{ scale: 0.9 }}
-            >
-               <IconBrandFacebook color={iconColor} />
-            </motion.a>
-         )}
-         {data.tiktok && (
-            <motion.a
-               target="_blank"
-               href={data.tiktok}
-               style={{ backgroundColor: iconBgColor }}
-               whileHover={{ rotate: 25 }}
-               whileTap={{ scale: 0.9 }}
-            >
-               <IconBrandTiktok color={iconColor} />
-            </motion.a>
-         )}
-         {data.twitter && (
-            <motion.a
-               target="_blank"
-               href={data.twitter}
-               style={{ backgroundColor: iconBgColor }}
-               whileHover={{ rotate: 25 }}
-               whileTap={{ scale: 0.9 }}
-            >
-               <IconBrandTwitter color={iconColor} />
-            </motion.a>
-         )}
-      </div>
-   );
+interface Props {
+   isEdit?: boolean;
 }
-
-interface SocialLinksProps {
-   theme: SocialTheme;
-}
-
-// instagram: string;
-// github?: string;
-// facebook?: string;
-// tiktok?: string;
-// twitter?: string;
-// snapchat?: string;
-// leetcode?: string;
-// youtube?: string;
-// other?: string;
-// portfolio?: string;
-// linkedin?: string;

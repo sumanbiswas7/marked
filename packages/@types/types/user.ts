@@ -7,6 +7,9 @@ export interface User {
    age: number | null;
    image: string | null;
    views: number;
+   social: Social | null;
+   about: string | null;
+   username: string | null;
 }
 
 export interface Notification {
@@ -33,8 +36,16 @@ export interface Social {
    snapchat: string | null;
    leetcode: string | null;
    youtube: string | null;
-   other: string | null;
    portfolio: string | null;
    linkedin: string | null;
    userId: string;
+   other: OtherLink[];
+}
+
+export interface OtherLink {
+   id: string;
+   createdAt: string;
+   name: string;
+   link: string;
+   socialId: string | null;
 }

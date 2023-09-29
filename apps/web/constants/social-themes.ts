@@ -2,17 +2,17 @@ export const socialThemes = {
    milk: {
       background: {
          texture: "/bio/texture-1.png",
-         gradient: ["#1d1d1d", "#f5f5f5"],
+         gradient: ["#C9C9C9", "#f5f5f5"],
       },
       text: "#1d1d1d",
-      description: "#9F9F9F",
+      description: "#494949",
       icon: {
          fill: "#fff",
          backgdound: "#616161",
       },
       card: {
          background: "#fff",
-         border: "#DBDBDB",
+         border: "transparent",
       },
       copyright: "#000",
    },

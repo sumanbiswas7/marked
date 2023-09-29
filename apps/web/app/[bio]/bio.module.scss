@@ -83,6 +83,17 @@
       }
    }
 
+   .new_sociallink_btn {
+      padding: 0.25rem 1rem;
+      border: none;
+      margin-top: 0.5rem;
+      border-radius: 0.25rem;
+   }
+
+   .new_link {
+      border: none;
+   }
+
    .other_links_cont {
       margin-top: 2rem;
       display: flex;
@@ -108,47 +119,6 @@
             width: 95vw;
             padding-block: 0.75rem;
          }
-      }
-   }
-
-   .bottom_powered_by_cont {
-      width: 100%;
-      margin-top: 1rem;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-
-      a {
-         color: inherit;
-      }
-
-      .eye_icon_cont {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         gap: 0.25rem;
-      }
-   }
-}
-
-.social_cont {
-   margin-top: 0.5rem;
-   display: flex;
-   gap: 0.5rem;
-
-   & > a {
-      text-decoration: none;
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: black;
-
-      @media only screen and (max-width: 400px) {
-         width: 2rem;
-         height: 2rem;
       }
    }
 }
