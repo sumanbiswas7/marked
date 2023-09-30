@@ -11,11 +11,14 @@ import { useDisclosure } from "@mantine/hooks";
 import { HttpResponse } from "@marked/utils";
 import { errorNotification, successNotification } from "../../utils/show-notifications";
 import { SocialLinkModal } from "../../components/form/edit-social-links-modal/edit-social-links-modal";
+import { IconEdit } from "@tabler/icons-react";
+import { EditProfileModal } from "../../components/form/edit-profile-modal/edit-profile-modal";
 
 export default function ProfilePage() {
    const { error, loading, user, revalidate } = useAuthUser();
    const { theme: webTheme } = useTheme();
    const [openedSocial, { open: openSocial, close: closeSocial }] = useDisclosure(false);
+   const [openedProfile, { open: openProfile, close: closeProfile }] = useDisclosure(false);
 
    if (loading) return <p>Loading...</p>;
    if (error) return <p>Error </p>;
@@ -49,7 +52,13 @@ export default function ProfilePage() {
                {/* Profile and Social Media */}
                <div className={styles.top_container}>
                   <img src={user?.image || "/sidenav/no-profile.jpg"} alt={`${user?.name}.png`} />
-                  <h1 style={{ color: theme.text }}>{user?.name}</h1>
+                  <h1 style={{ color: theme.text }}>
+                     {user?.name}{" "}
+                     <span>
+                        <IconEdit size={18} color={theme.text} onClick={openProfile} />
+                     </span>
+                  </h1>
+
                   {user?.about && <p style={{ color: theme.description }}>{user?.about}</p>}
                   {user?.social !== null && (
                      <SocialLinks theme={theme} editButton={true} data={user?.social || null} onAddNew={openSocial} />
@@ -99,12 +108,14 @@ export default function ProfilePage() {
             </div>
          </div>
 
+         {/* Modals */}
          <SocialLinkModal
             opened={openedSocial}
             close={closeSocial}
             onSubmitEnd={handleSocialSubmitEnd}
             data={user?.social || null}
          />
+         <EditProfileModal opened={openedProfile} close={closeProfile} data={user} />
       </>
    );
 }
