@@ -9,6 +9,7 @@ import { SocialLinks } from "../../components/ui/bio/social-links/social-links";
 import { useQuery } from "@tanstack/react-query";
 import { getBioFromEmail } from "../../api/user/get-bio";
 import { User } from "@marked/types";
+import { isValidImageUrl } from "../../utils/valid-image";
 
 export default function BioPage() {
    const params = useParams();
@@ -44,7 +45,11 @@ export default function BioPage() {
             <div className={styles.content_container}>
                {/* Profile and Social Media */}
                <div className={styles.top_container}>
-                  <img src={user.image || "/sidenav/no-profile.jpg"} alt={`${user.name}.png`} />
+                  <img
+                     src={isValidImageUrl(user?.image!) ? user?.image || "" : "/sidenav/no-profile.jpg"}
+                     alt={`${user?.name}.png`}
+                  />
+
                   <h1 style={{ color: theme.text }}>{user.name}</h1>
                   {user.about && <p style={{ color: theme.description }}>{user.about}</p>}
 
