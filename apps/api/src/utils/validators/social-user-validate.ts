@@ -29,7 +29,13 @@ export function validateUpdateSocials(linksObj: any) {
          error.data = { given: linksObj, allowed: socialMediaKeys };
          return handleError(error)(req, res, next);
       } else {
-         return validLinks;
+         // Delete other keys that are not present
+         const nullToOtherKeys: any = { ...validLinks };
+         socialMediaKeys.forEach((key) => {
+            if (!(key in validLinks)) nullToOtherKeys[key] = null;
+         });
+
+         return nullToOtherKeys;
       }
    };
 }

@@ -7,7 +7,6 @@ export const socialMediaKeys = [
    "snapchat",
    "leetcode",
    "youtube",
-   "other",
    "portfolio",
    "linkedin",
 ];

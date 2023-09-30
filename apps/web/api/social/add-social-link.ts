@@ -3,7 +3,7 @@ import { getAccessToken } from "../../utils/get-token";
 import { HTTP_STATUS, HttpResponse } from "@marked/utils";
 import { BASE_URL } from "../../constants/base-url";
 
-export async function addSocialLink(form: any): Promise<HttpResponse> {
+export async function updateSocialLink(form: any): Promise<HttpResponse> {
    const success = new HttpResponse({});
    const error = new HttpResponse({ isError: true });
 

@@ -9,7 +9,7 @@ import {
    IconBrandTwitter,
    IconBrandYoutube,
    IconCompass,
-   IconPlus,
+   IconEdit,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { SocialTheme } from "../../../../constants/social-themes";
@@ -140,7 +140,7 @@ export function SocialLinks({ theme, editButton, data, onAddNew }: SocialLinksPr
                whileHover={{ rotate: 25 }}
                whileTap={{ scale: 0.9 }}
             >
-               <IconPlus color={iconBgColor} />
+               <IconEdit color={iconBgColor} />
             </motion.button>
          )}
       </div>

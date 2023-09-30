@@ -48,18 +48,20 @@ export function SideNav(): JSX.Element {
                {error ? (
                   <p>Err: {error.message}</p>
                ) : (
-                  <div
-                     className={styles.logged_user_cont}
-                     style={{
-                        borderColor: theme.colorScheme === "dark" ? theme.border.shade1 : theme.text.shade1,
-                     }}
-                  >
-                     <img src={user?.image || "/sidenav/no-profile.jpg"} />
-                     <div className={styles.logged_user_cont__user_cont}>
-                        <h4 style={{ color: theme.text.shade1 }}>{user?.name}</h4>
-                        <p style={{ color: theme.text.shade2 }}>{truncateEmail(user?.email || "n/a", 25)}</p>
+                  <Link href={"/profile"} style={{ textDecoration: "none" }}>
+                     <div
+                        className={styles.logged_user_cont}
+                        style={{
+                           borderColor: theme.colorScheme === "dark" ? theme.border.shade1 : theme.text.shade1,
+                        }}
+                     >
+                        <img src={user?.image || "/sidenav/no-profile.jpg"} />
+                        <div className={styles.logged_user_cont__user_cont}>
+                           <h4 style={{ color: theme.text.shade1 }}>{user?.name}</h4>
+                           <p style={{ color: theme.text.shade2 }}>{truncateEmail(user?.email || "n/a", 25)}</p>
+                        </div>
                      </div>
-                  </div>
+                  </Link>
                )}
             </>
          )}
