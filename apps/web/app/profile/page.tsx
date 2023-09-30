@@ -13,12 +13,14 @@ import { errorNotification, successNotification } from "../../utils/show-notific
 import { SocialLinkModal } from "../../components/form/edit-social-links-modal/edit-social-links-modal";
 import { IconEdit } from "@tabler/icons-react";
 import { EditProfileModal } from "../../components/form/edit-profile-modal/edit-profile-modal";
+import { AddOtherLinkModal } from "../../components/form/add-other-link-modal/add-other-link-modal";
 
 export default function ProfilePage() {
    const { error, loading, user, revalidate } = useAuthUser();
    const { theme: webTheme } = useTheme();
    const [openedSocial, { open: openSocial, close: closeSocial }] = useDisclosure(false);
    const [openedProfile, { open: openProfile, close: closeProfile }] = useDisclosure(false);
+   const [openedOther, { open: openOther, close: closeOther }] = useDisclosure(false);
 
    if (loading) return <p>Loading...</p>;
    if (error) return <p>Error </p>;
@@ -35,6 +37,7 @@ export default function ProfilePage() {
 
       closeProfile();
       closeSocial();
+      closeOther();
    }
 
    return (
@@ -74,6 +77,7 @@ export default function ProfilePage() {
                         whileTap={{ scale: 0.9 }}
                         className={styles.link}
                         style={{ backgroundColor: webTheme.accent, color: webTheme.text.shade3 }}
+                        onClick={openOther}
                      >
                         Add New Link
                      </motion.button>
@@ -110,13 +114,19 @@ export default function ProfilePage() {
          </div>
 
          {/* Modals */}
+         <EditProfileModal opened={openedProfile} close={closeProfile} data={user} onSubmitEnd={handleSubmitEnd} />
+         <AddOtherLinkModal
+            opened={openedOther}
+            close={closeOther}
+            onSubmitEnd={handleSubmitEnd}
+            socialId={user?.social?.id || "N/A"}
+         />
          <SocialLinkModal
             opened={openedSocial}
             close={closeSocial}
             onSubmitEnd={handleSubmitEnd}
             data={user?.social || null}
          />
-         <EditProfileModal opened={openedProfile} close={closeProfile} data={user} onSubmitEnd={handleSubmitEnd} />
       </>
    );
 }

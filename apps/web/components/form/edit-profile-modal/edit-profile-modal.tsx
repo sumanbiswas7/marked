@@ -1,13 +1,10 @@
 import { ChangeEvent, useState } from "react";
-import { updateSocialLink } from "../../../api/social/update-social-link";
 import { errorNotification } from "../../../utils/show-notifications";
-import { HttpResponse, isValidUrl } from "@marked/utils";
+import { HttpResponse } from "@marked/utils";
 import { Button, LoadingOverlay, Modal, TextInput } from "@mantine/core";
-import { IconTrash } from "@tabler/icons-react";
-import { Social } from "@marked/types";
-import styles from "./edit-profile-modal.module.scss";
 import { UserMe } from "../../provider/auth-user-provider";
 import { updateUserProfile } from "../../../api/user/update-me";
+import styles from "./edit-profile-modal.module.scss";
 
 export function EditProfileModal({ close, opened, onSubmitEnd, data }: EditProfileModalProps) {
    const [loading, setLoading] = useState(false);
@@ -84,6 +81,11 @@ export function EditProfileModal({ close, opened, onSubmitEnd, data }: EditProfi
    );
 }
 
+/**
+ * --------------
+ *     Types
+ * --------------
+ */
 interface EditProfileModalProps {
    opened: boolean;
    close: () => void;
