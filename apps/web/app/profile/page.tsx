@@ -27,12 +27,13 @@ export default function ProfilePage() {
    const theme: SocialTheme = socialThemes["milk"];
    const otherLinksArr = user?.social?.other || [];
 
-   async function handleSocialSubmitEnd(res: HttpResponse) {
+   async function handleSubmitEnd(res: HttpResponse) {
       await revalidate();
 
       if (res.isError) errorNotification(res.message || "Something went wrong");
-      else successNotification(res.message || "Links updated");
+      else successNotification(res.message || "Operation Successful");
 
+      closeProfile();
       closeSocial();
    }
 
@@ -112,10 +113,10 @@ export default function ProfilePage() {
          <SocialLinkModal
             opened={openedSocial}
             close={closeSocial}
-            onSubmitEnd={handleSocialSubmitEnd}
+            onSubmitEnd={handleSubmitEnd}
             data={user?.social || null}
          />
-         <EditProfileModal opened={openedProfile} close={closeProfile} data={user} />
+         <EditProfileModal opened={openedProfile} close={closeProfile} data={user} onSubmitEnd={handleSubmitEnd} />
       </>
    );
 }

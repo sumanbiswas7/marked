@@ -38,6 +38,7 @@ export function validateUpdateUser(user: any) {
       if (user.name) modifiedUser["name"] = user.name;
       if (user.age) modifiedUser["age"] = user.age;
       if (user.image) modifiedUser["image"] = user.image;
+      if (user.about) modifiedUser["about"] = user.about;
 
       return modifiedUser;
    };
@@ -46,5 +47,6 @@ export function validateUpdateUser(user: any) {
 interface ModifiedUser {
    name?: string;
    age?: number;
+   about?: string;
    image?: string;
 }
