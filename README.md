@@ -1,6 +1,6 @@
 <p style="margin-top: 120px display:flex gap:10px">
    <a href="/github">
-     <img width="400" alt="hero-image-800px" src="https://github.com/sumanbiswas7/marked/assets/89641167/dca932f5-a628-40fd-bd9e-88aa8fe44ae1" style="border-radius: 10px">
+     <img width="400" alt="hero-image-800px" src="https://github.com/sumanbiswas7/marked/assets/89641167/1ddc353f-a0b9-4b86-92ba-0b5302e588a5" style="border-radius: 10px">
    </a>
 </p>
 
