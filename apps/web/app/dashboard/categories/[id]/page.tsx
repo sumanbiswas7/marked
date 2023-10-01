@@ -13,7 +13,7 @@ import { NoData } from "../../../../components/ui/empty-state/no-data";
 
 import { CircleButton } from "../../../../components/ui/button/circle-button";
 import { useQuery } from "@tanstack/react-query";
-import { getAllLinks } from "../../../../api/link/get-all-links";
+import { getAllLinks } from "../../../../utils/api/link/get-all-links";
 import { useDisclosure } from "@mantine/hooks";
 import { AddNewLinkModal } from "../../../../components/form/add-link-modal/add-link-modal";
 

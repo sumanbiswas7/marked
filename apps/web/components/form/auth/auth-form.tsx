@@ -8,7 +8,7 @@ import { IResolveParams, LoginSocialGoogle, objectType } from "reactjs-social-lo
 import { useState } from "react";
 import { errorNotification, successNotification } from "../../../utils/show-notifications";
 import { LoadingOverlay } from "@mantine/core";
-import { oauthRegister } from "../../../api/auth/oauth-register";
+import { oauthRegister } from "../../../utils/api/auth/oauth-register";
 import { setCache, setToken } from "../../../utils/get-token";
 import { useRouter } from "next/navigation";
 

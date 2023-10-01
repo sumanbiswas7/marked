@@ -1,7 +1,7 @@
 import axios from "axios";
 import { HttpResponse, isValidHexcolor, isValidUrl } from "@marked/utils";
-import { BASE_URL } from "../../constants/base-url";
-import { getAccessToken } from "../../utils/get-token";
+import { BASE_URL } from "../../../constants/base-url";
+import { getAccessToken } from "../../get-token";
 
 export async function updateCategory(categoryId: string, form: Form): Promise<HttpResponse> {
    const success = new HttpResponse({});

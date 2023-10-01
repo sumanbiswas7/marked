@@ -2,7 +2,7 @@ import { useState } from "react";
 import { errorNotification } from "../../../utils/show-notifications";
 import { HttpResponse, isValidUrl } from "@marked/utils";
 import { Button, LoadingOverlay, Modal, TextInput } from "@mantine/core";
-import { addOtherSocialLink } from "../../../api/social/add-other-social-link";
+import { addOtherSocialLink } from "../../../utils/api/social/add-other-social-link";
 
 export function AddOtherLinkModal({ close, opened, onSubmitEnd, socialId }: EditProfileModalProps) {
    const [loading, setLoading] = useState(false);

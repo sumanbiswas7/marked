@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Link as LinkType } from "@marked/types";
 import { errorNotification, successNotification } from "../../../utils/show-notifications";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { validateLink } from "../../../api/link/validate-link";
-import { addNewLink } from "../../../api/link/create-link";
+import { validateLink } from "../../../utils/api/link/validate-link";
+import { addNewLink } from "../../../utils/api/link/create-link";
 import { sliceText } from "../../../utils/slice-text";
 import { HttpResponse } from "@marked/utils";
 

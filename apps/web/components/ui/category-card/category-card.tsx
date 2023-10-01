@@ -13,7 +13,7 @@ import { IconCalendar } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
 import Link from "next/link";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteCategoryById } from "../../../api/category/delete-category";
+import { deleteCategoryById } from "../../../utils/api/category/delete-category";
 import { successNotification, errorNotification } from "../../../utils/show-notifications";
 import { getFormattedDate } from "../../../utils/format-date";
 import { HttpResponse } from "@marked/utils";

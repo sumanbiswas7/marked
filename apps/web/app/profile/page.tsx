@@ -17,7 +17,7 @@ import { AddOtherLinkModal } from "../../components/form/add-other-link-modal/ad
 import { Flex, LoadingOverlay, Text } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import { OtherLink } from "@marked/types/dist/types/types/user";
-import { deleteOtherSocialLinkById } from "../../api/social/delete-other-social-link";
+import { deleteOtherSocialLinkById } from "../../utils/api/social/delete-other-social-link";
 import { useState } from "react";
 import { isValidImageUrl } from "../../utils/valid-image";
 

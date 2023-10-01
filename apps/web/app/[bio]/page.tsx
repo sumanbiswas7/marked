@@ -7,7 +7,7 @@ import { SocialTheme, socialThemes } from "../../constants/social-themes";
 import { PoweredBy } from "../../components/ui/bio/powered-by/powered-by";
 import { SocialLinks } from "../../components/ui/bio/social-links/social-links";
 import { useQuery } from "@tanstack/react-query";
-import { getBioFromEmail } from "../../api/user/get-bio";
+import { getBioFromEmail } from "../../utils/api/user/get-bio";
 import { User } from "@marked/types";
 import { isValidImageUrl } from "../../utils/valid-image";
 

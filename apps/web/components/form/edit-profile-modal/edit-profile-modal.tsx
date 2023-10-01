@@ -3,7 +3,7 @@ import { errorNotification } from "../../../utils/show-notifications";
 import { HttpResponse } from "@marked/utils";
 import { Button, LoadingOverlay, Modal, TextInput } from "@mantine/core";
 import { UserMe } from "../../provider/auth-user-provider";
-import { updateUserProfile } from "../../../api/user/update-me";
+import { updateUserProfile } from "../../../utils/api/user/update-me";
 import styles from "./edit-profile-modal.module.scss";
 
 export function EditProfileModal({ close, opened, onSubmitEnd, data }: EditProfileModalProps) {

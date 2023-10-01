@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthUserContext, UserMe } from "../components/provider/auth-user-provider";
-import { getAuthUser } from "../api/auth/get-user";
+import { getAuthUser } from "../utils/api/auth/get-user";
 import { HttpResponse } from "@marked/utils";
 
 export function useAuthUser() {

@@ -9,7 +9,7 @@ import { getFormattedDate } from "../../../utils/format-date";
 import { modals } from "@mantine/modals";
 import { LoadingOverlay, Text } from "@mantine/core";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteLinkById } from "../../../api/link/delete-link";
+import { deleteLinkById } from "../../../utils/api/link/delete-link";
 import { useState } from "react";
 import { HttpResponse } from "@marked/utils";
 import { warnNotification, errorNotification } from "../../../utils/show-notifications";

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { getAccessToken } from "../../utils/get-token";
+import { getAccessToken } from "../../get-token";
 import { HTTP_STATUS, HttpResponse } from "@marked/utils";
-import { BASE_URL } from "../../constants/base-url";
+import { BASE_URL } from "../../../constants/base-url";
 
-export async function getAllCategory(): Promise<HttpResponse> {
+export async function deleteLinkById(linkId: string, categoryId: string): Promise<HttpResponse> {
    const success = new HttpResponse({});
    const error = new HttpResponse({ isError: true });
 
@@ -15,9 +15,16 @@ export async function getAllCategory(): Promise<HttpResponse> {
       throw new HttpResponse(error);
    }
 
-   const config = { headers: { access_token: token.token } };
-   const res = await axios.get(`${BASE_URL}/category/me/all`, config);
+   if (!linkId) {
+      error.status = HTTP_STATUS.BAD_REQUEST;
+      error.message = "No link id found";
+      throw new HttpResponse(error);
+   }
+
+   const config = { headers: { access_token: token.token }, data: { categoryId } };
+   const res = await axios.delete(`${BASE_URL}/link/${linkId}`, config);
    const httpRes = res.data as HttpResponse;
+
    if (httpRes.isError) throw new HttpResponse(httpRes);
 
    success.message = httpRes.message;

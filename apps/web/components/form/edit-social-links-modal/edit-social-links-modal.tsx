@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateSocialLink } from "../../../api/social/update-social-link";
+import { updateSocialLink } from "../../../utils/api/social/update-social-link";
 import { errorNotification } from "../../../utils/show-notifications";
 import { HttpResponse, isValidUrl } from "@marked/utils";
 import { Button, LoadingOverlay, Modal, TextInput } from "@mantine/core";

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { HTTP_STATUS, HttpResponse, isValidEmail, isValidUrl } from "@marked/utils";
-import { BASE_URL } from "../../constants/base-url";
+import { BASE_URL } from "../../../constants/base-url";
 
 export async function oauthRegister(form: { email: string; name: string; image: string }): Promise<HttpResponse> {
    const success = new HttpResponse({});

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { getAccessToken } from "../../utils/get-token";
+import { getAccessToken } from "../../get-token";
 import { HTTP_STATUS, HttpResponse } from "@marked/utils";
-import { BASE_URL } from "../../constants/base-url";
+import { BASE_URL } from "../../../constants/base-url";
 
-export async function getOneCategoryById(id: string | null): Promise<HttpResponse> {
+export async function createCategory(data: any): Promise<HttpResponse> {
    const success = new HttpResponse({});
    const error = new HttpResponse({ isError: true });
 
@@ -15,8 +15,7 @@ export async function getOneCategoryById(id: string | null): Promise<HttpRespons
       throw new HttpResponse(error);
    }
 
-   const config = { headers: { access_token: token.token } };
-   const res = await axios.get(`${BASE_URL}/category/me/all`, config);
+   const res = await axios.post(`${BASE_URL}/category/create`, data, { headers: { access_token: token.token } });
    const httpRes = res.data as HttpResponse;
    if (httpRes.isError) throw new HttpResponse(httpRes);
 

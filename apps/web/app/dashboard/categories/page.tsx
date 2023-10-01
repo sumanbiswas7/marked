@@ -11,7 +11,7 @@ import { AddEditCategoryModal } from "../../../components/form/add-edit-category
 import { IconPlus } from "@tabler/icons-react";
 import { useTheme } from "../../../hooks/use-theme";
 import { NoData } from "../../../components/ui/empty-state/no-data";
-import { getAllCategory } from "../../../api/category/get-all-category";
+import { getAllCategory } from "../../../utils/api/category/get-all-category";
 import { useQuery } from "@tanstack/react-query";
 
 export default function DashboardLinksPage(): JSX.Element {

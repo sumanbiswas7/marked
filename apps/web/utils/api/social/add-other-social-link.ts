@@ -1,7 +1,7 @@
 import axios from "axios";
-import { getAccessToken } from "../../utils/get-token";
+import { getAccessToken } from "../../get-token";
 import { HTTP_STATUS, HttpResponse, isValidUrl } from "@marked/utils";
-import { BASE_URL } from "../../constants/base-url";
+import { BASE_URL } from "../../../constants/base-url";
 
 export async function addOtherSocialLink(form: Form): Promise<HttpResponse> {
    const success = new HttpResponse({});

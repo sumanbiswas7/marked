@@ -3,10 +3,10 @@ import { IconUpload } from "@tabler/icons-react";
 import { SelectItem, data as selectData } from "./select-item";
 import { useLayoutEffect, useState } from "react";
 import { Category } from "@marked/types";
-import { updateCategory, validateCategory } from "../../../api/category/update-category";
+import { updateCategory, validateCategory } from "../../../utils/api/category/update-category";
 import { errorNotification, successNotification } from "../../../utils/show-notifications";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createCategory } from "../../../api/category/create-category";
+import { createCategory } from "../../../utils/api/category/create-category";
 import { HttpResponse } from "@marked/utils";
 
 export function AddEditCategoryModal({ opened, isEdit, close, data, onSubmitEnd }: Props) {

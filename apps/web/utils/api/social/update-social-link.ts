@@ -1,9 +1,9 @@
 import axios from "axios";
-import { getAccessToken } from "../../utils/get-token";
+import { getAccessToken } from "../../get-token";
 import { HTTP_STATUS, HttpResponse } from "@marked/utils";
-import { BASE_URL } from "../../constants/base-url";
+import { BASE_URL } from "../../../constants/base-url";
 
-export async function deleteOtherSocialLinkById(id: string): Promise<HttpResponse> {
+export async function updateSocialLink(form: any): Promise<HttpResponse> {
    const success = new HttpResponse({});
    const error = new HttpResponse({ isError: true });
 
@@ -16,7 +16,7 @@ export async function deleteOtherSocialLinkById(id: string): Promise<HttpRespons
    }
 
    const config = { headers: { access_token: token.token } };
-   const res = await axios.delete(`${BASE_URL}/social/other-link/${id}`, config);
+   const res = await axios.post(`${BASE_URL}/social/update`, form, config);
    const httpRes = res.data as HttpResponse;
 
    if (httpRes.isError) throw new HttpResponse(httpRes);

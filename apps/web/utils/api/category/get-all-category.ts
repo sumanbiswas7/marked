@@ -1,9 +1,9 @@
 import axios from "axios";
-import { getAccessToken } from "../../utils/get-token";
+import { getAccessToken } from "../../get-token";
 import { HTTP_STATUS, HttpResponse } from "@marked/utils";
-import { BASE_URL } from "../../constants/base-url";
+import { BASE_URL } from "../../../constants/base-url";
 
-export async function updateUserProfile(form: any): Promise<HttpResponse> {
+export async function getAllCategory(): Promise<HttpResponse> {
    const success = new HttpResponse({});
    const error = new HttpResponse({ isError: true });
 
@@ -16,9 +16,8 @@ export async function updateUserProfile(form: any): Promise<HttpResponse> {
    }
 
    const config = { headers: { access_token: token.token } };
-   const res = await axios.post(`${BASE_URL}/user/update/me`, form, config);
+   const res = await axios.get(`${BASE_URL}/category/me/all`, config);
    const httpRes = res.data as HttpResponse;
-
    if (httpRes.isError) throw new HttpResponse(httpRes);
 
    success.message = httpRes.message;
