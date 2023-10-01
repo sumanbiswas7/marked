@@ -16,7 +16,7 @@ import { EditProfileModal } from "../../components/form/edit-profile-modal/edit-
 import { AddOtherLinkModal } from "../../components/form/add-other-link-modal/add-other-link-modal";
 import { Flex, LoadingOverlay, Text } from "@mantine/core";
 import { modals } from "@mantine/modals";
-import { OtherLink } from "@marked/types/dist/types/types/user";
+import { OtherLink } from "@marked/types";
 import { deleteOtherSocialLinkById } from "../../utils/api/social/delete-other-social-link";
 import { useState } from "react";
 import { isValidImageUrl } from "../../utils/valid-image";
