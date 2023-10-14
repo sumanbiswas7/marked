@@ -1,6 +1,5 @@
 "use client";
 
-import { useAuthUser } from "../../hooks/use-auth-user";
 import styles from "./profile.module.scss";
 import { motion } from "framer-motion";
 import { SocialTheme, socialThemes } from "../../constants/social-themes";
@@ -20,24 +19,38 @@ import { OtherLink } from "@marked/types";
 import { deleteOtherSocialLinkById } from "../../utils/api/social/delete-other-social-link";
 import { useState } from "react";
 import { isValidImageUrl } from "../../utils/valid-image";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getUserProfile } from "../../utils/api/user/get-profile";
+import { UserMe } from "../../components/provider/auth-user-provider";
 
 export default function ProfilePage() {
+   const queryClient = useQueryClient();
    const [deleteing, setDeleting] = useState(false);
-   const { error, loading, user, revalidate } = useAuthUser();
+   const { data, status } = useQuery({
+      queryKey: ["user-profile"],
+      queryFn: () => getUserProfile(),
+   });
+
    const { theme: webTheme } = useTheme();
    const [openedSocial, { open: openSocial, close: closeSocial }] = useDisclosure(false);
    const [openedProfile, { open: openProfile, close: closeProfile }] = useDisclosure(false);
    const [openedOther, { open: openOther, close: closeOther }] = useDisclosure(false);
 
-   if (loading) return <p>Loading...</p>;
-   if (error) return <p>Error </p>;
+   if (status === "loading") return <p>Loading...</p>;
+   if (status === "error") return <p>Error </p>;
 
    // Change theme here
    const theme: SocialTheme = socialThemes["milk"];
+   const res = data.data as Res;
+   const user = res.user;
    const otherLinksArr = user?.social?.other || [];
 
+   function revalidate() {
+      queryClient.invalidateQueries(["user-profile"]);
+   }
+
    async function handleSubmitEnd(res: HttpResponse) {
-      await revalidate();
+      revalidate();
 
       if (res.isError) errorNotification(res.message || "Something went wrong");
       else successNotification(res.message || "Operation Successful");
@@ -51,7 +64,7 @@ export default function ProfilePage() {
       try {
          setDeleting(true);
          const res = await deleteOtherSocialLinkById(link.id);
-         await revalidate();
+         revalidate();
          setDeleting(false);
          if (res.isError) errorNotification(res.message || "Something went wrong while deleting");
          else warnNotification("Link deleted");
@@ -183,4 +196,8 @@ export default function ProfilePage() {
          onConfirm: () => handleDeleteLink(link),
       });
    }
+}
+
+interface Res {
+   user: UserMe;
 }

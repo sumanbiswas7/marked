@@ -9,6 +9,7 @@ import { deleteAllExceptController } from "../controllers/user/all.controller";
 import { meController } from "../controllers/user/me.controller";
 import { updateController } from "../controllers/user/update.controller";
 import { oauthRegisterController } from "../controllers/user/oauth-reg.controller";
+import { profileController } from "../controllers/user/profile.controller";
 
 const route = Router();
 
@@ -19,6 +20,7 @@ const route = Router();
  */
 route.get("/mock", mockUserController);
 route.get("/me", meController);
+route.get("/profile", profileController);
 route.get("/bio/:email", bioController);
 route.get("/all", allController);
 

@@ -6,10 +6,10 @@ import { handleError } from "../../utils/error-handler";
 import { getIdFromAccessToken } from "../../utils/get-id-from-token";
 
 /**
- * User Information Controller Middleware
+ * User Profile Controller Middleware
  *
  * This middleware extracts the user's ID from an access_token, retrieves user information,
- * including notifications and social media links, and responds with the user's details.
+ * social media links, and responds with the user's details.
  * It performs validation checks, token verification, and error handling gracefully.
  *
  * @param {Request} req - The Express request object.
@@ -17,7 +17,7 @@ import { getIdFromAccessToken } from "../../utils/get-id-from-token";
  * @param {NextFunction} next - The Express next function.
  */
 
-export async function meController(req: Request, res: Response, next: NextFunction) {
+export async function profileController(req: Request, res: Response, next: NextFunction) {
    try {
       const prisma = new PrismaClient();
       const success = new HttpResponse({});
@@ -27,19 +27,19 @@ export async function meController(req: Request, res: Response, next: NextFuncti
 
       const userById = await prisma.user.findUnique({
          where: { id: userId! },
-         include: { notifications: true },
+         include: { social: { include: { other: true } } },
       });
 
       if (!userById) {
          error.status = HTTP_STATUS.NOT_FOUND;
-         error.message = `No user found with id - ${userById}`;
+         error.message = `No profile found with id - ${userById}`;
          error.data = { user: userById };
          return handleError(error)(req, res, next);
       }
 
       success.status = HTTP_STATUS.OK;
       success.data = { user: userById };
-      success.message = `User found with id - ${userId}`;
+      success.message = `User profile found with id - ${userId}`;
       res.status(success.status).json(success);
    } catch (error) {
       handleError(error)(req, res, next);
